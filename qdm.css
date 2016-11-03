@@ -1,4 +1,10 @@
-
+body {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.4;
+  color: #222222;
+  background-color: #ffffff;
+}
 hr {
   margin-top: 21px;
   margin-bottom: 21px;
@@ -7,6 +13,16 @@ hr {
 }
 h5,.h5 {
   font-size: 15px;
+}
+h4,.h4,h5,.h5,h6,.h6 {
+  /*! margin-top: 10.5px; */
+  margin-bottom: 10.5px;
+}
+h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
+  color: inherit;
 }
 .form-horizontal .form-group {
   margin-left: -15px;
@@ -161,4 +177,12 @@ input[type="search"] {
   .input-group-lg input[type="month"] {
     line-height: 60px;
   }
+}
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
