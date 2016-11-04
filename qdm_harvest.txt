@@ -1,5 +1,5 @@
-River Rod & Gun Hunt Club,11/4/2016,2016,buck,5,450,6,7,13,25,30,40,7,7,,11/4/2016
-River Rod & Gun Hunt Club,11/5/2016,2016,doe,6,350,,,,,,,,,,11/5/2016
-River Rod & Gun Hunt Club,11/6/2016,2016,buck,7,400,7,6,13,22,33,44,6,6,,11/6/2016
-River Rod & Gun Hunt Club,11/7/2016,2016,doe,8,345,,,,,,,,,,11/7/2016
-River Rod & Gun Hunt Club,11/8/2016,2016,buck,9,410,6,7,13,24,34,37,6,6,,11/8/2016
+River Rod & Gun Hunt Club,11/4/2016,2016,buck,5,450,6,7,13,25,30,40,7,7,,11/4/2016,QDM Harvest
+River Rod & Gun Hunt Club,11/5/2016,2016,doe,6,350,,,,,,,,,,11/5/2016,QDM Harvest
+River Rod & Gun Hunt Club,11/6/2016,2016,buck,7,400,7,6,13,22,33,44,6,6,,11/6/2016,QDM Harvest
+River Rod & Gun Hunt Club,11/7/2016,2016,doe,8,345,,,,,,,,,,11/7/2016,QDM Harvest
+River Rod & Gun Hunt Club,11/8/2016,2016,buck,9,410,6,7,13,24,34,37,6,6,,11/8/2016,QDM Harvest
