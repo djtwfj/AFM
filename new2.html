@@ -1,0 +1,229 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <title>SlickGrid example 3: Editing</title>
+  <link rel="stylesheet" href="./lib/slick.grid.css" type="text/css"/>
+  <link rel="stylesheet" href="./lib/jquery-ui-1.8.16.custom.css" type="text/css"/>
+  <link rel="stylesheet" href="./lib/examples.css" type="text/css"/>
+  <link rel="stylesheet" href="./bootstrap.css" type="text/css"/>
+  <link rel="stylesheet" href="./dataTables.bootstrap.css" type="text/css"/>
+  <style>
+    .cell-title {
+      font-weight: bold;
+    }
+
+    .cell-effort-driven {
+      text-align: center;
+    }
+	
+
+	#myGrid span{
+		color: #222222;
+		font-family: Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+		font-size:12px;
+	}
+	body {
+		color: #222222;
+		font-family: Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+		font-size:12px;	
+	}
+  </style>
+</head>
+<body>
+<div style="padding:0px 390px;">
+  <div style="width:800px;">
+    <div id="myGrid" style="width:100%;height:200px;"></div>
+    <button onclick="undo()"><img src="./lib/arrow_undo.png" align="absmiddle"> Undo Edit</button>
+	<button class="add_field_button">Add New QDM</button>
+	<button id="deleteRow" disabled>Cancel Add</button>
+	<button id="saveRow" >Save QDM</button>
+  </div>
+</div>
+
+<script src="./lib/firebugx.js"></script>
+
+<script src="./lib/jquery-1.7.min.js"></script>
+<script src="./lib/jquery-ui-1.8.16.custom.min.js"></script>
+<script src="./lib/jquery.event.drag-2.2.js"></script>
+
+<script src="./lib/slick.core.js"></script>
+<script src="./lib/slick.formatters.js"></script>
+<script src="./lib/slick.editors.js"></script>
+<script src="./lib/slick.grid.js"></script>
+
+<script>
+  function requiredFieldValidator(value) {
+    if (value == null || value == undefined || !value.length) {
+      return {valid: false, msg: "This is a required field"};
+    } else {
+      return {valid: true, msg: null};
+    }
+  }
+
+  var grid;
+  var data = [];
+  //var columns = [
+  //  {id: "title", name: "Title", field: "title", width: 120, cssClass: "cell-title", editor: Slick.Editors.Text, validator: requiredFieldValidator},
+  //  {id: "desc", name: "Description", field: "description", width: 100, editor: Slick.Editors.LongText},
+  //  {id: "duration", name: "Duration", field: "duration", editor: Slick.Editors.Text},
+  //  {id: "%", name: "% Complete", field: "percentComplete", width: 80, resizable: false, formatter: Slick.Formatters.PercentCompleteBar, editor: Slick.Editors.PercentComplete},
+  //  {id: "start", name: "Start", field: "start", minWidth: 60, editor: Slick.Editors.Date},
+  //  {id: "finish", name: "Finish", field: "finish", minWidth: 60, editor: Slick.Editors.Date},
+  //  {id: "effort-driven", name: "Effort Driven", width: 80, minWidth: 20, maxWidth: 80, cssClass: "cell-effort-driven", field: "effortDriven", formatter: Slick.Formatters.Checkmark, editor: Slick.Editors.Checkbox}
+  //];
+
+  var columns = [
+  {id: "huntClub", name: "HUNT CLUB", field: "huntClub", width: 120, minWidth: 80, maxWidth: 150, editor: Slick.Editors.Text},
+  {id: "obsDate", name: "OBS. DATE", field: "obsDate", width: 85, minWidth: 80, maxWidth: 90, editor: Slick.Editors.Date},
+  {id: "huntYear", name: "HUNT YEAR", field: "huntYear", width: 70, minWidth: 65, maxWidth: 80, editor: Slick.Editors.Text},
+  {id: "sex", name: "SEX", field: "sex", width: 35, minWidth: 30, maxWidth: 45, editor: Slick.Editors.Text},
+  {id: "age", name: "AGE", field: "age", width: 35, minWidth: 30, maxWidth: 45, editor: Slick.Editors.Text},
+  {id: "weight", name: "LIVE WEIGHT (lbs)", field: "weight", width: 100, minWidth: 95, maxWidth: 120, editor: Slick.Editors.Text},
+  {id: "pleft", name: "POINTS LEFT", field: "pleft", width: 80, minWidth: 75, maxWidth: 90, editor: Slick.Editors.Text},
+  {id: "pright", name: "POINTS RIGHT", field: "pright", width: 80, minWidth: 75, maxWidth: 90, editor: Slick.Editors.Text},
+  {id: "ptotal", name: "POINTS TOTAL", field: "ptotal", width: 85, minWidth: 80, maxWidth: 85, editor: Slick.Editors.Text},
+  {id: "inSpread", name: "INSIDE SPREAD", field: "inspread", width: 90, minWidth: 85, maxWidth: 100, editor: Slick.Editors.Text},
+  {id: "bleft", name: "BASE LEFT", field: "bleft", width: 70, minWidth: 65, maxWidth: 80, editor: Slick.Editors.Text},
+  {id: "bright", name: "BASE RIGHT", field: "bright", width: 75, minWidth: 70, maxWidth: 85, editor: Slick.Editors.Text},
+  {id: "cleft", name: "C LEFT", field: "cleft", width: 50, minWidth: 45, maxWidth: 60, editor: Slick.Editors.Text},
+  {id: "cright", name: "C RIGHT", field: "cright", width: 50, minWidth: 45, maxWidth: 60, editor: Slick.Editors.Text},
+  {id: "milk", name: "MILK", field: "milk", width: 40, minWidth: 35, maxWidth: 50, editor: Slick.Editors.Text},
+  {id: "entryDate", name: "ENTRY DATE", field: "entryDate", width: 80, minWidth: 75, editor: Slick.Editors.Date},
+  {id: "comment", name: "COMMENT", field: "comment", width: 70, minWidth: 65, maxWidth: 200, editor: Slick.Editors.LongText}
+  ];
+
+  var rows = [];
+  rows[0]=[{value:"TILMAN HUNTING CLUB"},{value:"11/04/2016"},{value:"2016"},{value:"Buck"},{value:"7"},{value:"457"},{value:"6"},{value:"7"},{value:"13"},{value:"22"},{value:"30"},{value:"31"},{value:"7"},{value:"7"},{value:"No"},{value:"11/03/2016"},{value:"QDM Harvest comment 1"}];
+  rows[1]=[{value:"TILMAN HUNTING CLUB"},{value:"11/05/2016"},{value:"2016"},{value:"Buck"},{value:"6"},{value:"427"},{value:"6"},{value:"6"},{value:"12"},{value:"22"},{value:"30"},{value:"31"},{value:"7"},{value:"7"},{value:"No"},{value:"11/03/2016"},{value:"QDM Harvest comment 2"}];
+  rows[2]=[{value:"TILMAN HUNTING CLUB"},{value:"11/06/2016"},{value:"2016"},{value:"Buck"},{value:"5"},{value:"407"},{value:"5"},{value:"5"},{value:"10"},{value:"22"},{value:"30"},{value:"31"},{value:"7"},{value:"7"},{value:"No"},{value:"11/03/2016"},{value:"QDM Harvest comment 3"}];
+ 
+  var options = {
+    editable: true,
+    enableAddRow: false,
+    enableCellNavigation: true,
+    asyncEditorLoading: false,
+    autoEdit: false,
+    editCommandHandler: queueAndExecuteCommand
+  };
+
+  var commandQueue = [];
+
+  function queueAndExecuteCommand(item, column, editCommand) {
+    commandQueue.push(editCommand);
+    editCommand.execute();
+  }
+
+  function undo() {
+    var command = commandQueue.pop();
+    if (command && Slick.GlobalEditorLock.cancelCurrentEdit()) {
+      command.undo();
+      grid.gotoCell(command.row, command.cell, false);
+    }
+  }
+
+  //$(function () {
+  function load_grid() {
+    //for (var i = 0; i < 500; i++) {
+    //  var d = (data[i] = {});
+    //
+    //  d["title"] = "Task " + i;
+    //  d["description"] = "This is a sample task description.\n  It can be multiline";
+    //  d["duration"] = "5 days";
+    //  d["percentComplete"] = Math.round(Math.random() * 100);
+    //  d["start"] = "01/01/2009";
+    //  d["finish"] = "01/05/2009";
+    //  d["effortDriven"] = (i % 5 == 0);
+    //}
+
+    for (var i = 0; i < rows.length; i++) { //row creation
+      var d = (data[i] = {});
+      //d["id"] = i;
+      for (var j = 0; j < columns.length; j++) {
+        //d[j] = rows[i][j].value;  //Math.round(Math.random() * 10); //filling the rows
+        d[columns[j].field] = rows[i][j].value;  //Math.round(Math.random() * 10); //filling the rows
+		//alert(columns[j].field)
+      }	  
+    }
+	
+    grid = new Slick.Grid("#myGrid", data, columns, options);
+	}
+  //})
+  load_grid();
+$(document).ready(function() {
+    var max_fields      = 10; //maximum input boxes allowed
+    //var wrapper         = $(".input_fields_wrap"); //Fields wrapper
+    var wrapper         = $(".grid-canvas"); //Fields wrapper
+    //var wrapper         = $("#myGrid"); //Fields wrapper
+    var add_button      = $(".add_field_button"); //Add button ID
+    var x = 1; //initlal text box count
+    $(add_button).click(function(e){ //on add input button click
+        e.preventDefault();
+        //if(x < max_fields){ //max input box allowed
+            //$(wrapper).append('<div><input type="text" name="mytext[]"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
+            //alert(x);
+			$(wrapper).append('<div id="newRow'+x+'" class="ui-widget-content slick-row odd" style="top:75px;">'
+								+'<div style="slick-headerrow-columns" >'
+								+'<div class="ui-state-default slick-headerrow-column l0 r0">  <input id="c'+x+'0" type="text" name="mytext[]"/></div>'
+								+'<div class="ui-state-default slick-headerrow-column l1 r1">  <input id="c'+x+'1" type="text" name="mytext[]"/></div>'
+								+'<div class="ui-state-default slick-headerrow-column l2 r2">  <input id="c'+x+'2" type="text" name="mytext[]"/></div>'
+								+'<div class="ui-state-default slick-headerrow-column l3 r3">  <input id="c'+x+'3" type="text" name="mytext[]"/></div>'
+								+'<div class="ui-state-default slick-headerrow-column l4 r4">  <input id="c'+x+'4" type="text" name="mytext[]"/></div>'
+								+'<div class="ui-state-default slick-headerrow-column l5 r5">  <input id="c'+x+'5" type="text" name="mytext[]"/></div>'
+								+'<div class="ui-state-default slick-headerrow-column l6 r6">  <input id="c'+x+'6" type="text" name="mytext[]"/></div>'
+								+'<div class="ui-state-default slick-headerrow-column l7 r7">  <input id="c'+x+'7" type="text" name="mytext[]"/></div>'
+								+'<div class="ui-state-default slick-headerrow-column l8 r8">  <input id="c'+x+'8" type="text" name="mytext[]"/></div>'
+								+'<div class="ui-state-default slick-headerrow-column l9 r9">  <input id="c'+x+'9" type="text" name="mytext[]"/></div>'
+								+'<div class="ui-state-default slick-headerrow-column l10 r10"><input id="c'+x+'10" type="text" name="mytext[]"/></div>'
+								+'<div class="ui-state-default slick-headerrow-column l11 r11"><input id="c'+x+'11" type="text" name="mytext[]"/></div>'
+								+'<div class="ui-state-default slick-headerrow-column l12 r12"><input id="c'+x+'12" type="text" name="mytext[]"/></div>'
+								+'<div class="ui-state-default slick-headerrow-column l13 r13"><input id="c'+x+'13" type="text" name="mytext[]"/></div>'
+								+'<div class="ui-state-default slick-headerrow-column l14 r14"><input id="c'+x+'14" type="text" name="mytext[]"/></div>'
+								+'<div class="ui-state-default slick-headerrow-column l15 r15"><input id="c'+x+'15" type="text" name="mytext[]"/></div>'
+								+'<div class="ui-state-default slick-headerrow-column l16 r16"><input id="c'+x+'16" type="text" name="mytext[]"/></div></div></div>'); //add input box
+        //}
+        x++; //text box increment <div class="slick-headerrow ui-state-default" style="overflow:hidden;position:relative;">
+		if (x>1){
+			$('#deleteRow').prop('disabled', false);
+		}else{
+			$('#deleteRow').prop('disabled', true);
+		}
+    });
+        //$(wrapper).append('<div><a href="#" class="remove_field">Remove</a></div>'); //add input box
+    $('#deleteRow').on("click", function(e){ //user click on remove text
+        e.preventDefault();
+		if (x>=2)
+			x--; 
+			$('#newRow'+x).remove();
+		if (x<=1)
+			$('#deleteRow').prop('disabled', true);
+    });
+
+    $('#saveRow').on("click", function(e){ //user click on add QDM
+		var idx = rows.length;
+		//for (col=0;col<columns.length;col++){
+		//	//rows[idx][col].value = $('#c'+(x-1)+col).val();
+		//	rows.push({value : $('#c'+(x-1)+col).val() });
+		//	//alert($('#c'+(x-1)+col).val());
+		//	//alert(idx+';'+col);
+		//}
+		//load_grid();
+		//var $inputs = jQuery('#newRow'+(x-1)+' :input');
+		var values = [];
+		//$('#newRow'+(x-1)+' :input').each(function( ) {
+		//	//console.log(values[this.name] = jQuery(this).val());
+		//	values.push({this.val()});
+		//});
+		$('#newRow'+(x-1)+' input').each(function () {
+			//console.log(this.value);
+			values.push({value:this.value});
+		});
+		rows.push(values);
+		load_grid();
+	});
+	
+	
+});
+</script>
+</body>
+</html>
