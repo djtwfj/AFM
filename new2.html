@@ -37,7 +37,7 @@
     <button onclick="undo()"><img src="./lib/arrow_undo.png" align="absmiddle"> Undo Edit</button>
 	<button class="add_field_button">Add New QDM</button>
 	<button id="deleteRow" disabled>Cancel Add</button>
-	<button id="saveRow" >Save QDM</button>
+	<button id="saveRow" disabled>Save QDM</button>
   </div>
 </div>
 
@@ -185,8 +185,10 @@ $(document).ready(function() {
         x++; //text box increment <div class="slick-headerrow ui-state-default" style="overflow:hidden;position:relative;">
 		if (x>1){
 			$('#deleteRow').prop('disabled', false);
+			$('#saveRow').prop('disabled', false);
 		}else{
 			$('#deleteRow').prop('disabled', true);
+			$('#saveRow').prop('disabled', true);
 		}
     });
         //$(wrapper).append('<div><a href="#" class="remove_field">Remove</a></div>'); //add input box
@@ -195,8 +197,10 @@ $(document).ready(function() {
 		if (x>=2)
 			x--; 
 			$('#newRow'+x).remove();
-		if (x<=1)
+		if (x<=1){
 			$('#deleteRow').prop('disabled', true);
+			$('#saveRow').prop('disabled', true);
+		}
     });
 
     $('#saveRow').on("click", function(e){ //user click on add QDM
@@ -219,6 +223,9 @@ $(document).ready(function() {
 			values.push({value:this.value});
 		});
 		rows.push(values);
+		$('#deleteRow').prop('disabled', true);
+		$('#saveRow').prop('disabled', true);
+		$('.add_field_button').prop('disabled', true);
 		load_grid();
 	});
 	
