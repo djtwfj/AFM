@@ -1,0 +1,641 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+	<meta charset="utf-8"/>
+    <title>QDM page</title>
+    <link rel="stylesheet" type="text/css" href="./qdm.css" />
+    <link rel="stylesheet" type="text/css" href="./font-awesome.min.css" />
+	<!--link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"-->
+    <link rel="stylesheet" type="text/css" href="./bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="./dataTables.bootstrap.css" />	
+    <link rel="stylesheet" type="text/css" href="./Site.css" />	
+    <link rel="stylesheet" type="text/css" href="./jquery.dataTables.min.css" /> 
+	<!--script src="https://use.fontawesome.com/a2b896e6be.js"></script-->
+	
+	<style>
+	
+	div.dataTables_wrapper {
+        width: 100%;
+        margin: 0 auto;
+    }
+	</style>
+
+  </head>
+  <body>
+	<div style="padding:0px 390px;">
+		<h1>QDM site page</h1>
+
+		<hr>
+		<h5>QDMA OBSERVATIONS</h5>
+		<div class="form-horizontal" style="font-size:13px;">
+			<div class="form-group">
+			  <div class="col-md-12">
+				<div>
+				  <div id="DataTables_Table_1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+					<div class="row">
+					  <div class="col-sm-6"></div>
+					  <div class="col-sm-6">
+						<div id="DataTables_Table_1_filter" class="dataTables_filter">
+						  <label>Search:<input class="form-control input-sm" placeholder="" aria-controls="DataTables_Table_1" type="search"></label>
+						</div>
+					  </div>
+					</div>
+					<div class="row">
+					  <div class="col-sm-12">
+						<table class="table dataTableTracts dataTable no-footer" id="DataTables_Table_1" role="grid">
+						  <thead style="background-color:#f5f5f5">
+							<tr role="row">
+							  <th style="width: 0px;" >
+								<a href="" class="modal-link" data-toggle="tooltip" data-placement="top" title="" data-original-title="New">
+								  <span class="fa fa-magic" style="font-size:15px; color:#6aa74b"></span>
+								</a>
+							  </th>
+							  <th class="keinumbruch sorting_disabled" style="width: 70px;" rowspan="1" colspan="1">HUNT CLUB</th>
+							  <th class="keinumbruch sorting_disabled" style="width: 60px;" rowspan="1" colspan="1">OBS.DATE</th>
+							  <th class="keinumbruch sorting_disabled" style="width: 91px;" rowspan="1" colspan="1">HUNTING YEAR</th>
+							  <th class="keinumbruch sorting_disabled" style="width: 104px;" rowspan="1" colspan="1">ANTLERED BUCKS</th>
+							  <th class="keinumbruch sorting_disabled" style="width: 60px;" rowspan="1" colspan="1">DOES</th>
+							  <th class="keinumbruch sorting_disabled" style="width: 60px;" rowspan="1" colspan="1">FAWNS</th>
+							  <th class="keinumbruch sorting_disabled" style="padding-right: 0px; width: 174px;" rowspan="1" colspan="1">ENTRY DATE</th>
+							</tr>
+						  </thead>
+						  <tbody>
+							<tr class="odd">
+							  <td colspan="10" class="dataTables_empty" valign="top">No data available in table</td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>
+					</div>
+					<div class="row">
+					  <div class="col-sm-5"></div>
+					  <div class="col-sm-7"></div>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			</div>
+
+			<hr>
+			<h5>QDMA HARVESTINGS</h5>
+			<div class="form-group">
+				<div class="col-md-12">
+					<div>
+						<div id="DataTables_Table_2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+							<div class="row">
+								<div class="col-sm-12">
+									<!--table cellspacing="0" width="100%" class="table dataTableTracts dataTable no-footer scroll" id="DataTables_Table_2" role="grid"-->
+									<table id="example" cellspacing="0" width="100%" class="display nowrap" role="grid">
+										<thead style="background-color:#f5f5f5">
+											<tr role="row">
+												<th style="width: 10px;">
+													<a href="#" >
+														<span class="fa fa-magic" style="font-size:15px; color:#6aa74b"></span>
+													</a>
+												</th>
+												<th class="keinumbruch sorting_disabled" style="width: 60px;" >HUNT CLUB</th>
+												<th class="keinumbruch sorting_disabled" style="width: 60px;" >HARVEST DATE</th>
+												<th class="keinumbruch sorting_disabled" style="width: 91px;" >HUNT YEAR</th>
+												<th class="keinumbruch sorting_disabled" style="width: 73px;" >ENTRY DATE</th>
+												<th class="keinumbruch sorting_disabled" style="width: 60px;" >SPECIES</th>
+												<th class="keinumbruch sorting_disabled" style="width: 60px;" >SEX</th>
+												<th class="keinumbruch sorting_disabled" style="width: 60px;" >AGE</th>
+												<th class="keinumbruch sorting_disabled" style="width: 104px;">LIVE WEIGHT (lbs)</th>
+												<th class="keinumbruch sorting_disabled" style="width: 60px;" >POINTS LEFT</th>
+												<th class="keinumbruch sorting_disabled" style="width: 60px;" >POINTS RIGHT</th>
+												<th class="keinumbruch sorting_disabled" style="width: 60px;" >POINTS TOTAL</th>
+												<th class="keinumbruch sorting_disabled" style="width: 60px;" >INSIDE SPREAD (in)</th>
+												<th class="keinumbruch sorting_disabled" style="width: 60px;" >BEAN LENGTH LEFT (in)</th>
+												<th class="keinumbruch sorting_disabled" style="width: 60px;" >BEAN LENGTH RIGHT (in)</th>
+												<th class="keinumbruch sorting_disabled" style="width: 60px;" >CIRCUNFERENCE LEFT (in)</th>
+												<th class="keinumbruch sorting_disabled" style="width: 60px;" >CIRCUNFERENCE RIGHT (in)</th>
+												<th class="keinumbruch sorting_disabled" style="width: 60px;" >MILK</th>
+												<th class="keinumbruch sorting_disabled" style="width: 60px;" >WEAPON USED</th>
+												<th class="keinumbruch sorting_disabled" style="width: 60px;" >LOCATION INFORMATION</th>
+												<th class="keinumbruch sorting_disabled" style="width: 60px;" >HUNTER NAME</th>
+												<th class="keinumbruch sorting_disabled" style="width: 60px;" >HUNTER ADDRESS</th>
+												<th class="keinumbruch sorting_disabled" style="width: 60px;" >HUNTER CITY</th>
+												<th class="keinumbruch sorting_disabled" style="width: 60px;" >HUNTER STATE</th>
+												<th class="keinumbruch sorting_disabled" style="width: 60px;" >HUNTER ZIP CODE</th>
+												<th class="keinumbruch sorting_disabled" style="width: 60px;" >HUNTER PERMIT #</th>
+												<th class="keinumbruch sorting_disabled" style="width: 60px;" >HUNTER TRANSPORT TAG #</th>
+												<th class="keinumbruch sorting_disabled" style="width: 70px;" >COMMENT</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr class="odd">
+												<td class="keinumbruch">
+													<a data-original-title="Details" data-toggle="tooltip" data-placement="top" title="Details" class="modal-link" href="">
+														<span class="fa fa-pencil-square-o" style="font-size:15px; color:#6aa74b"></span>
+													</a>
+												</td>
+												<!--td>
+													<a data-original-title="Edit" href="" data-toggle="tooltip" data-placement="top" title="Edit">
+														<span class="glyphicon glyphicon-collapse-down" style="font-size:15px; color:#6aa74b"></span>
+													</a>
+												</td-->
+												<td>TILLMAN HUNTING CLUB</td>
+												<td>11/6/2016</td>
+												<td>2016</td>
+												<td>11/6/2016</td>
+												<td>Buck</td>
+												<td>Male</td>
+												<td>7</td>
+												<td>257</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>11/4/2016</td>
+												<td>2016</td>
+												<td>11/6/2016</td>
+												<td>Buck</td>
+												<td>7</td>
+												<td>157</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>Buck</td>
+												<td>7</td>
+												<td>457</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+											</tr>
+											<tr class="even">
+												<td class="keinumbruch">
+													<a data-original-title="Details" data-toggle="tooltip" data-placement="top" title="Details" class="modal-link" href="">
+														<span class="fa fa-pencil-square-o" style="font-size:15px; color:#6aa74b"></span>
+													</a>
+												</td>
+												<!--td>
+													<a data-original-title="Edit" href="" data-toggle="tooltip" data-placement="top" title="Edit">
+														<span class="glyphicon glyphicon-collapse-down" style="font-size:15px; color:#6aa74b"></span>
+													</a>
+												</td-->
+												<td>TILLMAN HUNTING CLUB</td>
+												<td>11/6/2016</td>
+												<td>2016</td>
+												<td>11/6/2016</td>
+												<td>Buck</td>
+												<td>Male</td>
+												<td>7</td>
+												<td>257</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>11/4/2016</td>
+												<td>2016</td>
+												<td>11/6/2016</td>
+												<td>Buck</td>
+												<td>7</td>
+												<td>457</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>Buck</td>
+												<td>7</td>
+												<td>457</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+											</tr>
+											<tr class="odd">
+												<td class="keinumbruch">
+													<a data-original-title="Details" data-toggle="tooltip" data-placement="top" title="Details" class="modal-link" href="">
+														<span class="fa fa-pencil-square-o" style="font-size:15px; color:#6aa74b"></span>
+													</a>
+												</td>
+												<!--td>
+													<a data-original-title="Edit" href="" data-toggle="tooltip" data-placement="top" title="Edit">
+														<span class="glyphicon glyphicon-collapse-down" style="font-size:15px; color:#6aa74b"></span>
+													</a>
+												</td-->
+												<td>TILLMAN HUNTING CLUB</td>
+												<td>11/6/2016</td>
+												<td>2016</td>
+												<td>11/6/2016</td>
+												<td>Buck</td>
+												<td>Male</td>
+												<td>7</td>
+												<td>257</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>11/4/2016</td>
+												<td>2016</td>
+												<td>11/6/2016</td>
+												<td>Buck</td>
+												<td>7</td>
+												<td>457</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>Buck</td>
+												<td>7</td>
+												<td>457</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+											</tr>
+											<tr class="even">
+												<td class="keinumbruch">
+													<a data-original-title="Details" data-toggle="tooltip" data-placement="top" title="Details" class="modal-link" href="">
+														<span class="fa fa-pencil-square-o" style="font-size:15px; color:#6aa74b"></span>
+													</a>
+												</td>
+												<!--td>
+													<a data-original-title="Edit" href="" data-toggle="tooltip" data-placement="top" title="Edit">
+														<span class="glyphicon glyphicon-collapse-down" style="font-size:15px; color:#6aa74b"></span>
+													</a>
+												</td-->
+												<td>TILLMAN HUNTING CLUB</td>
+												<td>11/6/2016</td>
+												<td>2016</td>
+												<td>11/6/2016</td>
+												<td>Buck</td>
+												<td>Male</td>
+												<td>7</td>
+												<td>257</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>11/4/2016</td>
+												<td>2016</td>
+												<td>11/6/2016</td>
+												<td>Buck</td>
+												<td>7</td>
+												<td>457</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>Buck</td>
+												<td>7</td>
+												<td>457</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+											</tr>
+											<tr class="odd">
+												<td class="keinumbruch">
+													<a data-original-title="Details" data-toggle="tooltip" data-placement="top" title="Details" class="modal-link" href="">
+														<span class="fa fa-pencil-square-o" style="font-size:15px; color:#6aa74b"></span>
+													</a>
+												</td>
+												<!--td>
+													<a data-original-title="Edit" href="" data-toggle="tooltip" data-placement="top" title="Edit">
+														<span class="glyphicon glyphicon-collapse-down" style="font-size:15px; color:#6aa74b"></span>
+													</a>
+												</td-->
+												<td>TILLMAN HUNTING CLUB</td>
+												<td>11/6/2016</td>
+												<td>2016</td>
+												<td>11/6/2016</td>
+												<td>Buck</td>
+												<td>Male</td>
+												<td>7</td>
+												<td>257</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>11/4/2016</td>
+												<td>2016</td>
+												<td>11/6/2016</td>
+												<td>Buck</td>
+												<td>7</td>
+												<td>457</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>Buck</td>
+												<td>7</td>
+												<td>457</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+											</tr>
+											<tr class="even">
+												<td class="keinumbruch">
+													<a data-original-title="Details" data-toggle="tooltip" data-placement="top" title="Details" class="modal-link" href="">
+														<span class="fa fa-pencil-square-o" style="font-size:15px; color:#6aa74b"></span>
+													</a>
+												</td>
+												<!--td>
+													<a data-original-title="Edit" href="" data-toggle="tooltip" data-placement="top" title="Edit">
+														<span class="glyphicon glyphicon-collapse-down" style="font-size:15px; color:#6aa74b"></span>
+													</a>
+												</td-->
+												<td>TILLMAN HUNTING CLUB</td>
+												<td>11/6/2016</td>
+												<td>2016</td>
+												<td>11/6/2016</td>
+												<td>Buck</td>
+												<td>Male</td>
+												<td>7</td>
+												<td>257</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>11/4/2016</td>
+												<td>2016</td>
+												<td>11/6/2016</td>
+												<td>Buck</td>
+												<td>7</td>
+												<td>457</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>Buck</td>
+												<td>7</td>
+												<td>457</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+											</tr>
+
+											<tr class="odd">
+												<td class="keinumbruch">
+													<a data-original-title="Details" data-toggle="tooltip" data-placement="top" title="Details" class="modal-link" href="">
+														<span class="fa fa-pencil-square-o" style="font-size:15px; color:#6aa74b"></span>
+													</a>
+												</td>
+												<!--td>
+													<a data-original-title="Edit" href="" data-toggle="tooltip" data-placement="top" title="Edit">
+														<span class="glyphicon glyphicon-collapse-down" style="font-size:15px; color:#6aa74b"></span>
+													</a>
+												</td-->
+												<td>TILLMAN HUNTING CLUB</td>
+												<td>11/6/2016</td>
+												<td>2016</td>
+												<td>11/6/2016</td>
+												<td>Buck</td>
+												<td>Male</td>
+												<td>7</td>
+												<td>257</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>11/4/2016</td>
+												<td>2016</td>
+												<td>11/6/2016</td>
+												<td>Buck</td>
+												<td>7</td>
+												<td>157</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>Buck</td>
+												<td>7</td>
+												<td>457</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+											</tr>
+											<tr class="even">
+												<td class="keinumbruch">
+													<a data-original-title="Details" data-toggle="tooltip" data-placement="top" title="Details" class="modal-link" href="">
+														<span class="fa fa-pencil-square-o" style="font-size:15px; color:#6aa74b"></span>
+													</a>
+												</td>
+												<!--td>
+													<a data-original-title="Edit" href="" data-toggle="tooltip" data-placement="top" title="Edit">
+														<span class="glyphicon glyphicon-collapse-down" style="font-size:15px; color:#6aa74b"></span>
+													</a>
+												</td-->
+												<td>TILLMAN HUNTING CLUB</td>
+												<td>11/6/2016</td>
+												<td>2016</td>
+												<td>11/6/2016</td>
+												<td>Buck</td>
+												<td>Male</td>
+												<td>7</td>
+												<td>257</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>11/4/2016</td>
+												<td>2016</td>
+												<td>11/6/2016</td>
+												<td>Buck</td>
+												<td>7</td>
+												<td>457</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>Buck</td>
+												<td>7</td>
+												<td>457</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+											</tr>
+											<tr class="odd">
+												<td class="keinumbruch">
+													<a data-original-title="Details" data-toggle="tooltip" data-placement="top" title="Details" class="modal-link" href="">
+														<span class="fa fa-pencil-square-o" style="font-size:15px; color:#6aa74b"></span>
+													</a>
+												</td>
+												<!--td>
+													<a data-original-title="Edit" href="" data-toggle="tooltip" data-placement="top" title="Edit">
+														<span class="glyphicon glyphicon-collapse-down" style="font-size:15px; color:#6aa74b"></span>
+													</a>
+												</td-->
+												<td>TILLMAN HUNTING CLUB</td>
+												<td>11/6/2016</td>
+												<td>2016</td>
+												<td>11/6/2016</td>
+												<td>Buck</td>
+												<td>Male</td>
+												<td>7</td>
+												<td>257</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>11/4/2016</td>
+												<td>2016</td>
+												<td>11/6/2016</td>
+												<td>Buck</td>
+												<td>7</td>
+												<td>457</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>Buck</td>
+												<td>7</td>
+												<td>457</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+											</tr>
+											<tr class="even">
+												<td class="keinumbruch">
+													<a data-original-title="Details" data-toggle="tooltip" data-placement="top" title="Details" class="modal-link" href="">
+														<span class="fa fa-pencil-square-o" style="font-size:15px; color:#6aa74b"></span>
+													</a>
+												</td>
+												<!--td>
+													<a data-original-title="Edit" href="" data-toggle="tooltip" data-placement="top" title="Edit">
+														<span class="glyphicon glyphicon-collapse-down" style="font-size:15px; color:#6aa74b"></span>
+													</a>
+												</td-->
+												<td>TILLMAN HUNTING CLUB</td>
+												<td>11/6/2016</td>
+												<td>2016</td>
+												<td>11/6/2016</td>
+												<td>Buck</td>
+												<td>Male</td>
+												<td>7</td>
+												<td>257</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>11/4/2016</td>
+												<td>2016</td>
+												<td>11/6/2016</td>
+												<td>Buck</td>
+												<td>7</td>
+												<td>457</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>Buck</td>
+												<td>7</td>
+												<td>457</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+											</tr>
+											<tr class="odd">
+												<td class="keinumbruch">
+													<a data-original-title="Details" data-toggle="tooltip" data-placement="top" title="Details" class="modal-link" href="">
+														<span class="fa fa-pencil-square-o" style="font-size:15px; color:#6aa74b"></span>
+													</a>
+												</td>
+												<!--td>
+													<a data-original-title="Edit" href="" data-toggle="tooltip" data-placement="top" title="Edit">
+														<span class="glyphicon glyphicon-collapse-down" style="font-size:15px; color:#6aa74b"></span>
+													</a>
+												</td-->
+												<td>TILLMAN HUNTING CLUB</td>
+												<td>11/6/2016</td>
+												<td>2016</td>
+												<td>11/6/2016</td>
+												<td>Buck</td>
+												<td>Male</td>
+												<td>7</td>
+												<td>257</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>11/4/2016</td>
+												<td>2016</td>
+												<td>11/6/2016</td>
+												<td>Buck</td>
+												<td>7</td>
+												<td>457</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>Buck</td>
+												<td>7</td>
+												<td>457</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+											</tr>
+											<tr class="even">
+												<td class="keinumbruch">
+													<a data-original-title="Details" data-toggle="tooltip" data-placement="top" title="Details" class="modal-link" href="">
+														<span class="fa fa-pencil-square-o" style="font-size:15px; color:#6aa74b"></span>
+													</a>
+												</td>
+												<!--td>
+													<a data-original-title="Edit" href="" data-toggle="tooltip" data-placement="top" title="Edit">
+														<span class="glyphicon glyphicon-collapse-down" style="font-size:15px; color:#6aa74b"></span>
+													</a>
+												</td-->
+												<td>TILLMAN HUNTING CLUB</td>
+												<td>11/6/2016</td>
+												<td>2016</td>
+												<td>11/6/2016</td>
+												<td>Buck</td>
+												<td>Male</td>
+												<td>7</td>
+												<td>257</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>11/4/2016</td>
+												<td>2016</td>
+												<td>11/6/2016</td>
+												<td>Buck</td>
+												<td>7</td>
+												<td>457</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>Buck</td>
+												<td>7</td>
+												<td>457</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+												<td>QDM Harvest comment2</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-5"></div>
+								<div class="col-sm-7"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--script src="./bootstrap.js"></script-->
+	<!--script src="./lib/jquery-1.7.min.js"></script>
+	<script src="./lib/jquery-ui-1.8.16.custom.min.js"></script-->
+	<script src="./jquery-1.12.4.js"></script>
+	<script src="./jquery.dataTables.min.js"></script>
+	<script>
+	// Change the selector if needed
+	//var $table = $('table.scroll'),
+	//	$bodyCells = $table.find('tbody tr:first').children(),
+	//	colWidth;
+    //
+	//// Adjust the width of thead cells when window resizes
+	//$(window).resize(function() {
+	//	// Get the tbody columns width array
+	//	colWidth = $bodyCells.map(function() {
+	//		return $(this).width();
+	//	}).get();
+	//	
+	//	// Set the width of thead columns
+	//	$table.find('thead tr').children().each(function(i, v) {
+	//		$(v).width(colWidth[i]);
+	//	});    
+	//}).resize(); // Trigger resize handler
+	
+	$(document).ready(function() {
+    $('#example').DataTable( {
+        "scrollY": 255,
+        "scrollX": true
+    } );
+} );
+	</script>
+  </body>
+</html>
