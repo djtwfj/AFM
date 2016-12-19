@@ -1,1162 +1,1142 @@
+
+
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AFM Hunt Lease</title>
-    <link rel="shortcut icon" href="/LeaseApp/Images/logo.ico" />
-    <link href="./Content/bootstrap.css" rel="stylesheet"/>
-	<link href="./Content/bootstrap-datepicker.css" rel="stylesheet"/>
-	<link href="./Content/dataTables.bootstrap.css" rel="stylesheet"/>
-	<link href="./Content/font-awesome.css" rel="stylesheet"/>
-	<link href="./Content/Site.css" rel="stylesheet"/>
-	<link href="./Content/jquery.fancybox.css" rel="stylesheet"/>
-	<link href="./Content/jquery.fancybox-buttons.css" rel="stylesheet"/>
-	<link href="./Content/jquery.fancybox-thumbs.css" rel="stylesheet"/>
-    <script src="./Scripts/modernizr-2.6.2.js"></script>
-
-</head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+   <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>AFM Hunt Lease</title>
+      <link rel="shortcut icon" href="/LeaseApp/Images/logo.ico" />
+      <link href="./Content/bootstrap.css" rel="stylesheet"/>
+      <link href="./Content/bootstrap-datepicker.css" rel="stylesheet"/>
+      <link href="./Content/dataTables.bootstrap.css" rel="stylesheet"/>
+      <link href="./Content/font-awesome.css" rel="stylesheet"/>
+      <link href="./Content/Site.css" rel="stylesheet"/>
+      <link href="./Content/jquery.fancybox.css" rel="stylesheet"/>
+      <link href="./Content/jquery.fancybox-buttons.css" rel="stylesheet"/>
+      <link href="./Content/jquery.fancybox-thumbs.css" rel="stylesheet"/>
+      <script src="./Scripts/modernizr-2.6.2.js"></script>
+   
+	<style>
+	/*For new scrollable table*/
+	div.dataTables_wrapper {
+        width: 100%;
+        margin: 0 auto;
+    }
+	</style>
+	
+   </head>
+   <body>
+      <div class="navbar navbar-inverse navbar-fixed-top">
+         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/LeaseApp/"> </a>
+               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               </button>
+               <a class="navbar-brand" href="/LeaseApp/"> </a>
             </div>
             <div class="navbar-collapse collapse">
-                <form action="/LeaseApp/Account/LogOff" class="navbar-right" id="logoutForm" method="post"><input name="__RequestVerificationToken" type="hidden" value="ffxayN5VaNraee2Ptmz6GjnQL_0q8YrmSrioEAvLQJLWy3Bg4Ui8NPQMZ3WNlY5-8avtyzqdr0_tcCthMqpVfrMOkmQ1ZNy-2Ss1VfjtvLE_0Ec5aYqqhF3P5a3EwthSMhoe4xlPWQf-CdyXTKRXxA2" />    <ul class="nav navbar-nav navbar-right">
-        <li>
-            <a href="/LeaseApp/Account/Manage" title="Manage">Hello Administrator!</a>
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-    </ul>
-</form>
+               <form action="/LeaseApp/Account/LogOff" class="navbar-right" id="logoutForm" method="post">
+                  <input name="__RequestVerificationToken" type="hidden" value="ffxayN5VaNraee2Ptmz6GjnQL_0q8YrmSrioEAvLQJLWy3Bg4Ui8NPQMZ3WNlY5-8avtyzqdr0_tcCthMqpVfrMOkmQ1ZNy-2Ss1VfjtvLE_0Ec5aYqqhF3P5a3EwthSMhoe4xlPWQf-CdyXTKRXxA2" />    
+                  <ul class="nav navbar-nav navbar-right">
+                     <li>
+                        <a href="/LeaseApp/Account/Manage" title="Manage">Hello Administrator!</a>
+                     </li>
+                     <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                  </ul>
+               </form>
             </div>
-        </div>
-    </div>
-    <div> 
-        <ul class="nav side-nav">
+         </div>
+      </div>
+      <div>
+         <ul class="nav side-nav">
             <li style="width:62px; height:40px"></li>
             <li style="width:62px" data-toggle="tooltip" data-placement="top" title="Home"><a href="/LeaseApp/" style="font-size:1.4em;"><span class="glyphicon glyphicon-home" style="font-size:30px; color:white"></span></a></li>
-             <li style="width:62px" data-toggle="tooltip" data-placement="top" title="Leases"><a href="/LeaseApp/leases/?pagesize=20" style="font-size:1.4em;"><span class="fa fa-file-text-o" style="font-size:30px; color:white"></span></a></li>
-
+            <li style="width:62px" data-toggle="tooltip" data-placement="top" title="Leases"><a href="/LeaseApp/leases/?pagesize=20" style="font-size:1.4em;"><span class="fa fa-file-text-o" style="font-size:30px; color:white"></span></a></li>
             <li style="width:62px" data-toggle="tooltip" data-placement="top" title="Tracts"><a href="/LeaseApp/tracts/?pagesize=20" style="font-size:1.4em;"><span class="glyphicon glyphicon-map-marker" style="font-size:30px; color:white"></span></a></li>
-
-
-
-                        <li style="width:62px" data-toggle="tooltip" data-placement="top" title="Owners"><a href="/LeaseApp/owners/?pagesize=20" style="font-size:1.4em;"><span class="glyphicon glyphicon-tower" style="font-size:30px; color:white"></span></a></li>
-                        <li style="width:62px" data-toggle="tooltip" data-placement="top" title="Contacts"><a href="/LeaseApp/entities/?pagesize=20" style="font-size:1.4em;"><span class="glyphicon glyphicon-phone-alt" style="font-size:30px; color:white"></span></a></li>
-                        <li style="width:62px" data-toggle="tooltip" data-placement="top" title="Lessees"><a href="/LeaseApp/lessees/?pagesize=20" style="font-size:1.4em;"><span class="glyphicon glyphicon-screenshot" style="font-size:30px; color:white"></span></a></li>
-                        <li style="width:62px;" data-toggle="tooltip" data-placement="top" title="Settings"><a href="/LeaseApp/districts" style="font-size:1.4em;"><span class="glyphicon glyphicon-cog" style="font-size:30px; color:white"></span></a></li>
-                        <li style="width:62px" data-toggle="tooltip" data-placement="top" title="Accounts"><a href="/LeaseApp/account/?pagesize=20" style="font-size:1.4em;"><span class="glyphicon glyphicon-user" style="font-size:30px;  color:white"></span></a></li>
-
-        </ul>
-    </div>
-
-
-    <div class="container body-content" >
-        <div class="content">
-            
-
-
-<div class="row">
-    <div class="col-lg-12">
-        <div class="panel panel-default">
-            <div class="panel-heading" style="color: white; padding:0px; margin:0px;">
-                <ul class="nav nav-pills" style="padding-left:10px;">
-                    <li role="presentation" data-toggle="tooltip" data-placement="top" title="Back"><a href="javascript: history.go(-1)" style="color:#6aa74b; text-decoration:none"><span class="fa fa-reply"></span> </a></li>
-                    
-
-                </ul>
-            </div>
-            <div style="width:100%; overflow:auto" class="panel-body">
-<form action="/LeaseApp/tracts/edit/2487" method="post"><input name="__RequestVerificationToken" type="hidden" value="XSuBWPBg26nC4DBKihTDmWt__msVHnkdAixWA5pGBc31EEveWaYp676kiImEUkeuLM0ffCAK6AV_E408pbT5Yic-O_qPo7kvmQ297ORntdfy44IC1MXFbEe3KCqIflS1OidOpnb1mGkBtUkuMQ5unA2" />                    <div class="form-horizontal" style="font-size:13px">
-                        <h4>TRACT</h4>
-
-                     
-
-                        <hr />
-                        <h5>BASIC INFORMATION</h5>
-                        
-                        <input data-val="true" data-val-number="The field OID must be a number." data-val-required="The OID field is required." id="OID" name="OID" type="hidden" value="2487" />
-
-                        <div class="form-group">
-                            <label class="control-label col-md-2" for="Name">NAME</label>
-                            <div class="col-md-10">
-                                <input class="form-control" data-val="true" data-val-length="NAME can&#39;t be more than 100 characters" data-val-length-max="100" data-val-required="NAME is required" id="Name" name="Name" style="display:inline;" type="text" value="SMITH 312" /> <label for="" style="color:red;">*</label>
-                                <span class="field-validation-valid text-danger" data-valmsg-for="Name" data-valmsg-replace="true" style="display:block"></span>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="control-label col-md-2" for="TractCode">TRACT CODE</label>
-                            <div class="col-md-10">
-                                <input class="form-control" data-val="true" data-val-length="TRACT CODE can&#39;t be more than 25 characters" data-val-length-max="25" data-val-required="TRACT CODE is required" id="TractCode" name="TractCode" style="display:inline;" type="text" value="60040369                 " /> <label for="" style="color:red;">*</label>
-                                <span class="field-validation-valid text-danger" data-valmsg-for="TractCode" data-valmsg-replace="true" style="display:block"></span>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="control-label col-md-2" for="TractAcres">TRACT ACRES</label>
-                            <div class="col-md-10">
-                                <div class="input-group">
-                                    <span class="input-group-btn">
-                                        <input class="form-control" data-val="true" data-val-number="The field TractAcres must be a number." data-val-required="TRACT ACRES is required" id="TractAcres" name="TractAcres" style="display:inline;" type="text" value="318.67" /> 
-                                        <button class="btn btn-default geobutton" id="btncaltractgeom" type="button" data-toggle="tooltip" data-placement="top" title="Calculate from geometry" disabled="disabled" style="padding:9px 11px;"><span class="fa fa-map-marker" style="font-size:18px; color:#6aa74b"></span></button><label for="" style="color:red;">*</label>
-                                    </span>
-                                </div>
-                                <span class="field-validation-valid text-danger" data-valmsg-for="TractAcres" data-valmsg-replace="true" style="display:block"></span>
-                                </div>
-                            </div>
-
-                        <div class="form-group">
-                            <label class="control-label col-md-2" for="TractAcres">GIS ACRES</label>
-                            <div class="col-md-10">
-                                <div class="input-group">
-                                    <span class="input-group-btn">
-                                        <input class="form-control" data-val="true" data-val-number="The field GIS_Acres must be a number." id="GIS_Acres" name="GIS_Acres" readonly="readonly" type="text" value="314.82" />
-                                        <a class="btn btn-default modal-link geobutton" type="button" href="/LeaseApp/home/mapmodal/2487" style="padding:10px 10px;" disabled="disabled"><span class="fa fa-map-o" style="color:#6aa74b" data-toggle="tooltip" data-placement="top" title="Show geometry on map"></span> </a>
-                                    </span>
-                                </div>
-                                 
-                            </div>
-                                                        <script type="text/javascript">
-                                                            setTimeout(function () {
-                                                                $('.geobutton').attr("disabled", false);
-                                                                $('.geobutton').click(function (e) {
-                                                                    if ($(this).attr('id') == "btncaltractgeom") {
-                                                                        $('#TractAcres').val($('#GIS_Acres').val());
-                                                                        bootbox.alert("The new TRACT ACRES can be saved with button SAVE CHANGES!");
-                                                                 }
-                                                                });
-                               
-                                                            }, 1000);
-                                                        </script>
-
-                            </div>
-
-                        <div class="form-group">
-                            <label class="control-label col-md-2" for="OwnerID">OWNER</label>
-                            <div class="col-md-10">
-                                <div class="input-group">
-                                    <span class="input-group-btn">
-                                        <select class="form-control" id="OwnerID" name="OwnerID" style="display:inline;"><option value=""></option>
-<option value="44">AEG Associates</option>
-<option value="61">American Timberland II, LLC</option>
-<option value="78">Angelo D&quot;Urso</option>
-<option value="1">BancorpSouth/ Aimee Harrison Parris Trust</option>
-<option value="51">BENJAMIN W. GRIFFITH III</option>
-<option value="98">Berg Timber Properties LLC</option>
-<option value="68">BESSON FAMILY LAND</option>
-<option value="551">BESSON FAMILY LIMITED PARTNERSHIP</option>
-<option value="73">Blackwater,LLC</option>
-<option value="102">BMWM</option>
-<option value="41">Bruce Forest, LLC</option>
-<option value="13">Cantusee Timberlands, LLC</option>
-<option value="168">CARIOCA HOLDINGS, LLC</option>
-<option value="53">CARLTON TIMBER PROPERTIES, LLC</option>
-<option value="153">CatchMark HBU, LLC</option>
-<option value="11">CatchMark South Carolina Timberlands, LLC</option>
-<option value="152">CatchMark Southern Timberlands II, LP</option>
-<option value="160">CF - Bear Island</option>
-<option value="93">CF - Florida LLC</option>
-<option value="40">CF - Relay Timberlands LLC</option>
-<option value="1361">CF - Southbound Timberlands, LLC</option>
-<option value="161">CF - Stonewall Timberlands</option>
-<option value="157">Corrigan Properties</option>
-<option value="57">CROWDER TIMBER LLC</option>
-<option value="49">CURTIS F VEAL SR FAMILY LIMITED PARTNERSHIP</option>
-<option value="117">Deborah and Judy Watkins</option>
-<option value="1439">Debra Watters Bell Trust</option>
-<option value="46">Deforsa USA</option>
-<option value="38">DUBBERS ALBRECHT VENTURE 1</option>
-<option value="27">Duke - Duke Energy Carolinas, LLC</option>
-<option value="7">Duke - Duke Energy Progress, LLC</option>
-<option value="16">Duke - TBP Properties, LLC</option>
-<option value="17">FIA - Adirondack Timber (Cape Fear)</option>
-<option value="56">FIA - Adirondack Timber (Sinclair)</option>
-<option value="26">FIA - Brunswick Timber (Tarheel)</option>
-<option value="142">FIA - Brunswick Timber (Waccamaw)</option>
-<option value="14">FIA - Central Georgia Timber (Ogeechee)</option>
-<option value="20">FIA - CFI (Danville)</option>
-<option value="155">FIA - CFI (Hampton)</option>
-<option value="143">FIA - CFI (Oconee River)</option>
-<option value="47">FIA - CFI (RedBluff)</option>
-<option value="156">FIA - DP&amp;F (Huggin Oak)</option>
-<option value="12">FIA - DP&amp;F (San Pedro)</option>
-<option value="2">FIA - FIATP (Olde English)</option>
-<option value="21">FIA - FIATP (Savannah River)</option>
-<option value="37">FIA - FIATP SSF (Ohoopee)</option>
-<option value="15">FIA - FIATP SSF (Piedmont)</option>
-<option value="29">FIA - FIATP SSF Timber (Coosawhatchie)</option>
-<option value="77">FIA - FIATP SSF Timber (Sumter)</option>
-<option value="154">FIA - FIATP Timber (Edisto)</option>
-<option value="19">FIA - IMRF (Gretna)</option>
-<option value="76">FIA - IMRF (Liberty Hill)</option>
-<option value="33">FIA - Matoaka Forests (Alapaha)</option>
-<option value="81">FIA - PH Timber (Belfast)</option>
-<option value="83">FIA - SFT Forestland (Isenberg)</option>
-<option value="79">FIA - SFT Forestland (SFT/Wade)</option>
-<option value="62">FIA - Simorg South Forests (I-20 East)</option>
-<option value="82">FIA - Simorg South Forests (Mcteer)</option>
-<option value="144">FIA - Simorg South Forests (Randolph)</option>
-<option value="50">FIA - VZ Timberlands (VZ/CFI )</option>
-<option value="18">FIA - VZ Timberlands (VZ/Wade )</option>
-<option selected="selected" value="3">FIA - Wateree Holdings (Wateree)</option>
-<option value="115">FIA Bertha Mineral</option>
-<option value="926">FLOY FANNING</option>
-<option value="45">Focus Global Forest</option>
-<option value="158">FORI CORPORATION</option>
-<option value="101">GMG FOREST INVESTMENTS, LLC</option>
-<option value="126">GMO Threshold Timber Courtland CUB</option>
-<option value="124">GMO Threshold Timber Courtland, LLC</option>
-<option value="131">GMO Threshold Timber CUB</option>
-<option value="127">GMO Threshold Timber Holdings, LLC</option>
-<option value="129">GMO Threshold Timber Tenn &amp; CUB</option>
-<option value="125">GMO Threshold Timber Tennessee, LLC</option>
-<option value="1251">HAAS Trust  c/o US Trust, Bank of America</option>
-<option value="69">HOLLEY B JACKSON</option>
-<option value="6">HOLLIDAY ASSOCIATES, LLC</option>
-<option value="72">HOLLIDAY BANCO, LLC</option>
-<option value="74">HUGH LEWIS</option>
-<option value="85">Hugh Tarbutton</option>
-<option value="24">Iluka</option>
-<option value="110">JACK &amp; MADS FARM AND FORESTRY, LLC.</option>
-<option value="87">Jake Associates, LLC</option>
-<option value="88">Jamestown Timber 1, L.P.</option>
-<option value="39">Jamestown Timber II, LP</option>
-<option value="55">JANE WALLER</option>
-<option value="119">JMJH Trust C &amp; JMJH Trust C-1</option>
-<option value="150">Julian Watters</option>
-<option value="64">LAWRENCE YERKES</option>
-<option value="70">LEWIS LONGSHORE</option>
-<option value="32">LHF Black Walnut (IA), LLC</option>
-<option value="31">LHF Black Walnut (IL), LLC</option>
-<option value="30">LHF Black Walnut (NY), LLC</option>
-<option value="116">LINDA C. LAKE</option>
-<option value="80">M. Russell Holliday,Jr. &amp; Christian M.H. Douglas</option>
-<option value="120">Marjorie R. Holliday-Revocable Trust</option>
-<option value="100">MKFT TIMBERERLAND LLC</option>
-<option value="1249">Norman E. Hasso  c/o US Trust, Bank of America</option>
-<option value="67">PALMETTO FARMS CORP.</option>
-<option value="1335">PAUL SILVON </option>
-<option value="5">PFI</option>
-<option value="8">PFI Timberfund I, LP</option>
-<option value="86">Podere Terranova, LLC</option>
-<option value="75">PRESERVATION, LLC.</option>
-<option value="42">Profundus Holdings, Inc.</option>
-<option value="60">PROGRESS ENERGY CAROLINAS</option>
-<option value="151">Robert W. Reagan, Beth B. Reagan, Rodney J. Huckaby, Julia R. Huckaby</option>
-<option value="66">ROY SULLIVAN</option>
-<option value="1248">SANA FAMILY, LLC  c/o US Trust, Bank of America</option>
-<option value="4">Shield Properties</option>
-<option value="65">SLIVON TRUST</option>
-<option value="1246">SPOTLIGHT TIMBER, LLC c/o U S Trust, Bank of America</option>
-<option value="121">SPP - Abbeville Timberlands LLC</option>
-<option value="63">SPP - OGEECHEE RIVER TIMBERLANDS, LLC</option>
-<option value="71">SPP - Ten Governors Timberlands LLC</option>
-<option value="54">Steve Kite</option>
-<option value="1247">SURF ROAD, LLC c/o US Trust, Bank of America</option>
-<option value="122">TDF Timber, LLC.</option>
-<option value="84">The Foundation</option>
-<option value="25">Three Steps Forest LLC</option>
-<option value="1250">Thunder Dragon T, LLC  c/o US Trust, Bank of America</option>
-<option value="90">US TRUST - BAR MH </option>
-<option value="322">US TRUST - BOATNER REILY</option>
-<option value="92">US TRUST - BUTLER TIMBERLAND FUND</option>
-<option value="23">US TRUST - CARIOCA</option>
-<option value="91">US TRUST - Carolem Capital, LLC</option>
-<option value="48">US TRUST - Chrysalis Timberlands c/o U S Trust</option>
-<option value="1236">US TRUST - DREXEL TIMBER, LP</option>
-<option value="1444">US Trust - Edelweiss</option>
-<option value="112">US TRUST - EFF Sam, LLC</option>
-<option value="106">US TRUST - ENGLES</option>
-<option value="97">US TRUST - Family Tree Investments, LLC</option>
-<option value="107">US TRUST - GMG FOREST INVESTMENTS C/OBANK OF AMERICA</option>
-<option value="58">US TRUST - Greig Forest Investments, LLC</option>
-<option value="111">US TRUST - GRS</option>
-<option value="109">US TRUST - HASS</option>
-<option value="96">US TRUST - Humilis Timber, LLC</option>
-<option value="52">US TRUST - IM BMWM TIMBER,LLC</option>
-<option value="105">US TRUST - IM PAYTON TIMBER LLC</option>
-<option value="34">US TRUST - IM PONDEROSA, LLC</option>
-<option value="123">US TRUST - IM TDF TIMBER, LLC</option>
-<option value="35">US TRUST - JAKE ASSOCIATES</option>
-<option value="89">US TRUST - K &amp; E Timberland Fund</option>
-<option value="36">US TRUST - McLOUGHLIN TIMBER, LLC</option>
-<option value="10">US TRUST - MKFT</option>
-<option value="170">US TRUST - MMGOTT-NC</option>
-<option value="22">US TRUST - NORPAC</option>
-<option value="113">US TRUST - Percival Land &amp; Timber, LLC</option>
-<option value="114">US TRUST - RUCKS FAMILY LIMITED PARTNERSHIP</option>
-<option value="321">US TRUST - SARATOGA TIMBER, LLC</option>
-<option value="9">US TRUST - STARGAZER</option>
-<option value="103">US TRUST - SYLVIAN INVESTMETNS, LLC</option>
-<option value="95">US TRUST - Teton Timber</option>
-<option value="108">US TRUST - TREMONT FUNDS C/O BANK OF AMERICA</option>
-<option value="323">US TRUST - WB TIMBER, LLC</option>
-<option value="1235">US TRUST- HUMILIS TIMBER LLC</option>
-<option value="118">W.K. BROWN TIMBER CORP.</option>
-<option value="1404">ZF US Timber Properties LLC.</option>
-</select>
-                                            <a class="btn btn-default" type="button" href="/LeaseApp/owners/" style="padding:10px 11px;"><span class="glyphicon glyphicon-cog" data-toggle="tooltip" data-placement="top" title="To owners"></span> </a>
-                                           <label style="color:red; padding-left:4px">*</label>
-
-                                    </span>
-                                </div>
-                                <span class="field-validation-valid text-danger" data-valmsg-for="OwnerID" data-valmsg-replace="true" style="display:block"></span>
-                            </div>
-                            </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-2" for="DistrictID">DISTRICT</label>
-                            <div class="col-md-10">
-                                <div class="input-group">
-                                    <span class="input-group-btn">
-                                        <select class="form-control" id="DistrictID" name="DistrictID" style="display:inline;"><option value=""></option>
-<option value="3">Alachua</option>
-<option value="110">American Forest Management, Inc.</option>
-<option value="4">Aynor</option>
-<option value="500">Bennettsville</option>
-<option value="100">Cedartown</option>
-<option value="502">Charlotte</option>
-<option value="99">Chester</option>
-<option value="5">Danville</option>
-<option selected="selected" value="20">Edgefield</option>
-<option value="0">Folkston</option>
-<option value="21">Hope Mills</option>
-<option value="505">Kirkland</option>
-<option value="503">LAND</option>
-<option value="12">Marianna</option>
-<option value="70">Meridian</option>
-<option value="11">Prattville</option>
-<option value="504">Richmond</option>
-<option value="31">Russellville</option>
-<option value="30">Sandersville</option>
-<option value="13">Statesboro</option>
-<option value="26">Sumter</option>
-<option value="98">Walterboro</option>
-<option value="32">Waynesboro</option>
-</select>
-                                            <a class="btn btn-default" type="button" href="/LeaseApp/districts/" style="padding:10px 11px;"><span class="glyphicon glyphicon-cog" data-toggle="tooltip" data-placement="top" title="To districts"></span> </a>
-                                             <label style="color:red; padding-left:4px">*</label>
-
-                                    </span>
-                                </div>
-                                <span class="field-validation-valid text-danger" data-valmsg-for="DistrictID" data-valmsg-replace="true" style="display:block"></span>
-                            </div>
-                            </div>
-
-                     
-                        <div class="form-group">
-                            <label class="control-label col-md-2" for="State">STATE</label>
-                            <div class="col-md-10">
-                              <select class="form-control tractstate" id="State" name="State" style="display:inline;"><option value=""></option>
-<option value="AL">Alabama</option>
-<option value="AK">Alaska</option>
-<option value="AZ">Arizona</option>
-<option value="AR">Arkansas</option>
-<option value="CA">California</option>
-<option value="CO">Colorado</option>
-<option value="CT">Connecticut</option>
-<option value="DE">Delaware</option>
-<option value="FL">Florida</option>
-<option value="GA">Georgia</option>
-<option value="HI">Hawaii</option>
-<option value="ID">Idaho</option>
-<option value="IL">Illinois</option>
-<option value="IN">Indiana</option>
-<option value="IA">Iowa</option>
-<option value="KS">Kansas</option>
-<option value="KY">Kentucky</option>
-<option value="LA">Louisiana</option>
-<option value="ME">Maine</option>
-<option value="MD">Maryland</option>
-<option value="MA">Massachusetts</option>
-<option value="MI">Michigan</option>
-<option value="MN">Minnesota</option>
-<option value="MS">Mississippi</option>
-<option value="MO">Missouri</option>
-<option value="MT">Montana</option>
-<option value="NE">Nebraska</option>
-<option value="NV">Nevada</option>
-<option value="NH">New Hampshire</option>
-<option value="NJ">New Jersey</option>
-<option value="NM">New Mexico</option>
-<option value="NY">New York</option>
-<option value="NC">North Carolina</option>
-<option value="ND">North Dakota</option>
-<option value="NA">NOT AVAILABLE</option>
-<option value="OH">Ohio</option>
-<option value="OK">Oklahoma</option>
-<option value="OR">Oregon</option>
-<option value="PA">Pennsylvania</option>
-<option value="RI">Rhode Island</option>
-<option selected="selected" value="SC">South Carolina</option>
-<option value="SD">South Dakota</option>
-<option value="TN">Tennessee</option>
-<option value="TX">Texas</option>
-<option value="UT">Utah</option>
-<option value="VT">Vermont</option>
-<option value="VA">Virginia</option>
-<option value="WA">Washington</option>
-<option value="WV">West Virginia</option>
-<option value="WI">Wisconsin</option>
-<option value="WY">Wyoming</option>
-</select> <label for="" style="color:red;">*</label>
-                                <span class="field-validation-valid text-danger" data-valmsg-for="State" data-valmsg-replace="true" style="display:block"></span>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="control-label col-md-2" for="County">COUNTY</label>
-                            <div class="col-md-10">
-                               
-                                <select class="form-control" id="County" name="County" style="display:inline;"><option value=""></option>
-<option value="2263">Abbeville</option>
-<option value="1019">Aiken</option>
-<option value="2456">Allendale</option>
-<option value="1151">Anderson</option>
-<option value="761">Bamberg</option>
-<option value="3128">Barnwell</option>
-<option value="1213">Beaufort</option>
-<option value="623">Berkeley</option>
-<option value="3086">Calhoun</option>
-<option value="1999">Charleston</option>
-<option value="2333">Cherokee</option>
-<option value="199">Chester</option>
-<option value="3238">Chesterfield</option>
-<option value="2476">Clarendon</option>
-<option value="2084">Colleton</option>
-<option value="850">Darlington</option>
-<option value="2762">Dillon</option>
-<option value="3290">DILLON-MARLBORO</option>
-<option value="616">Dorchester</option>
-<option value="2040">Edgefield</option>
-<option value="2569">Fairfield</option>
-<option value="1546">Florence</option>
-<option value="3142">Georgetown</option>
-<option value="1462">Greenville</option>
-<option value="702">Greenwood</option>
-<option value="2122">Hampton</option>
-<option value="2269">Horry</option>
-<option value="2823">Jasper</option>
-<option value="1430">Kershaw</option>
-<option value="2390">Lancaster</option>
-<option value="1031">Laurens</option>
-<option value="2469">Lee</option>
-<option value="1080">Lexington</option>
-<option value="1955">Marion</option>
-<option selected="selected" value="752">Marlboro</option>
-<option value="2825">McCormick</option>
-<option value="1047">Newberry</option>
-<option value="2054">Oconee</option>
-<option value="1688">Orangeburg</option>
-<option value="1216">Pickens</option>
-<option value="2854">Richland</option>
-<option value="355">Saluda</option>
-<option value="1705">Spartanburg</option>
-<option value="1683">Sumter</option>
-<option value="2826">Union</option>
-<option value="475">Williamsburg</option>
-<option value="3090">York</option>
-</select> <label for="" style="color:red;">*</label>
-                                <span class="field-validation-valid text-danger" data-valmsg-for="County" data-valmsg-replace="true" style="display:block"></span>
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            <label class="control-label col-md-2" for="ProjectNumber">ACCT PROJECT</label>
-                            <div class="col-md-10">
-                                <select class="form-control" id="ProjectNumber" name="ProjectNumber" style="display:inline;"><option value=""></option>
-<option value="ARKAHLM090.HRLAR">ARKAHLM090.HRLAR</option>
-<option value="ARKAHLM092.HRLAR">ARKAHLM092.HRLAR</option>
-<option value="ARKAHLM093.HRLAR">ARKAHLM093.HRLAR</option>
-<option value="ARKAHLM500.MUHunt">ARKAHLM500.MUHunt</option>
-<option value="AYNRHLM003.HRL">AYNRHLM003.HRL</option>
-<option value="AYNRHLM080.HLR">AYNRHLM080.HLR</option>
-<option value="AYNRHLM081.HLR">AYNRHLM081.HLR</option>
-<option value="AYNRHLM090.HRLNC">AYNRHLM090.HRLNC</option>
-<option value="AYNRHLM091.HRLNC">AYNRHLM091.HRLNC</option>
-<option value="AYNRHLM092.HRLNC">AYNRHLM092.HRLNC</option>
-<option value="AYNRHLM093.HRLNC">AYNRHLM093.HRLNC</option>
-<option value="AYNRHLM094.HRLNC">AYNRHLM094.HRLNC</option>
-<option value="AYNRHLM095.HRLNC">AYNRHLM095.HRLNC</option>
-<option value="AYNRHLM270.002">AYNRHLM270.002</option>
-<option value="AYNRHLM271.002">AYNRHLM271.002</option>
-<option value="AYNRHLM273.002">AYNRHLM273.002</option>
-<option value="AYNRHLM274.002">AYNRHLM274.002</option>
-<option value="AYNRHLM275.002">AYNRHLM275.002</option>
-<option value="AYNRHLM276.002">AYNRHLM276.002</option>
-<option value="AYNRHLM277.001">AYNRHLM277.001</option>
-<option value="AYNRHLM500.MUHunt">AYNRHLM500.MUHunt</option>
-<option value="AYNRLMP006.002">AYNRLMP006.002</option>
-<option value="AYNRNIPF008.HRL001">AYNRNIPF008.HRL001</option>
-<option value="AYNRNIPF019.HRL001">AYNRNIPF019.HRL001</option>
-<option value="AYNRNIPF020.HRL001">AYNRNIPF020.HRL001</option>
-<option value="BENNHLM003.HLR001">BENNHLM003.HLR001</option>
-<option value="BENNHLM270.002">BENNHLM270.002</option>
-<option value="BENNHLM271.002">BENNHLM271.002</option>
-<option value="BENNHLM272.003">BENNHLM272.003</option>
-<option value="BENNHLM272.004">BENNHLM272.004</option>
-<option value="BENNHLM273.003">BENNHLM273.003</option>
-<option value="BENNHLM273.004">BENNHLM273.004</option>
-<option value="BENNHLM274.003">BENNHLM274.003</option>
-<option value="BENNHLM274.004">BENNHLM274.004</option>
-<option value="BENNHLM500.MUHunt">BENNHLM500.MUHunt</option>
-<option value="BENNHLM501.MUHunt">BENNHLM501.MUHunt</option>
-<option value="BENNNIPF112.HRL001">BENNNIPF112.HRL001</option>
-<option value="BENNNIPF118.HRL001">BENNNIPF118.HRL001</option>
-<option value="BENNNIPF135.HRL001">BENNNIPF135.HRL001</option>
-<option value="BENNNIPF154.HRL001">BENNNIPF154.HRL001</option>
-<option value="BENNNIPF164.HRL001">BENNNIPF164.HRL001</option>
-<option value="CHESHLM091.HRLSC">CHESHLM091.HRLSC</option>
-<option value="CHESHLM092.HRLSC">CHESHLM092.HRLSC</option>
-<option value="CHESHLM093.HRLSC">CHESHLM093.HRLSC</option>
-<option value="CHESHLM270.002">CHESHLM270.002</option>
-<option value="CHESHLM271.002">CHESHLM271.002</option>
-<option value="CHESHLM272.002">CHESHLM272.002</option>
-<option value="CHESHLM273.002">CHESHLM273.002</option>
-<option value="CHESHLM274.002">CHESHLM274.002</option>
-<option value="CHESHLM275.002">CHESHLM275.002</option>
-<option value="CHESHLM276.002">CHESHLM276.002</option>
-<option value="CHESHLM277.002">CHESHLM277.002</option>
-<option value="CHESHLM278.002">CHESHLM278.002</option>
-<option value="CHESHLM279.002">CHESHLM279.002</option>
-<option value="CHESHLM280.002">CHESHLM280.002</option>
-<option value="CHESHLM281.002">CHESHLM281.002</option>
-<option value="CHWVHLM001.006">CHWVHLM001.006</option>
-<option value="CHWVHLM001.010">CHWVHLM001.010</option>
-<option value="CHWVHLM010.HRL001">CHWVHLM010.HRL001</option>
-<option value="CHWVHLM011.HRL001">CHWVHLM011.HRL001</option>
-<option value="CHWVHLM012.HRL001">CHWVHLM012.HRL001</option>
-<option value="CHWVHLM015.HRL001">CHWVHLM015.HRL001</option>
-<option value="CLLMHLM060.HRL001">CLLMHLM060.HRL001</option>
-<option value="CLLMHLM061.HRL001">CLLMHLM061.HRL001</option>
-<option value="CLLMHLM062.HRL001">CLLMHLM062.HRL001</option>
-<option value="CLLMHLM063.HRL001">CLLMHLM063.HRL001</option>
-<option value="CLLMHLM064.HRL001">CLLMHLM064.HRL001</option>
-<option value="CLLMHLM270.002">CLLMHLM270.002</option>
-<option value="CLLMHLM271.002">CLLMHLM271.002</option>
-<option value="CLLMHLM272.002">CLLMHLM272.002</option>
-<option value="CLLMHLM273.002">CLLMHLM273.002</option>
-<option value="CLLMHLM274.002">CLLMHLM274.002</option>
-<option value="CLLMHLM275.002">CLLMHLM275.002</option>
-<option value="CLLMHLM276.002">CLLMHLM276.002</option>
-<option value="CLLMHLM277.002">CLLMHLM277.002</option>
-<option value="CLLMHLM278.002">CLLMHLM278.002</option>
-<option value="CLLMHLM279.002">CLLMHLM279.002</option>
-<option value="CLLMHLM280.002">CLLMHLM280.002</option>
-<option value="CLLMHLM281.002">CLLMHLM281.002</option>
-<option value="CLLMHLM282.002">CLLMHLM282.002</option>
-<option value="CLLMHLM283.002">CLLMHLM283.002</option>
-<option value="CLLMHLM284.002">CLLMHLM284.002</option>
-<option value="CLLMHLM285.002">CLLMHLM285.002</option>
-<option value="CLLMHLM286.002">CLLMHLM286.002</option>
-<option value="CLLMHLM287.002">CLLMHLM287.002</option>
-<option value="CLLMHLM288.002">CLLMHLM288.002</option>
-<option value="CLLMHLM289.002">CLLMHLM289.002</option>
-<option value="CLLMHLM290.002">CLLMHLM290.002</option>
-<option value="CLLMHLM291.002">CLLMHLM291.002</option>
-<option value="CLLMHLM292.002">CLLMHLM292.002</option>
-<option value="CLLMHLM293.002">CLLMHLM293.002</option>
-<option value="CLLMHLM294.002">CLLMHLM294.002</option>
-<option value="CLLMHLM295.002">CLLMHLM295.002</option>
-<option value="CLLMNIPF041.HRL002">CLLMNIPF041.HRL002</option>
-<option value="CLLMNIPF050.HRL001">CLLMNIPF050.HRL001</option>
-<option value="CLLMNIPF050.HRL002">CLLMNIPF050.HRL002</option>
-<option value="CLLMNIPF100.HRL001">CLLMNIPF100.HRL001</option>
-<option value="CLLMNIPF128.HRL001">CLLMNIPF128.HRL001</option>
-<option value="CORPHLM002.HRL001">CORPHLM002.HRL001</option>
-<option value="DANVHLM270.002">DANVHLM270.002</option>
-<option value="DANVHLM272.002">DANVHLM272.002</option>
-<option value="DANVHLM273.002">DANVHLM273.002</option>
-<option value="DANVHLM274.002">DANVHLM274.002</option>
-<option value="DANVHLM275.002">DANVHLM275.002</option>
-<option value="DANVHLM276.002">DANVHLM276.002</option>
-<option value="DANVHLM277.002">DANVHLM277.002</option>
-<option value="DANVHLM278.002">DANVHLM278.002</option>
-<option value="DANVHLM279.002">DANVHLM279.002</option>
-<option value="DANVHLM280.002">DANVHLM280.002</option>
-<option value="DANVHLM281.002">DANVHLM281.002</option>
-<option value="DANVHLM282.002">DANVHLM282.002</option>
-<option value="DANVHLM283.002">DANVHLM283.002</option>
-<option value="DANVHLM500.MUHunt">DANVHLM500.MUHunt</option>
-<option value="DANVHLM501.MUHunt">DANVHLM501.MUHunt</option>
-<option value="DANVHLM503.MUHunt">DANVHLM503.MUHunt</option>
-<option value="DANVHLM504.MUHunt">DANVHLM504.MUHunt</option>
-<option value="EDGEHLM052.002">EDGEHLM052.002</option>
-<option value="EDGEHLM053.002">EDGEHLM053.002</option>
-<option value="EDGEHLM054.002">EDGEHLM054.002</option>
-<option value="EDGEHLM055.002">EDGEHLM055.002</option>
-<option value="EDGEHLM056.002">EDGEHLM056.002</option>
-<option value="EDGEHLM090.HRLSC">EDGEHLM090.HRLSC</option>
-<option value="EDGEHLM270.002">EDGEHLM270.002</option>
-<option value="EDGEHLM271.002">EDGEHLM271.002</option>
-<option value="EDGEHLM272.002">EDGEHLM272.002</option>
-<option value="EDGEHLM273.002">EDGEHLM273.002</option>
-<option value="EDGEHLM274.002">EDGEHLM274.002</option>
-<option value="EDGEHLM275.002">EDGEHLM275.002</option>
-<option value="EDGEHLM276.002">EDGEHLM276.002</option>
-<option value="EDGEHLM277.002">EDGEHLM277.002</option>
-<option value="EDGEHLM278.002">EDGEHLM278.002</option>
-<option value="EDGEHLM501.MUHunt">EDGEHLM501.MUHunt</option>
-<option selected="selected" value="EDGEHLM502.MUHunt">EDGEHLM502.MUHunt</option>
-<option value="EDGEHLM503.MUHunt">EDGEHLM503.MUHunt</option>
-<option value="EDGEHLM504.MUHunt">EDGEHLM504.MUHunt</option>
-<option value="EDGEHLM505.MUHunt">EDGEHLM505.MUHunt</option>
-<option value="EDGELMP001.HRLNC">EDGELMP001.HRLNC</option>
-<option value="EDGELMP001.HRLSC">EDGELMP001.HRLSC</option>
-<option value="EDGELMP001.HRLTN">EDGELMP001.HRLTN</option>
-<option value="EDGELMP011.002">EDGELMP011.002</option>
-<option value="EDGENIPF001.HRL001">EDGENIPF001.HRL001</option>
-<option value="EDGENIPF003.HRL001">EDGENIPF003.HRL001</option>
-<option value="EDGENIPF032.HRL001">EDGENIPF032.HRL001</option>
-<option value="EDGENIPF109.HRL001">EDGENIPF109.HRL001</option>
-<option value="EDGENIPF114.HRL001">EDGENIPF114.HRL001</option>
-<option value="EDGENIPF119.HRL001">EDGENIPF119.HRL001</option>
-<option value="EDGENIPF128.HRL001">EDGENIPF128.HRL001</option>
-<option value="EDGENIPF132.HRL001">EDGENIPF132.HRL001</option>
-<option value="EDGENIPF132.HRL002">EDGENIPF132.HRL002</option>
-<option value="EDGENIPF132.HRL003">EDGENIPF132.HRL003</option>
-<option value="EDGENIPF144.HRL001">EDGENIPF144.HRL001</option>
-<option value="EDGENIPF151.HRL001">EDGENIPF151.HRL001</option>
-<option value="EDGENIPF152.HRL001">EDGENIPF152.HRL001</option>
-<option value="EDGENIPF153.HRL001">EDGENIPF153.HRL001</option>
-<option value="EDGENIPF154.HRL001">EDGENIPF154.HRL001</option>
-<option value="EDGENIPF156.HRL001">EDGENIPF156.HRL001</option>
-<option value="EDGENIPF157.HRL001">EDGENIPF157.HRL001</option>
-<option value="EDGENIPF158.HRL001">EDGENIPF158.HRL001</option>
-<option value="EDGENIPF160.HRL001">EDGENIPF160.HRL001</option>
-<option value="EDGENIPF161.HRL001">EDGENIPF161.HRL001</option>
-<option value="FOLKHLM090.HRLGA">FOLKHLM090.HRLGA</option>
-<option value="FOLKHLM091.HRLGA">FOLKHLM091.HRLGA</option>
-<option value="FOLKHLM092.HRLGA">FOLKHLM092.HRLGA</option>
-<option value="FOLKHLM093.HRLGA">FOLKHLM093.HRLGA</option>
-<option value="FOLKHLM094.HRLGA">FOLKHLM094.HRLGA</option>
-<option value="FOLKHLM095.HRLGA">FOLKHLM095.HRLGA</option>
-<option value="FOLKHLM096.HRLGA">FOLKHLM096.HRLGA</option>
-<option value="FOLKLMP006.005">FOLKLMP006.005</option>
-<option value="FOLKLMP017.HRLGA">FOLKLMP017.HRLGA</option>
-<option value="FOLKNIPF002.HRL001">FOLKNIPF002.HRL001</option>
-<option value="FOLKNIPF003.HRL001">FOLKNIPF003.HRL001</option>
-<option value="FOLKNIPF004.HRL001">FOLKNIPF004.HRL001</option>
-<option value="FOLKNIPF007.HRL001">FOLKNIPF007.HRL001</option>
-<option value="GAINHLM027.005">GAINHLM027.005</option>
-<option value="GAINHLM028.HRL001">GAINHLM028.HRL001</option>
-<option value="GAINHLM092.HRLFL">GAINHLM092.HRLFL</option>
-<option value="GAINHLM093.HRLFL">GAINHLM093.HRLFL</option>
-<option value="GAINHLM270.002">GAINHLM270.002</option>
-<option value="GAINHLM271.002">GAINHLM271.002</option>
-<option value="GAINHLM272.002">GAINHLM272.002</option>
-<option value="GAINHLM273.002">GAINHLM273.002</option>
-<option value="GAINHLM274.002">GAINHLM274.002</option>
-<option value="GAINHLM275.002">GAINHLM275.002</option>
-<option value="GAINHLM276.002">GAINHLM276.002</option>
-<option value="GAINHLM277.002">GAINHLM277.002</option>
-<option value="GAINHLM278.002">GAINHLM278.002</option>
-<option value="GAINHLM279.002">GAINHLM279.002</option>
-<option value="GAINHLM280.002">GAINHLM280.002</option>
-<option value="GAINHLM281.002">GAINHLM281.002</option>
-<option value="GAINHLM282.002">GAINHLM282.002</option>
-<option value="GAINHLM500.MUHunt">GAINHLM500.MUHunt</option>
-<option value="GAINHLM501.MUHunt">GAINHLM501.MUHunt</option>
-<option value="GAINHLM502.MUHunt">GAINHLM502.MUHunt</option>
-<option value="GAINLMP002.003">GAINLMP002.003</option>
-<option value="GAINLMP005.003">GAINLMP005.003</option>
-<option value="GAINLMP006.003">GAINLMP006.003</option>
-<option value="GAINLMP007.003">GAINLMP007.003</option>
-<option value="GAINLMP009.HRLFL">GAINLMP009.HRLFL</option>
-<option value="GAINLMP009.HRLGA">GAINLMP009.HRLGA</option>
-<option value="GAINLMP009.HRLNC">GAINLMP009.HRLNC</option>
-<option value="GAINLMP012.004">GAINLMP012.004</option>
-<option value="GAINLMP013.004">GAINLMP013.004</option>
-<option value="GAINLMP014.004">GAINLMP014.004</option>
-<option value="GAINLMP015.004">GAINLMP015.004</option>
-<option value="GAINLMP016.004">GAINLMP016.004</option>
-<option value="GAINLMP017.004">GAINLMP017.004</option>
-<option value="GAINLMP020.002">GAINLMP020.002</option>
-<option value="GAINNIPF019.HRL001">GAINNIPF019.HRL001</option>
-<option value="GAINNIPF034.HRL001">GAINNIPF034.HRL001</option>
-<option value="HOPEHLM006.HRL007">HOPEHLM006.HRL007</option>
-<option value="HOPEHLM010.002">HOPEHLM010.002</option>
-<option value="HOPEHLM060.HRL001">HOPEHLM060.HRL001</option>
-<option value="HOPEHLM270.002">HOPEHLM270.002</option>
-<option value="HOPEHLM271.002">HOPEHLM271.002</option>
-<option value="HOPEHLM272.002">HOPEHLM272.002</option>
-<option value="HOPEHLM273.002">HOPEHLM273.002</option>
-<option value="HOPEHLM274.002">HOPEHLM274.002</option>
-<option value="HOPEHLM275.002">HOPEHLM275.002</option>
-<option value="HOPEHLM276.002">HOPEHLM276.002</option>
-<option value="HOPEHLM277.002">HOPEHLM277.002</option>
-<option value="HOPEHLM500.MUHunt">HOPEHLM500.MUHunt</option>
-<option value="HOPEHLM501.MUHunt">HOPEHLM501.MUHunt</option>
-<option value="HOPEHLM502.MUHunt">HOPEHLM502.MUHunt</option>
-<option value="KIRKLMP005.003">KIRKLMP005.003</option>
-<option value="KIRKLMP501.MUHunt">KIRKLMP501.MUHunt</option>
-<option value="KIRKLMP502.MUHunt">KIRKLMP502.MUHunt</option>
-<option value="LANDHLM001.004">LANDHLM001.004</option>
-<option value="LANDHLM003.004">LANDHLM003.004</option>
-<option value="LANDLMP019.004">LANDLMP019.004</option>
-<option value="MAINLMP001.003">MAINLMP001.003</option>
-<option value="MAINLMP001.004">MAINLMP001.004</option>
-<option value="MARIHLM090.HRLFL">MARIHLM090.HRLFL</option>
-<option value="MARIHLM091.HRLFL">MARIHLM091.HRLFL</option>
-<option value="MARIHLM092.HRLAL">MARIHLM092.HRLAL</option>
-<option value="MARIHLM093.HRLAL">MARIHLM093.HRLAL</option>
-<option value="MARIHLM094.HRLFL">MARIHLM094.HRLFL</option>
-<option value="MARIHLM095.HRLGA">MARIHLM095.HRLGA</option>
-<option value="MARIHLM096.HRLGA">MARIHLM096.HRLGA</option>
-<option value="MARIHLM097.HRLAL">MARIHLM097.HRLAL</option>
-<option value="MARIHLM098.HRLFL">MARIHLM098.HRLFL</option>
-<option value="MARIHLM500.MUHunt">MARIHLM500.MUHunt</option>
-<option value="MARIHLM501.MUHunt">MARIHLM501.MUHunt</option>
-<option value="MARIHLM502.MUHunt">MARIHLM502.MUHunt</option>
-<option value="MARIHLM503.MUHunt">MARIHLM503.MUHunt</option>
-<option value="MARIHLM504.MUHunt">MARIHLM504.MUHunt</option>
-<option value="MARIHLM505.MUHunt">MARIHLM505.MUHunt</option>
-<option value="MARIHLM506.MUHunt">MARIHLM506.MUHunt</option>
-<option value="MARILMP007.002">MARILMP007.002</option>
-<option value="MARILMP008.002">MARILMP008.002</option>
-<option value="MARILMP010.009">MARILMP010.009</option>
-<option value="MARILMP014.010">MARILMP014.010</option>
-<option value="MARILMP020.HRL">MARILMP020.HRL</option>
-<option value="MARINIPF015.HRL001">MARINIPF015.HRL001</option>
-<option value="MERIHLM090.HRLMS">MERIHLM090.HRLMS</option>
-<option value="MERIHLM091.HRLMS">MERIHLM091.HRLMS</option>
-<option value="MERIHLM092.HRLMS">MERIHLM092.HRLMS</option>
-<option value="MERIHLM093.HRLMS">MERIHLM093.HRLMS</option>
-<option value="MERIHLM094.HRLMS">MERIHLM094.HRLMS</option>
-<option value="MERIHLM095.HRLMS">MERIHLM095.HRLMS</option>
-<option value="MERIHLM500.MUHunt">MERIHLM500.MUHunt</option>
-<option value="MERIHLM501.MUHunt">MERIHLM501.MUHunt</option>
-<option value="MERIHLM502.MUHunt">MERIHLM502.MUHunt</option>
-<option value="MERILMP001.LCOMM">MERILMP001.LCOMM</option>
-<option value="MICHLMP001.002">MICHLMP001.002</option>
-<option value="MICHLMP002.002">MICHLMP002.002</option>
-<option value="MICHLMP003.002">MICHLMP003.002</option>
-<option value="MICHLMP004.002">MICHLMP004.002</option>
-<option value="OAKRHLM020.003">OAKRHLM020.003</option>
-<option value="OAKRHLM022.HLR">OAKRHLM022.HLR</option>
-<option value="OAKRHLM023.HLR">OAKRHLM023.HLR</option>
-<option value="OAKRHLM025.HLR- BY TRACT">OAKRHLM025.HLR- BY TRACT</option>
-<option value="OAKRHLM090.HRLGA">OAKRHLM090.HRLGA</option>
-<option value="OAKRHLM091.HRLAL">OAKRHLM091.HRLAL</option>
-<option value="OAKRHLM091.HRLGA">OAKRHLM091.HRLGA</option>
-<option value="OAKRHLM091.HRLTN">OAKRHLM091.HRLTN</option>
-<option value="OAKRHLM092.HRLGA">OAKRHLM092.HRLGA</option>
-<option value="OAKRHLM093.HRLAL">OAKRHLM093.HRLAL</option>
-<option value="OAKRHLM270.002">OAKRHLM270.002</option>
-<option value="OAKRHLM271.002">OAKRHLM271.002</option>
-<option value="OAKRHLM272.002">OAKRHLM272.002</option>
-<option value="OAKRHLM273.002">OAKRHLM273.002</option>
-<option value="OAKRHLM274.002">OAKRHLM274.002</option>
-<option value="OAKRHLM275.002">OAKRHLM275.002</option>
-<option value="OAKRHLM276.002">OAKRHLM276.002</option>
-<option value="OAKRHLM277.002">OAKRHLM277.002</option>
-<option value="OAKRHLM278.002">OAKRHLM278.002</option>
-<option value="OAKRHLM279.002">OAKRHLM279.002</option>
-<option value="OAKRHLM280.002">OAKRHLM280.002</option>
-<option value="OAKRHLM281.002">OAKRHLM281.002</option>
-<option value="OAKRHLM282.002">OAKRHLM282.002</option>
-<option value="OAKRHLM283.002">OAKRHLM283.002</option>
-<option value="OAKRHLM284.002">OAKRHLM284.002</option>
-<option value="OAKRHLM285.002">OAKRHLM285.002</option>
-<option value="OAKRHLM286.002">OAKRHLM286.002</option>
-<option value="OAKRHLM287.002">OAKRHLM287.002</option>
-<option value="OAKRHLM288.002">OAKRHLM288.002</option>
-<option value="OAKRHLM289.002">OAKRHLM289.002</option>
-<option value="OAKRHLM290.002">OAKRHLM290.002</option>
-<option value="OAKRLMP001.002">OAKRLMP001.002</option>
-<option value="OAKRNIPF004.HRL001">OAKRNIPF004.HRL001</option>
-<option value="PRATHLM001.HLR">PRATHLM001.HLR</option>
-<option value="PRATHLM030.HLR">PRATHLM030.HLR</option>
-<option value="PRATHLM091.HRLGA">PRATHLM091.HRLGA</option>
-<option value="PRATHLM092.HRLGA">PRATHLM092.HRLGA</option>
-<option value="PRATHLM095.HRLAL">PRATHLM095.HRLAL</option>
-<option value="PRATNIPF004.HRL001">PRATNIPF004.HRL001</option>
-<option value="RICHHLM060.HRL001">RICHHLM060.HRL001</option>
-<option value="RICHHLM061.HRL001">RICHHLM061.HRL001</option>
-<option value="RICHHLM062.HRL001">RICHHLM062.HRL001</option>
-<option value="RICHHLM081.HLR">RICHHLM081.HLR</option>
-<option value="RICHHLM090.HRLVA">RICHHLM090.HRLVA</option>
-<option value="RICHLMP005.003">RICHLMP005.003</option>
-<option value="RICHLMP005.004">RICHLMP005.004</option>
-<option value="RICHLMP006.002">RICHLMP006.002</option>
-<option value="RICHNIPF054.HRL001">RICHNIPF054.HRL001</option>
-<option value="RUSSNIPF040.HLR001">RUSSNIPF040.HLR001</option>
-<option value="SANDHLM040.004">SANDHLM040.004</option>
-<option value="SANDHLM042.008">SANDHLM042.008</option>
-<option value="SANDHLM061.002">SANDHLM061.002</option>
-<option value="SANDHLM062.002">SANDHLM062.002</option>
-<option value="SANDHLM063.002">SANDHLM063.002</option>
-<option value="SANDHLM064.002">SANDHLM064.002</option>
-<option value="SANDHLM065.002">SANDHLM065.002</option>
-<option value="SANDHLM066.002">SANDHLM066.002</option>
-<option value="SANDHLM067.002">SANDHLM067.002</option>
-<option value="SANDHLM080.HLR">SANDHLM080.HLR</option>
-<option value="SANDHLM090.HRLGA">SANDHLM090.HRLGA</option>
-<option value="SANDHLM092.HRLGA">SANDHLM092.HRLGA</option>
-<option value="SANDHLM093.HRLAUBGA">SANDHLM093.HRLAUBGA</option>
-<option value="SANDHLM093.HRLPENNGA">SANDHLM093.HRLPENNGA</option>
-<option value="SANDHLM094.HRLGA">SANDHLM094.HRLGA</option>
-<option value="SANDHLM095.HRLGA">SANDHLM095.HRLGA</option>
-<option value="SANDHLM096.HRLGA">SANDHLM096.HRLGA</option>
-<option value="SANDHLM097.HRLGA">SANDHLM097.HRLGA</option>
-<option value="SANDHLM098.HRLGA">SANDHLM098.HRLGA</option>
-<option value="SANDHLM099.HRLGA">SANDHLM099.HRLGA</option>
-<option value="SANDHLM100.HRLGA">SANDHLM100.HRLGA</option>
-<option value="SANDHLM101.HRLGA">SANDHLM101.HRLGA</option>
-<option value="SANDHLM102.HRLGA">SANDHLM102.HRLGA</option>
-<option value="SANDHLM103.HRLGA">SANDHLM103.HRLGA</option>
-<option value="SANDHLM104.HRLGA">SANDHLM104.HRLGA</option>
-<option value="SANDHLM105.HRLGA">SANDHLM105.HRLGA</option>
-<option value="SANDHLM106.HRLGA">SANDHLM106.HRLGA</option>
-<option value="SANDHLM107.HRLGA">SANDHLM107.HRLGA</option>
-<option value="SANDHLM108.HRLGA">SANDHLM108.HRLGA</option>
-<option value="SANDHLM110.HRLGA">SANDHLM110.HRLGA</option>
-<option value="SANDHLM111.HRLGA">SANDHLM111.HRLGA</option>
-<option value="SANDHLM500.MUHunt">SANDHLM500.MUHunt</option>
-<option value="SANDHLM501.MUHunt">SANDHLM501.MUHunt</option>
-<option value="SANDHLM502.MUHunt">SANDHLM502.MUHunt</option>
-<option value="SANDHLM503.MUHunt">SANDHLM503.MUHunt</option>
-<option value="SANDHLM504.MUHunt">SANDHLM504.MUHunt</option>
-<option value="SANDHLM509.MUHunt">SANDHLM509.MUHunt</option>
-<option value="SANDHLM510.MUHunt">SANDHLM510.MUHunt</option>
-<option value="SANDHLM511.MUHunt">SANDHLM511.MUHunt</option>
-<option value="SANDLMP006.002">SANDLMP006.002</option>
-<option value="SANDLMP015.002">SANDLMP015.002</option>
-<option value="SANDLMP017.HRLGA">SANDLMP017.HRLGA</option>
-<option value="SANDLMP030.HRL">SANDLMP030.HRL</option>
-<option value="SANDNIPF026.HRL001">SANDNIPF026.HRL001</option>
-<option value="SANDNIPF064.HRL001">SANDNIPF064.HRL001</option>
-<option value="SANDNIPF159.HRL001">SANDNIPF159.HRL001</option>
-<option value="SANDNIPF162.HRL001">SANDNIPF162.HRL001</option>
-<option value="SANDNIPF171.HRL001">SANDNIPF171.HRL001</option>
-<option value="SANDNIPF172.HRL001">SANDNIPF172.HRL001</option>
-<option value="SANDNIPF173.HRL001">SANDNIPF173.HRL001</option>
-<option value="SANDNIPF174.HRL001">SANDNIPF174.HRL001</option>
-<option value="SANDNIPF176.HRL001">SANDNIPF176.HRL001</option>
-<option value="SANDNIPF195.HRL001">SANDNIPF195.HRL001</option>
-<option value="STBRHLM090.HRLGA">STBRHLM090.HRLGA</option>
-<option value="STBRHLM500.MUHunt">STBRHLM500.MUHunt</option>
-<option value="STBRHLM505.MUHunt">STBRHLM505.MUHunt</option>
-<option value="STBRHLM506.MUHunt">STBRHLM506.MUHunt</option>
-<option value="STBRLMP001.HRLAL">STBRLMP001.HRLAL</option>
-<option value="STBRLMP001.HRLGAS">STBRLMP001.HRLGAS</option>
-<option value="STBRLMP001.HRLGAST">STBRLMP001.HRLGAST</option>
-<option value="STBRLMP001.HRLMS">STBRLMP001.HRLMS</option>
-<option value="STBRLMP001.HRLSC">STBRLMP001.HRLSC</option>
-<option value="STBRNIPF037.HRL001">STBRNIPF037.HRL001</option>
-<option value="STBRNIPF058.HRL001">STBRNIPF058.HRL001</option>
-<option value="SUMTLMP030.HRL">SUMTLMP030.HRL</option>
-<option value="SUMTNIPF011.HRL001">SUMTNIPF011.HRL001</option>
-<option value="SUMTNIPF016.HRL001">SUMTNIPF016.HRL001</option>
-<option value="SUMTNIPF018.HRL001">SUMTNIPF018.HRL001</option>
-<option value="SUMTNIPF030.HRL001">SUMTNIPF030.HRL001</option>
-<option value="SUMTNIPF030.HRL002">SUMTNIPF030.HRL002</option>
-<option value="SUMTNIPF032.HRL001">SUMTNIPF032.HRL001</option>
-<option value="SUMTNIPF032.HRL002">SUMTNIPF032.HRL002</option>
-<option value="SUMTNIPF088.HRL001">SUMTNIPF088.HRL001</option>
-<option value="SUMTNIPF159.HRL001">SUMTNIPF159.HRL001</option>
-<option value="SUMTNIPF360.HRL001">SUMTNIPF360.HRL001</option>
-<option value="SUMTNIPF409.HRL001">SUMTNIPF409.HRL001</option>
-<option value="SUMTNIPF409.HRL002">SUMTNIPF409.HRL002</option>
-<option value="TEMPLATES.HRL001">TEMPLATES.HRL001</option>
-<option value="TEMPLATES.HRL002">TEMPLATES.HRL002</option>
-<option value="TEXAHLM004.004">TEXAHLM004.004</option>
-<option value="TEXAHLM006.HLA">TEXAHLM006.HLA</option>
-<option value="TEXAHLM055.003">TEXAHLM055.003</option>
-<option value="TEXAHLM071.HLA">TEXAHLM071.HLA</option>
-<option value="TEXAHLM072.HLA">TEXAHLM072.HLA</option>
-<option value="TEXAHLM073.HLA">TEXAHLM073.HLA</option>
-<option value="TEXAHLM074.HLA">TEXAHLM074.HLA</option>
-<option value="TEXAHLM075.HLA">TEXAHLM075.HLA</option>
-<option value="TEXAHLM076.HLA">TEXAHLM076.HLA</option>
-<option value="TEXAHLM077.HLA">TEXAHLM077.HLA</option>
-<option value="TEXAHLM078.HLA">TEXAHLM078.HLA</option>
-<option value="TEXAHLM079.HLA AR">TEXAHLM079.HLA AR</option>
-<option value="TEXAHLM079.HLA LA">TEXAHLM079.HLA LA</option>
-<option value="TEXAHLM080.HLA AR">TEXAHLM080.HLA AR</option>
-<option value="TEXAHLM081.HLA AR">TEXAHLM081.HLA AR</option>
-<option value="TEXAHLM081.HLA LA">TEXAHLM081.HLA LA</option>
-<option value="TEXAHLM082.HLA AR">TEXAHLM082.HLA AR</option>
-<option value="TEXAHLM500.MUHunt">TEXAHLM500.MUHunt</option>
-<option value="TEXAHLM501.MUHunt">TEXAHLM501.MUHunt</option>
-<option value="TEXAHLM502.MUHunt">TEXAHLM502.MUHunt</option>
-<option value="TEXAHLM503.MUHunt">TEXAHLM503.MUHunt</option>
-<option value="TEXAHLM504.MUHunt">TEXAHLM504.MUHunt</option>
-<option value="TEXAHLM505.MUHunt">TEXAHLM505.MUHunt</option>
-<option value="TEXAHLM506.MUHunt">TEXAHLM506.MUHunt</option>
-<option value="TEXAHLM507.MUHunt">TEXAHLM507.MUHunt</option>
-<option value="TEXAHLM508.MUHunt">TEXAHLM508.MUHunt</option>
-<option value="TEXAHLM509.MUHunt">TEXAHLM509.MUHunt</option>
-<option value="TEXAHLM510.MUHunt">TEXAHLM510.MUHunt</option>
-<option value="TEXAHLM511.MUHunt">TEXAHLM511.MUHunt</option>
-<option value="TEXALMP005.HRL001">TEXALMP005.HRL001</option>
-<option value="TEXALMP006.HRL">TEXALMP006.HRL</option>
-<option value="TEXANIPF034.HRL0001">TEXANIPF034.HRL0001</option>
-<option value="WALTHLM012.HRL001">WALTHLM012.HRL001</option>
-<option value="WALTHLM200.002">WALTHLM200.002</option>
-<option value="WALTHLM500.MUHunt">WALTHLM500.MUHunt</option>
-<option value="WALTHLM501.MUHunt">WALTHLM501.MUHunt</option>
-<option value="WALTHLM502.MUHunt">WALTHLM502.MUHunt</option>
-<option value="WALTLMP001.HRLSC">WALTLMP001.HRLSC</option>
-<option value="WALTNIPF009.HRL001">WALTNIPF009.HRL001</option>
-<option value="WALTNIPF014.HRL001">WALTNIPF014.HRL001</option>
-<option value="WALTNIPF016.HRL001">WALTNIPF016.HRL001</option>
-<option value="WALTNIPF077.HRL001">WALTNIPF077.HRL001</option>
-<option value="WALTNIPF088.HRL001">WALTNIPF088.HRL001</option>
-<option value="WALTNIPF387.HRL001">WALTNIPF387.HRL001</option>
-<option value="WALTNIPF407.HRL001">WALTNIPF407.HRL001</option>
-<option value="WAYNLMP001.002">WAYNLMP001.002</option>
-<option value="WAYNLMP002.002">WAYNLMP002.002</option>
-<option value="WAYNLMP002.011">WAYNLMP002.011</option>
-<option value="WAYNLMP003.005">WAYNLMP003.005</option>
-<option value="WAYNLMP004.004">WAYNLMP004.004</option>
-<option value="WAYNLMP004.005">WAYNLMP004.005</option>
-<option value="WAYNLMP004.006">WAYNLMP004.006</option>
-</select>
-                                <span class="field-validation-valid text-danger" data-valmsg-for="ProjectNumber" data-valmsg-replace="true" style="display:block"></span>
-                            </div>
-                        </div>
-                        <script type="text/javascript">
-                           setTimeout(function () {
-                                if ($('#ProjectNumber option').filter(function () { return $(this).val() == "EDGEHLM502.MUHunt"; }).length==0) {
-                                    $('#ProjectNumber').append(new Option("EDGEHLM502.MUHunt", "EDGEHLM502.MUHunt", true, true));
-                                 }
-                            }, 1500);
-                        </script>
-
-                        <div class="form-group">
-                            <label class="control-label col-md-2" for="Comments">COMMENTS</label>
-
-                            <div class="col-md-10">
-                                <textarea class="form-control" cols="1" data-val="true" data-val-length="COMMENTS can&#39;t be more than 1024 characters" data-val-length-max="1024" id="Comments" name="Comments" rows="4">
-**THE USE OF DOGS ARE PROHIBITED FOR HUNTING DEER**; LeaseType: FIA; EASY</textarea>
-                                <span class="field-validation-valid text-danger" data-valmsg-for="Comments" data-valmsg-replace="true" style="display:block"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-10 col-md-2">
-                                <input type="submit" value="SAVE CHANGES" class="btn btn-primary" />
-                            </div>
-                        </div>
-                        <hr /><br />
-                        <h5>GEOMETRY INFORMATION</h5>
-
-                        <div class="alert alert-warning alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <strong> THE ONLY SUPPORTED FORMATS ARE .map AND .shp</strong><br />Geometry coordinate system must be "Albers Conical Equal Area"</div>
-
-                        <div class="form-group">
-                            <label class="control-label col-md-2" for="UPLOAD_GEOMETRY">UPLOAD GEOMETRY</label>
-
-                            <div class="col-md-3">
-                                <input type="file" class="form-control inputfile" style="border:none; padding:0px; box-shadow:none; max-width:none" id="Avatar" name="upload" multiple />
-                            </div>
-                            <div class="col-md-7">
-                                <button class="btn btn-primary uploadgeom" type="button" style="padding:8px 8px;" data-toggle="tooltip" data-placement="top" title="" disabled="disabled">Start upload <span class="fa fa-upload" style="font-size:18px"></span></button>
-
-                            </div>
-                        </div>
-
-                        <div class="form-group" id="layerselection" style="display:none">
-                            <label class="control-label col-md-2" for="SELECT_LAYER">SELECT LAYER</label>
-                            <div class="col-md-10">
-                                 <select class="form-control" id="layerstoselect" name="TRACTGEOMs"><option value=""></option>
-</select>
-
-
-                            </div>
-                        </div>
-
-                        <div class="form-group" id="geomselection" style="display:none">
-                            <label class="control-label col-md-2" for="SELECT_TRACT_GEOMETRY">SELECT TRACT GEOMETRY</label>
-                            <div class="col-md-3">
-                                <select class="form-control" id="geomstoselect" name="TRACTGEOMs"><option value=""></option>
-</select>
+            <li style="width:62px" data-toggle="tooltip" data-placement="top" title="Owners"><a href="/LeaseApp/owners/?pagesize=20" style="font-size:1.4em;"><span class="glyphicon glyphicon-tower" style="font-size:30px; color:white"></span></a></li>
+            <li style="width:62px" data-toggle="tooltip" data-placement="top" title="Contacts"><a href="/LeaseApp/entities/?pagesize=20" style="font-size:1.4em;"><span class="glyphicon glyphicon-phone-alt" style="font-size:30px; color:white"></span></a></li>
+            <li style="width:62px" data-toggle="tooltip" data-placement="top" title="Lessees"><a href="/LeaseApp/lessees/?pagesize=20" style="font-size:1.4em;"><span class="glyphicon glyphicon-screenshot" style="font-size:30px; color:white"></span></a></li>
+            <li style="width:62px;" data-toggle="tooltip" data-placement="top" title="Settings"><a href="/LeaseApp/districts" style="font-size:1.4em;"><span class="glyphicon glyphicon-cog" style="font-size:30px; color:white"></span></a></li>
+            <li style="width:62px" data-toggle="tooltip" data-placement="top" title="Accounts"><a href="/LeaseApp/account/?pagesize=20" style="font-size:1.4em;"><span class="glyphicon glyphicon-user" style="font-size:30px;  color:white"></span></a></li>
+         </ul>
+      </div>
+      <div class="container body-content" >
+         <div class="content">
+            <div class="row">
+               <div class="col-lg-12">
+                  <div class="panel panel-default">
+                     <div class="panel-heading" style="color: white; padding:0px; margin:0px;">
+                        <ul class="nav nav-pills" style="padding-left:10px;">
+                           <li role="presentation" data-toggle="tooltip" data-placement="top" title="Back"><a href="javascript: history.go(-1)" style="color:#6aa74b; text-decoration:none"><span class="fa fa-reply"></span> </a></li>
+                        </ul>
+                     </div>
+                     <div style="width:100%; overflow:auto" class="panel-body">
+                        <form action="/LeaseApp/tracts/edit/2487" method="post">
+                           <input name="__RequestVerificationToken" type="hidden" value="XSuBWPBg26nC4DBKihTDmWt__msVHnkdAixWA5pGBc31EEveWaYp676kiImEUkeuLM0ffCAK6AV_E408pbT5Yic-O_qPo7kvmQ297ORntdfy44IC1MXFbEe3KCqIflS1OidOpnb1mGkBtUkuMQ5unA2" />                    
+                           <div class="form-horizontal" style="font-size:13px">
+                              <h4>TRACT</h4>
+                              <hr />
+                              <h5>BASIC INFORMATION</h5>
+                              <input data-val="true" data-val-number="The field OID must be a number." data-val-required="The OID field is required." id="OID" name="OID" type="hidden" value="2487" />
+                              <div class="form-group">
+                                 <label class="control-label col-md-2" for="Name">NAME</label>
+                                 <div class="col-md-10">
+                                    <input class="form-control" data-val="true" data-val-length="NAME can&#39;t be more than 100 characters" data-val-length-max="100" data-val-required="NAME is required" id="Name" name="Name" style="display:inline;" type="text" value="SMITH 312" /> <label for="" style="color:red;">*</label>
+                                    <span class="field-validation-valid text-danger" data-valmsg-for="Name" data-valmsg-replace="true" style="display:block"></span>
+                                 </div>
+                              </div>
+                              <div class="form-group">
+                                 <label class="control-label col-md-2" for="TractCode">TRACT CODE</label>
+                                 <div class="col-md-10">
+                                    <input class="form-control" data-val="true" data-val-length="TRACT CODE can&#39;t be more than 25 characters" data-val-length-max="25" data-val-required="TRACT CODE is required" id="TractCode" name="TractCode" style="display:inline;" type="text" value="60040369                 " /> <label for="" style="color:red;">*</label>
+                                    <span class="field-validation-valid text-danger" data-valmsg-for="TractCode" data-valmsg-replace="true" style="display:block"></span>
+                                 </div>
+                              </div>
+                              <div class="form-group">
+                                 <label class="control-label col-md-2" for="TractAcres">TRACT ACRES</label>
+                                 <div class="col-md-10">
+                                    <div class="input-group">
+                                       <span class="input-group-btn">
+                                       <input class="form-control" data-val="true" data-val-number="The field TractAcres must be a number." data-val-required="TRACT ACRES is required" id="TractAcres" name="TractAcres" style="display:inline;" type="text" value="318.67" /> 
+                                       <button class="btn btn-default geobutton" id="btncaltractgeom" type="button" data-toggle="tooltip" data-placement="top" title="Calculate from geometry" disabled="disabled" style="padding:9px 11px;"><span class="fa fa-map-marker" style="font-size:18px; color:#6aa74b"></span></button><label for="" style="color:red;">*</label>
+                                       </span>
+                                    </div>
+                                    <span class="field-validation-valid text-danger" data-valmsg-for="TractAcres" data-valmsg-replace="true" style="display:block"></span>
+                                 </div>
+                              </div>
+                              <div class="form-group">
+                                 <label class="control-label col-md-2" for="TractAcres">GIS ACRES</label>
+                                 <div class="col-md-10">
+                                    <div class="input-group">
+                                       <span class="input-group-btn">
+                                       <input class="form-control" data-val="true" data-val-number="The field GIS_Acres must be a number." id="GIS_Acres" name="GIS_Acres" readonly="readonly" type="text" value="314.82" />
+                                       <a class="btn btn-default modal-link geobutton" type="button" href="/LeaseApp/home/mapmodal/2487" style="padding:10px 10px;" disabled="disabled"><span class="fa fa-map-o" style="color:#6aa74b" data-toggle="tooltip" data-placement="top" title="Show geometry on map"></span> </a>
+                                       </span>
+                                    </div>
+                                 </div>
+                                 <script type="text/javascript">
+                                    setTimeout(function () {
+                                        $('.geobutton').attr("disabled", false);
+                                        $('.geobutton').click(function (e) {
+                                            if ($(this).attr('id') == "btncaltractgeom") {
+                                                $('#TractAcres').val($('#GIS_Acres').val());
+                                                bootbox.alert("The new TRACT ACRES can be saved with button SAVE CHANGES!");
+                                         }
+                                        });
+                                    
+                                    }, 1000);
+                                 </script>
+                              </div>
+                              <div class="form-group">
+                                 <label class="control-label col-md-2" for="OwnerID">OWNER</label>
+                                 <div class="col-md-10">
+                                    <div class="input-group">
+                                       <span class="input-group-btn">
+                                          <select class="form-control" id="OwnerID" name="OwnerID" style="display:inline;">
+                                             <option value=""></option>
+                                             <option value="44">AEG Associates</option>
+                                             <option value="61">American Timberland II, LLC</option>
+                                             <option value="78">Angelo D&quot;Urso</option>
+                                             <option value="1">BancorpSouth/ Aimee Harrison Parris Trust</option>
+                                             <option value="51">BENJAMIN W. GRIFFITH III</option>
+                                             <option value="98">Berg Timber Properties LLC</option>
+                                             <option value="68">BESSON FAMILY LAND</option>
+                                             <option value="551">BESSON FAMILY LIMITED PARTNERSHIP</option>
+                                             <option value="73">Blackwater,LLC</option>
+                                             <option value="102">BMWM</option>
+                                             <option value="41">Bruce Forest, LLC</option>
+                                             <option value="13">Cantusee Timberlands, LLC</option>
+                                             <option value="168">CARIOCA HOLDINGS, LLC</option>
+                                             <option value="53">CARLTON TIMBER PROPERTIES, LLC</option>
+                                             <option value="153">CatchMark HBU, LLC</option>
+                                             <option value="11">CatchMark South Carolina Timberlands, LLC</option>
+                                             <option value="152">CatchMark Southern Timberlands II, LP</option>
+                                             <option value="160">CF - Bear Island</option>
+                                             <option value="93">CF - Florida LLC</option>
+                                             <option value="40">CF - Relay Timberlands LLC</option>
+                                             <option value="1361">CF - Southbound Timberlands, LLC</option>
+                                             <option value="161">CF - Stonewall Timberlands</option>
+                                             <option value="157">Corrigan Properties</option>
+                                             <option value="57">CROWDER TIMBER LLC</option>
+                                             <option value="49">CURTIS F VEAL SR FAMILY LIMITED PARTNERSHIP</option>
+                                             <option value="117">Deborah and Judy Watkins</option>
+                                             <option value="1439">Debra Watters Bell Trust</option>
+                                             <option value="46">Deforsa USA</option>
+                                             <option value="38">DUBBERS ALBRECHT VENTURE 1</option>
+                                             <option value="27">Duke - Duke Energy Carolinas, LLC</option>
+                                             <option value="7">Duke - Duke Energy Progress, LLC</option>
+                                             <option value="16">Duke - TBP Properties, LLC</option>
+                                             <option value="17">FIA - Adirondack Timber (Cape Fear)</option>
+                                             <option value="56">FIA - Adirondack Timber (Sinclair)</option>
+                                             <option value="26">FIA - Brunswick Timber (Tarheel)</option>
+                                             <option value="142">FIA - Brunswick Timber (Waccamaw)</option>
+                                             <option value="14">FIA - Central Georgia Timber (Ogeechee)</option>
+                                             <option value="20">FIA - CFI (Danville)</option>
+                                             <option value="155">FIA - CFI (Hampton)</option>
+                                             <option value="143">FIA - CFI (Oconee River)</option>
+                                             <option value="47">FIA - CFI (RedBluff)</option>
+                                             <option value="156">FIA - DP&amp;F (Huggin Oak)</option>
+                                             <option value="12">FIA - DP&amp;F (San Pedro)</option>
+                                             <option value="2">FIA - FIATP (Olde English)</option>
+                                             <option value="21">FIA - FIATP (Savannah River)</option>
+                                             <option value="37">FIA - FIATP SSF (Ohoopee)</option>
+                                             <option value="15">FIA - FIATP SSF (Piedmont)</option>
+                                             <option value="29">FIA - FIATP SSF Timber (Coosawhatchie)</option>
+                                             <option value="77">FIA - FIATP SSF Timber (Sumter)</option>
+                                             <option value="154">FIA - FIATP Timber (Edisto)</option>
+                                             <option value="19">FIA - IMRF (Gretna)</option>
+                                             <option value="76">FIA - IMRF (Liberty Hill)</option>
+                                             <option value="33">FIA - Matoaka Forests (Alapaha)</option>
+                                             <option value="81">FIA - PH Timber (Belfast)</option>
+                                             <option value="83">FIA - SFT Forestland (Isenberg)</option>
+                                             <option value="79">FIA - SFT Forestland (SFT/Wade)</option>
+                                             <option value="62">FIA - Simorg South Forests (I-20 East)</option>
+                                             <option value="82">FIA - Simorg South Forests (Mcteer)</option>
+                                             <option value="144">FIA - Simorg South Forests (Randolph)</option>
+                                             <option value="50">FIA - VZ Timberlands (VZ/CFI )</option>
+                                             <option value="18">FIA - VZ Timberlands (VZ/Wade )</option>
+                                             <option selected="selected" value="3">FIA - Wateree Holdings (Wateree)</option>
+                                             <option value="115">FIA Bertha Mineral</option>
+                                             <option value="926">FLOY FANNING</option>
+                                             <option value="45">Focus Global Forest</option>
+                                             <option value="158">FORI CORPORATION</option>
+                                             <option value="101">GMG FOREST INVESTMENTS, LLC</option>
+                                             <option value="126">GMO Threshold Timber Courtland CUB</option>
+                                             <option value="124">GMO Threshold Timber Courtland, LLC</option>
+                                             <option value="131">GMO Threshold Timber CUB</option>
+                                             <option value="127">GMO Threshold Timber Holdings, LLC</option>
+                                             <option value="129">GMO Threshold Timber Tenn &amp; CUB</option>
+                                             <option value="125">GMO Threshold Timber Tennessee, LLC</option>
+                                             <option value="1251">HAAS Trust  c/o US Trust, Bank of America</option>
+                                             <option value="69">HOLLEY B JACKSON</option>
+                                             <option value="6">HOLLIDAY ASSOCIATES, LLC</option>
+                                             <option value="72">HOLLIDAY BANCO, LLC</option>
+                                             <option value="74">HUGH LEWIS</option>
+                                             <option value="85">Hugh Tarbutton</option>
+                                             <option value="24">Iluka</option>
+                                             <option value="110">JACK &amp; MADS FARM AND FORESTRY, LLC.</option>
+                                             <option value="87">Jake Associates, LLC</option>
+                                             <option value="88">Jamestown Timber 1, L.P.</option>
+                                             <option value="39">Jamestown Timber II, LP</option>
+                                             <option value="55">JANE WALLER</option>
+                                             <option value="119">JMJH Trust C &amp; JMJH Trust C-1</option>
+                                             <option value="150">Julian Watters</option>
+                                             <option value="64">LAWRENCE YERKES</option>
+                                             <option value="70">LEWIS LONGSHORE</option>
+                                             <option value="32">LHF Black Walnut (IA), LLC</option>
+                                             <option value="31">LHF Black Walnut (IL), LLC</option>
+                                             <option value="30">LHF Black Walnut (NY), LLC</option>
+                                             <option value="116">LINDA C. LAKE</option>
+                                             <option value="80">M. Russell Holliday,Jr. &amp; Christian M.H. Douglas</option>
+                                             <option value="120">Marjorie R. Holliday-Revocable Trust</option>
+                                             <option value="100">MKFT TIMBERERLAND LLC</option>
+                                             <option value="1249">Norman E. Hasso  c/o US Trust, Bank of America</option>
+                                             <option value="67">PALMETTO FARMS CORP.</option>
+                                             <option value="1335">PAUL SILVON </option>
+                                             <option value="5">PFI</option>
+                                             <option value="8">PFI Timberfund I, LP</option>
+                                             <option value="86">Podere Terranova, LLC</option>
+                                             <option value="75">PRESERVATION, LLC.</option>
+                                             <option value="42">Profundus Holdings, Inc.</option>
+                                             <option value="60">PROGRESS ENERGY CAROLINAS</option>
+                                             <option value="151">Robert W. Reagan, Beth B. Reagan, Rodney J. Huckaby, Julia R. Huckaby</option>
+                                             <option value="66">ROY SULLIVAN</option>
+                                             <option value="1248">SANA FAMILY, LLC  c/o US Trust, Bank of America</option>
+                                             <option value="4">Shield Properties</option>
+                                             <option value="65">SLIVON TRUST</option>
+                                             <option value="1246">SPOTLIGHT TIMBER, LLC c/o U S Trust, Bank of America</option>
+                                             <option value="121">SPP - Abbeville Timberlands LLC</option>
+                                             <option value="63">SPP - OGEECHEE RIVER TIMBERLANDS, LLC</option>
+                                             <option value="71">SPP - Ten Governors Timberlands LLC</option>
+                                             <option value="54">Steve Kite</option>
+                                             <option value="1247">SURF ROAD, LLC c/o US Trust, Bank of America</option>
+                                             <option value="122">TDF Timber, LLC.</option>
+                                             <option value="84">The Foundation</option>
+                                             <option value="25">Three Steps Forest LLC</option>
+                                             <option value="1250">Thunder Dragon T, LLC  c/o US Trust, Bank of America</option>
+                                             <option value="90">US TRUST - BAR MH </option>
+                                             <option value="322">US TRUST - BOATNER REILY</option>
+                                             <option value="92">US TRUST - BUTLER TIMBERLAND FUND</option>
+                                             <option value="23">US TRUST - CARIOCA</option>
+                                             <option value="91">US TRUST - Carolem Capital, LLC</option>
+                                             <option value="48">US TRUST - Chrysalis Timberlands c/o U S Trust</option>
+                                             <option value="1236">US TRUST - DREXEL TIMBER, LP</option>
+                                             <option value="1444">US Trust - Edelweiss</option>
+                                             <option value="112">US TRUST - EFF Sam, LLC</option>
+                                             <option value="106">US TRUST - ENGLES</option>
+                                             <option value="97">US TRUST - Family Tree Investments, LLC</option>
+                                             <option value="107">US TRUST - GMG FOREST INVESTMENTS C/OBANK OF AMERICA</option>
+                                             <option value="58">US TRUST - Greig Forest Investments, LLC</option>
+                                             <option value="111">US TRUST - GRS</option>
+                                             <option value="109">US TRUST - HASS</option>
+                                             <option value="96">US TRUST - Humilis Timber, LLC</option>
+                                             <option value="52">US TRUST - IM BMWM TIMBER,LLC</option>
+                                             <option value="105">US TRUST - IM PAYTON TIMBER LLC</option>
+                                             <option value="34">US TRUST - IM PONDEROSA, LLC</option>
+                                             <option value="123">US TRUST - IM TDF TIMBER, LLC</option>
+                                             <option value="35">US TRUST - JAKE ASSOCIATES</option>
+                                             <option value="89">US TRUST - K &amp; E Timberland Fund</option>
+                                             <option value="36">US TRUST - McLOUGHLIN TIMBER, LLC</option>
+                                             <option value="10">US TRUST - MKFT</option>
+                                             <option value="170">US TRUST - MMGOTT-NC</option>
+                                             <option value="22">US TRUST - NORPAC</option>
+                                             <option value="113">US TRUST - Percival Land &amp; Timber, LLC</option>
+                                             <option value="114">US TRUST - RUCKS FAMILY LIMITED PARTNERSHIP</option>
+                                             <option value="321">US TRUST - SARATOGA TIMBER, LLC</option>
+                                             <option value="9">US TRUST - STARGAZER</option>
+                                             <option value="103">US TRUST - SYLVIAN INVESTMETNS, LLC</option>
+                                             <option value="95">US TRUST - Teton Timber</option>
+                                             <option value="108">US TRUST - TREMONT FUNDS C/O BANK OF AMERICA</option>
+                                             <option value="323">US TRUST - WB TIMBER, LLC</option>
+                                             <option value="1235">US TRUST- HUMILIS TIMBER LLC</option>
+                                             <option value="118">W.K. BROWN TIMBER CORP.</option>
+                                             <option value="1404">ZF US Timber Properties LLC.</option>
+                                          </select>
+                                          <a class="btn btn-default" type="button" href="/LeaseApp/owners/" style="padding:10px 11px;"><span class="glyphicon glyphicon-cog" data-toggle="tooltip" data-placement="top" title="To owners"></span> </a>
+                                          <label style="color:red; padding-left:4px">*</label>
+                                       </span>
+                                    </div>
+                                    <span class="field-validation-valid text-danger" data-valmsg-for="OwnerID" data-valmsg-replace="true" style="display:block"></span>
+                                 </div>
+                              </div>
+                              <div class="form-group">
+                                 <label class="control-label col-md-2" for="DistrictID">DISTRICT</label>
+                                 <div class="col-md-10">
+                                    <div class="input-group">
+                                       <span class="input-group-btn">
+                                          <select class="form-control" id="DistrictID" name="DistrictID" style="display:inline;">
+                                             <option value=""></option>
+                                             <option value="3">Alachua</option>
+                                             <option value="110">American Forest Management, Inc.</option>
+                                             <option value="4">Aynor</option>
+                                             <option value="500">Bennettsville</option>
+                                             <option value="100">Cedartown</option>
+                                             <option value="502">Charlotte</option>
+                                             <option value="99">Chester</option>
+                                             <option value="5">Danville</option>
+                                             <option selected="selected" value="20">Edgefield</option>
+                                             <option value="0">Folkston</option>
+                                             <option value="21">Hope Mills</option>
+                                             <option value="505">Kirkland</option>
+                                             <option value="503">LAND</option>
+                                             <option value="12">Marianna</option>
+                                             <option value="70">Meridian</option>
+                                             <option value="11">Prattville</option>
+                                             <option value="504">Richmond</option>
+                                             <option value="31">Russellville</option>
+                                             <option value="30">Sandersville</option>
+                                             <option value="13">Statesboro</option>
+                                             <option value="26">Sumter</option>
+                                             <option value="98">Walterboro</option>
+                                             <option value="32">Waynesboro</option>
+                                          </select>
+                                          <a class="btn btn-default" type="button" href="/LeaseApp/districts/" style="padding:10px 11px;"><span class="glyphicon glyphicon-cog" data-toggle="tooltip" data-placement="top" title="To districts"></span> </a>
+                                          <label style="color:red; padding-left:4px">*</label>
+                                       </span>
+                                    </div>
+                                    <span class="field-validation-valid text-danger" data-valmsg-for="DistrictID" data-valmsg-replace="true" style="display:block"></span>
+                                 </div>
+                              </div>
+                              <div class="form-group">
+                                 <label class="control-label col-md-2" for="State">STATE</label>
+                                 <div class="col-md-10">
+                                    <select class="form-control tractstate" id="State" name="State" style="display:inline;">
+                                       <option value=""></option>
+                                       <option value="AL">Alabama</option>
+                                       <option value="AK">Alaska</option>
+                                       <option value="AZ">Arizona</option>
+                                       <option value="AR">Arkansas</option>
+                                       <option value="CA">California</option>
+                                       <option value="CO">Colorado</option>
+                                       <option value="CT">Connecticut</option>
+                                       <option value="DE">Delaware</option>
+                                       <option value="FL">Florida</option>
+                                       <option value="GA">Georgia</option>
+                                       <option value="HI">Hawaii</option>
+                                       <option value="ID">Idaho</option>
+                                       <option value="IL">Illinois</option>
+                                       <option value="IN">Indiana</option>
+                                       <option value="IA">Iowa</option>
+                                       <option value="KS">Kansas</option>
+                                       <option value="KY">Kentucky</option>
+                                       <option value="LA">Louisiana</option>
+                                       <option value="ME">Maine</option>
+                                       <option value="MD">Maryland</option>
+                                       <option value="MA">Massachusetts</option>
+                                       <option value="MI">Michigan</option>
+                                       <option value="MN">Minnesota</option>
+                                       <option value="MS">Mississippi</option>
+                                       <option value="MO">Missouri</option>
+                                       <option value="MT">Montana</option>
+                                       <option value="NE">Nebraska</option>
+                                       <option value="NV">Nevada</option>
+                                       <option value="NH">New Hampshire</option>
+                                       <option value="NJ">New Jersey</option>
+                                       <option value="NM">New Mexico</option>
+                                       <option value="NY">New York</option>
+                                       <option value="NC">North Carolina</option>
+                                       <option value="ND">North Dakota</option>
+                                       <option value="NA">NOT AVAILABLE</option>
+                                       <option value="OH">Ohio</option>
+                                       <option value="OK">Oklahoma</option>
+                                       <option value="OR">Oregon</option>
+                                       <option value="PA">Pennsylvania</option>
+                                       <option value="RI">Rhode Island</option>
+                                       <option selected="selected" value="SC">South Carolina</option>
+                                       <option value="SD">South Dakota</option>
+                                       <option value="TN">Tennessee</option>
+                                       <option value="TX">Texas</option>
+                                       <option value="UT">Utah</option>
+                                       <option value="VT">Vermont</option>
+                                       <option value="VA">Virginia</option>
+                                       <option value="WA">Washington</option>
+                                       <option value="WV">West Virginia</option>
+                                       <option value="WI">Wisconsin</option>
+                                       <option value="WY">Wyoming</option>
+                                    </select>
+                                    <label for="" style="color:red;">*</label>
+                                    <span class="field-validation-valid text-danger" data-valmsg-for="State" data-valmsg-replace="true" style="display:block"></span>
+                                 </div>
+                              </div>
+                              <div class="form-group">
+                                 <label class="control-label col-md-2" for="County">COUNTY</label>
+                                 <div class="col-md-10">
+                                    <select class="form-control" id="County" name="County" style="display:inline;">
+                                       <option value=""></option>
+                                       <option value="2263">Abbeville</option>
+                                       <option value="1019">Aiken</option>
+                                       <option value="2456">Allendale</option>
+                                       <option value="1151">Anderson</option>
+                                       <option value="761">Bamberg</option>
+                                       <option value="3128">Barnwell</option>
+                                       <option value="1213">Beaufort</option>
+                                       <option value="623">Berkeley</option>
+                                       <option value="3086">Calhoun</option>
+                                       <option value="1999">Charleston</option>
+                                       <option value="2333">Cherokee</option>
+                                       <option value="199">Chester</option>
+                                       <option value="3238">Chesterfield</option>
+                                       <option value="2476">Clarendon</option>
+                                       <option value="2084">Colleton</option>
+                                       <option value="850">Darlington</option>
+                                       <option value="2762">Dillon</option>
+                                       <option value="3290">DILLON-MARLBORO</option>
+                                       <option value="616">Dorchester</option>
+                                       <option value="2040">Edgefield</option>
+                                       <option value="2569">Fairfield</option>
+                                       <option value="1546">Florence</option>
+                                       <option value="3142">Georgetown</option>
+                                       <option value="1462">Greenville</option>
+                                       <option value="702">Greenwood</option>
+                                       <option value="2122">Hampton</option>
+                                       <option value="2269">Horry</option>
+                                       <option value="2823">Jasper</option>
+                                       <option value="1430">Kershaw</option>
+                                       <option value="2390">Lancaster</option>
+                                       <option value="1031">Laurens</option>
+                                       <option value="2469">Lee</option>
+                                       <option value="1080">Lexington</option>
+                                       <option value="1955">Marion</option>
+                                       <option selected="selected" value="752">Marlboro</option>
+                                       <option value="2825">McCormick</option>
+                                       <option value="1047">Newberry</option>
+                                       <option value="2054">Oconee</option>
+                                       <option value="1688">Orangeburg</option>
+                                       <option value="1216">Pickens</option>
+                                       <option value="2854">Richland</option>
+                                       <option value="355">Saluda</option>
+                                       <option value="1705">Spartanburg</option>
+                                       <option value="1683">Sumter</option>
+                                       <option value="2826">Union</option>
+                                       <option value="475">Williamsburg</option>
+                                       <option value="3090">York</option>
+                                    </select>
+                                    <label for="" style="color:red;">*</label>
+                                    <span class="field-validation-valid text-danger" data-valmsg-for="County" data-valmsg-replace="true" style="display:block"></span>
+                                 </div>
+                              </div>
+                              <div class="form-group">
+                                 <label class="control-label col-md-2" for="ProjectNumber">ACCT PROJECT</label>
+                                 <div class="col-md-10">
+                                    <select class="form-control" id="ProjectNumber" name="ProjectNumber" style="display:inline;">
+                                       <option value=""></option>
+                                       <option value="ARKAHLM090.HRLAR">ARKAHLM090.HRLAR</option>
+                                       <option value="ARKAHLM092.HRLAR">ARKAHLM092.HRLAR</option>
+                                       <option value="ARKAHLM093.HRLAR">ARKAHLM093.HRLAR</option>
+                                       <option value="ARKAHLM500.MUHunt">ARKAHLM500.MUHunt</option>
+                                       <option value="AYNRHLM003.HRL">AYNRHLM003.HRL</option>
+                                       <option value="AYNRHLM080.HLR">AYNRHLM080.HLR</option>
+                                       <option value="AYNRHLM081.HLR">AYNRHLM081.HLR</option>
+                                       <option value="AYNRHLM090.HRLNC">AYNRHLM090.HRLNC</option>
+                                       <option value="AYNRHLM091.HRLNC">AYNRHLM091.HRLNC</option>
+                                       <option value="AYNRHLM092.HRLNC">AYNRHLM092.HRLNC</option>
+                                       <option value="AYNRHLM093.HRLNC">AYNRHLM093.HRLNC</option>
+                                       <option value="AYNRHLM094.HRLNC">AYNRHLM094.HRLNC</option>
+                                       <option value="AYNRHLM095.HRLNC">AYNRHLM095.HRLNC</option>
+                                       <option value="AYNRHLM270.002">AYNRHLM270.002</option>
+                                       <option value="AYNRHLM271.002">AYNRHLM271.002</option>
+                                       <option value="AYNRHLM273.002">AYNRHLM273.002</option>
+                                       <option value="AYNRHLM274.002">AYNRHLM274.002</option>
+                                       <option value="AYNRHLM275.002">AYNRHLM275.002</option>
+                                       <option value="AYNRHLM276.002">AYNRHLM276.002</option>
+                                       <option value="AYNRHLM277.001">AYNRHLM277.001</option>
+                                       <option value="AYNRHLM500.MUHunt">AYNRHLM500.MUHunt</option>
+                                       <option value="AYNRLMP006.002">AYNRLMP006.002</option>
+                                       <option value="AYNRNIPF008.HRL001">AYNRNIPF008.HRL001</option>
+                                       <option value="AYNRNIPF019.HRL001">AYNRNIPF019.HRL001</option>
+                                       <option value="AYNRNIPF020.HRL001">AYNRNIPF020.HRL001</option>
+                                       <option value="BENNHLM003.HLR001">BENNHLM003.HLR001</option>
+                                       <option value="BENNHLM270.002">BENNHLM270.002</option>
+                                       <option value="BENNHLM271.002">BENNHLM271.002</option>
+                                       <option value="BENNHLM272.003">BENNHLM272.003</option>
+                                       <option value="BENNHLM272.004">BENNHLM272.004</option>
+                                       <option value="BENNHLM273.003">BENNHLM273.003</option>
+                                       <option value="BENNHLM273.004">BENNHLM273.004</option>
+                                       <option value="BENNHLM274.003">BENNHLM274.003</option>
+                                       <option value="BENNHLM274.004">BENNHLM274.004</option>
+                                       <option value="BENNHLM500.MUHunt">BENNHLM500.MUHunt</option>
+                                       <option value="BENNHLM501.MUHunt">BENNHLM501.MUHunt</option>
+                                       <option value="BENNNIPF112.HRL001">BENNNIPF112.HRL001</option>
+                                       <option value="BENNNIPF118.HRL001">BENNNIPF118.HRL001</option>
+                                       <option value="BENNNIPF135.HRL001">BENNNIPF135.HRL001</option>
+                                       <option value="BENNNIPF154.HRL001">BENNNIPF154.HRL001</option>
+                                       <option value="BENNNIPF164.HRL001">BENNNIPF164.HRL001</option>
+                                       <option value="CHESHLM091.HRLSC">CHESHLM091.HRLSC</option>
+                                       <option value="CHESHLM092.HRLSC">CHESHLM092.HRLSC</option>
+                                       <option value="CHESHLM093.HRLSC">CHESHLM093.HRLSC</option>
+                                       <option value="CHESHLM270.002">CHESHLM270.002</option>
+                                       <option value="CHESHLM271.002">CHESHLM271.002</option>
+                                       <option value="CHESHLM272.002">CHESHLM272.002</option>
+                                       <option value="CHESHLM273.002">CHESHLM273.002</option>
+                                       <option value="CHESHLM274.002">CHESHLM274.002</option>
+                                       <option value="CHESHLM275.002">CHESHLM275.002</option>
+                                       <option value="CHESHLM276.002">CHESHLM276.002</option>
+                                       <option value="CHESHLM277.002">CHESHLM277.002</option>
+                                       <option value="CHESHLM278.002">CHESHLM278.002</option>
+                                       <option value="CHESHLM279.002">CHESHLM279.002</option>
+                                       <option value="CHESHLM280.002">CHESHLM280.002</option>
+                                       <option value="CHESHLM281.002">CHESHLM281.002</option>
+                                       <option value="CHWVHLM001.006">CHWVHLM001.006</option>
+                                       <option value="CHWVHLM001.010">CHWVHLM001.010</option>
+                                       <option value="CHWVHLM010.HRL001">CHWVHLM010.HRL001</option>
+                                       <option value="CHWVHLM011.HRL001">CHWVHLM011.HRL001</option>
+                                       <option value="CHWVHLM012.HRL001">CHWVHLM012.HRL001</option>
+                                       <option value="CHWVHLM015.HRL001">CHWVHLM015.HRL001</option>
+                                       <option value="CLLMHLM060.HRL001">CLLMHLM060.HRL001</option>
+                                       <option value="CLLMHLM061.HRL001">CLLMHLM061.HRL001</option>
+                                       <option value="CLLMHLM062.HRL001">CLLMHLM062.HRL001</option>
+                                       <option value="CLLMHLM063.HRL001">CLLMHLM063.HRL001</option>
+                                       <option value="CLLMHLM064.HRL001">CLLMHLM064.HRL001</option>
+                                       <option value="CLLMHLM270.002">CLLMHLM270.002</option>
+                                       <option value="CLLMHLM271.002">CLLMHLM271.002</option>
+                                       <option value="CLLMHLM272.002">CLLMHLM272.002</option>
+                                       <option value="CLLMHLM273.002">CLLMHLM273.002</option>
+                                       <option value="CLLMHLM274.002">CLLMHLM274.002</option>
+                                       <option value="CLLMHLM275.002">CLLMHLM275.002</option>
+                                       <option value="CLLMHLM276.002">CLLMHLM276.002</option>
+                                       <option value="CLLMHLM277.002">CLLMHLM277.002</option>
+                                       <option value="CLLMHLM278.002">CLLMHLM278.002</option>
+                                       <option value="CLLMHLM279.002">CLLMHLM279.002</option>
+                                       <option value="CLLMHLM280.002">CLLMHLM280.002</option>
+                                       <option value="CLLMHLM281.002">CLLMHLM281.002</option>
+                                       <option value="CLLMHLM282.002">CLLMHLM282.002</option>
+                                       <option value="CLLMHLM283.002">CLLMHLM283.002</option>
+                                       <option value="CLLMHLM284.002">CLLMHLM284.002</option>
+                                       <option value="CLLMHLM285.002">CLLMHLM285.002</option>
+                                       <option value="CLLMHLM286.002">CLLMHLM286.002</option>
+                                       <option value="CLLMHLM287.002">CLLMHLM287.002</option>
+                                       <option value="CLLMHLM288.002">CLLMHLM288.002</option>
+                                       <option value="CLLMHLM289.002">CLLMHLM289.002</option>
+                                       <option value="CLLMHLM290.002">CLLMHLM290.002</option>
+                                       <option value="CLLMHLM291.002">CLLMHLM291.002</option>
+                                       <option value="CLLMHLM292.002">CLLMHLM292.002</option>
+                                       <option value="CLLMHLM293.002">CLLMHLM293.002</option>
+                                       <option value="CLLMHLM294.002">CLLMHLM294.002</option>
+                                       <option value="CLLMHLM295.002">CLLMHLM295.002</option>
+                                       <option value="CLLMNIPF041.HRL002">CLLMNIPF041.HRL002</option>
+                                       <option value="CLLMNIPF050.HRL001">CLLMNIPF050.HRL001</option>
+                                       <option value="CLLMNIPF050.HRL002">CLLMNIPF050.HRL002</option>
+                                       <option value="CLLMNIPF100.HRL001">CLLMNIPF100.HRL001</option>
+                                       <option value="CLLMNIPF128.HRL001">CLLMNIPF128.HRL001</option>
+                                       <option value="CORPHLM002.HRL001">CORPHLM002.HRL001</option>
+                                       <option value="DANVHLM270.002">DANVHLM270.002</option>
+                                       <option value="DANVHLM272.002">DANVHLM272.002</option>
+                                       <option value="DANVHLM273.002">DANVHLM273.002</option>
+                                       <option value="DANVHLM274.002">DANVHLM274.002</option>
+                                       <option value="DANVHLM275.002">DANVHLM275.002</option>
+                                       <option value="DANVHLM276.002">DANVHLM276.002</option>
+                                       <option value="DANVHLM277.002">DANVHLM277.002</option>
+                                       <option value="DANVHLM278.002">DANVHLM278.002</option>
+                                       <option value="DANVHLM279.002">DANVHLM279.002</option>
+                                       <option value="DANVHLM280.002">DANVHLM280.002</option>
+                                       <option value="DANVHLM281.002">DANVHLM281.002</option>
+                                       <option value="DANVHLM282.002">DANVHLM282.002</option>
+                                       <option value="DANVHLM283.002">DANVHLM283.002</option>
+                                       <option value="DANVHLM500.MUHunt">DANVHLM500.MUHunt</option>
+                                       <option value="DANVHLM501.MUHunt">DANVHLM501.MUHunt</option>
+                                       <option value="DANVHLM503.MUHunt">DANVHLM503.MUHunt</option>
+                                       <option value="DANVHLM504.MUHunt">DANVHLM504.MUHunt</option>
+                                       <option value="EDGEHLM052.002">EDGEHLM052.002</option>
+                                       <option value="EDGEHLM053.002">EDGEHLM053.002</option>
+                                       <option value="EDGEHLM054.002">EDGEHLM054.002</option>
+                                       <option value="EDGEHLM055.002">EDGEHLM055.002</option>
+                                       <option value="EDGEHLM056.002">EDGEHLM056.002</option>
+                                       <option value="EDGEHLM090.HRLSC">EDGEHLM090.HRLSC</option>
+                                       <option value="EDGEHLM270.002">EDGEHLM270.002</option>
+                                       <option value="EDGEHLM271.002">EDGEHLM271.002</option>
+                                       <option value="EDGEHLM272.002">EDGEHLM272.002</option>
+                                       <option value="EDGEHLM273.002">EDGEHLM273.002</option>
+                                       <option value="EDGEHLM274.002">EDGEHLM274.002</option>
+                                       <option value="EDGEHLM275.002">EDGEHLM275.002</option>
+                                       <option value="EDGEHLM276.002">EDGEHLM276.002</option>
+                                       <option value="EDGEHLM277.002">EDGEHLM277.002</option>
+                                       <option value="EDGEHLM278.002">EDGEHLM278.002</option>
+                                       <option value="EDGEHLM501.MUHunt">EDGEHLM501.MUHunt</option>
+                                       <option selected="selected" value="EDGEHLM502.MUHunt">EDGEHLM502.MUHunt</option>
+                                       <option value="EDGEHLM503.MUHunt">EDGEHLM503.MUHunt</option>
+                                       <option value="EDGEHLM504.MUHunt">EDGEHLM504.MUHunt</option>
+                                       <option value="EDGEHLM505.MUHunt">EDGEHLM505.MUHunt</option>
+                                       <option value="EDGELMP001.HRLNC">EDGELMP001.HRLNC</option>
+                                       <option value="EDGELMP001.HRLSC">EDGELMP001.HRLSC</option>
+                                       <option value="EDGELMP001.HRLTN">EDGELMP001.HRLTN</option>
+                                       <option value="EDGELMP011.002">EDGELMP011.002</option>
+                                       <option value="EDGENIPF001.HRL001">EDGENIPF001.HRL001</option>
+                                       <option value="EDGENIPF003.HRL001">EDGENIPF003.HRL001</option>
+                                       <option value="EDGENIPF032.HRL001">EDGENIPF032.HRL001</option>
+                                       <option value="EDGENIPF109.HRL001">EDGENIPF109.HRL001</option>
+                                       <option value="EDGENIPF114.HRL001">EDGENIPF114.HRL001</option>
+                                       <option value="EDGENIPF119.HRL001">EDGENIPF119.HRL001</option>
+                                       <option value="EDGENIPF128.HRL001">EDGENIPF128.HRL001</option>
+                                       <option value="EDGENIPF132.HRL001">EDGENIPF132.HRL001</option>
+                                       <option value="EDGENIPF132.HRL002">EDGENIPF132.HRL002</option>
+                                       <option value="EDGENIPF132.HRL003">EDGENIPF132.HRL003</option>
+                                       <option value="EDGENIPF144.HRL001">EDGENIPF144.HRL001</option>
+                                       <option value="EDGENIPF151.HRL001">EDGENIPF151.HRL001</option>
+                                       <option value="EDGENIPF152.HRL001">EDGENIPF152.HRL001</option>
+                                       <option value="EDGENIPF153.HRL001">EDGENIPF153.HRL001</option>
+                                       <option value="EDGENIPF154.HRL001">EDGENIPF154.HRL001</option>
+                                       <option value="EDGENIPF156.HRL001">EDGENIPF156.HRL001</option>
+                                       <option value="EDGENIPF157.HRL001">EDGENIPF157.HRL001</option>
+                                       <option value="EDGENIPF158.HRL001">EDGENIPF158.HRL001</option>
+                                       <option value="EDGENIPF160.HRL001">EDGENIPF160.HRL001</option>
+                                       <option value="EDGENIPF161.HRL001">EDGENIPF161.HRL001</option>
+                                       <option value="FOLKHLM090.HRLGA">FOLKHLM090.HRLGA</option>
+                                       <option value="FOLKHLM091.HRLGA">FOLKHLM091.HRLGA</option>
+                                       <option value="FOLKHLM092.HRLGA">FOLKHLM092.HRLGA</option>
+                                       <option value="FOLKHLM093.HRLGA">FOLKHLM093.HRLGA</option>
+                                       <option value="FOLKHLM094.HRLGA">FOLKHLM094.HRLGA</option>
+                                       <option value="FOLKHLM095.HRLGA">FOLKHLM095.HRLGA</option>
+                                       <option value="FOLKHLM096.HRLGA">FOLKHLM096.HRLGA</option>
+                                       <option value="FOLKLMP006.005">FOLKLMP006.005</option>
+                                       <option value="FOLKLMP017.HRLGA">FOLKLMP017.HRLGA</option>
+                                       <option value="FOLKNIPF002.HRL001">FOLKNIPF002.HRL001</option>
+                                       <option value="FOLKNIPF003.HRL001">FOLKNIPF003.HRL001</option>
+                                       <option value="FOLKNIPF004.HRL001">FOLKNIPF004.HRL001</option>
+                                       <option value="FOLKNIPF007.HRL001">FOLKNIPF007.HRL001</option>
+                                       <option value="GAINHLM027.005">GAINHLM027.005</option>
+                                       <option value="GAINHLM028.HRL001">GAINHLM028.HRL001</option>
+                                       <option value="GAINHLM092.HRLFL">GAINHLM092.HRLFL</option>
+                                       <option value="GAINHLM093.HRLFL">GAINHLM093.HRLFL</option>
+                                       <option value="GAINHLM270.002">GAINHLM270.002</option>
+                                       <option value="GAINHLM271.002">GAINHLM271.002</option>
+                                       <option value="GAINHLM272.002">GAINHLM272.002</option>
+                                       <option value="GAINHLM273.002">GAINHLM273.002</option>
+                                       <option value="GAINHLM274.002">GAINHLM274.002</option>
+                                       <option value="GAINHLM275.002">GAINHLM275.002</option>
+                                       <option value="GAINHLM276.002">GAINHLM276.002</option>
+                                       <option value="GAINHLM277.002">GAINHLM277.002</option>
+                                       <option value="GAINHLM278.002">GAINHLM278.002</option>
+                                       <option value="GAINHLM279.002">GAINHLM279.002</option>
+                                       <option value="GAINHLM280.002">GAINHLM280.002</option>
+                                       <option value="GAINHLM281.002">GAINHLM281.002</option>
+                                       <option value="GAINHLM282.002">GAINHLM282.002</option>
+                                       <option value="GAINHLM500.MUHunt">GAINHLM500.MUHunt</option>
+                                       <option value="GAINHLM501.MUHunt">GAINHLM501.MUHunt</option>
+                                       <option value="GAINHLM502.MUHunt">GAINHLM502.MUHunt</option>
+                                       <option value="GAINLMP002.003">GAINLMP002.003</option>
+                                       <option value="GAINLMP005.003">GAINLMP005.003</option>
+                                       <option value="GAINLMP006.003">GAINLMP006.003</option>
+                                       <option value="GAINLMP007.003">GAINLMP007.003</option>
+                                       <option value="GAINLMP009.HRLFL">GAINLMP009.HRLFL</option>
+                                       <option value="GAINLMP009.HRLGA">GAINLMP009.HRLGA</option>
+                                       <option value="GAINLMP009.HRLNC">GAINLMP009.HRLNC</option>
+                                       <option value="GAINLMP012.004">GAINLMP012.004</option>
+                                       <option value="GAINLMP013.004">GAINLMP013.004</option>
+                                       <option value="GAINLMP014.004">GAINLMP014.004</option>
+                                       <option value="GAINLMP015.004">GAINLMP015.004</option>
+                                       <option value="GAINLMP016.004">GAINLMP016.004</option>
+                                       <option value="GAINLMP017.004">GAINLMP017.004</option>
+                                       <option value="GAINLMP020.002">GAINLMP020.002</option>
+                                       <option value="GAINNIPF019.HRL001">GAINNIPF019.HRL001</option>
+                                       <option value="GAINNIPF034.HRL001">GAINNIPF034.HRL001</option>
+                                       <option value="HOPEHLM006.HRL007">HOPEHLM006.HRL007</option>
+                                       <option value="HOPEHLM010.002">HOPEHLM010.002</option>
+                                       <option value="HOPEHLM060.HRL001">HOPEHLM060.HRL001</option>
+                                       <option value="HOPEHLM270.002">HOPEHLM270.002</option>
+                                       <option value="HOPEHLM271.002">HOPEHLM271.002</option>
+                                       <option value="HOPEHLM272.002">HOPEHLM272.002</option>
+                                       <option value="HOPEHLM273.002">HOPEHLM273.002</option>
+                                       <option value="HOPEHLM274.002">HOPEHLM274.002</option>
+                                       <option value="HOPEHLM275.002">HOPEHLM275.002</option>
+                                       <option value="HOPEHLM276.002">HOPEHLM276.002</option>
+                                       <option value="HOPEHLM277.002">HOPEHLM277.002</option>
+                                       <option value="HOPEHLM500.MUHunt">HOPEHLM500.MUHunt</option>
+                                       <option value="HOPEHLM501.MUHunt">HOPEHLM501.MUHunt</option>
+                                       <option value="HOPEHLM502.MUHunt">HOPEHLM502.MUHunt</option>
+                                       <option value="KIRKLMP005.003">KIRKLMP005.003</option>
+                                       <option value="KIRKLMP501.MUHunt">KIRKLMP501.MUHunt</option>
+                                       <option value="KIRKLMP502.MUHunt">KIRKLMP502.MUHunt</option>
+                                       <option value="LANDHLM001.004">LANDHLM001.004</option>
+                                       <option value="LANDHLM003.004">LANDHLM003.004</option>
+                                       <option value="LANDLMP019.004">LANDLMP019.004</option>
+                                       <option value="MAINLMP001.003">MAINLMP001.003</option>
+                                       <option value="MAINLMP001.004">MAINLMP001.004</option>
+                                       <option value="MARIHLM090.HRLFL">MARIHLM090.HRLFL</option>
+                                       <option value="MARIHLM091.HRLFL">MARIHLM091.HRLFL</option>
+                                       <option value="MARIHLM092.HRLAL">MARIHLM092.HRLAL</option>
+                                       <option value="MARIHLM093.HRLAL">MARIHLM093.HRLAL</option>
+                                       <option value="MARIHLM094.HRLFL">MARIHLM094.HRLFL</option>
+                                       <option value="MARIHLM095.HRLGA">MARIHLM095.HRLGA</option>
+                                       <option value="MARIHLM096.HRLGA">MARIHLM096.HRLGA</option>
+                                       <option value="MARIHLM097.HRLAL">MARIHLM097.HRLAL</option>
+                                       <option value="MARIHLM098.HRLFL">MARIHLM098.HRLFL</option>
+                                       <option value="MARIHLM500.MUHunt">MARIHLM500.MUHunt</option>
+                                       <option value="MARIHLM501.MUHunt">MARIHLM501.MUHunt</option>
+                                       <option value="MARIHLM502.MUHunt">MARIHLM502.MUHunt</option>
+                                       <option value="MARIHLM503.MUHunt">MARIHLM503.MUHunt</option>
+                                       <option value="MARIHLM504.MUHunt">MARIHLM504.MUHunt</option>
+                                       <option value="MARIHLM505.MUHunt">MARIHLM505.MUHunt</option>
+                                       <option value="MARIHLM506.MUHunt">MARIHLM506.MUHunt</option>
+                                       <option value="MARILMP007.002">MARILMP007.002</option>
+                                       <option value="MARILMP008.002">MARILMP008.002</option>
+                                       <option value="MARILMP010.009">MARILMP010.009</option>
+                                       <option value="MARILMP014.010">MARILMP014.010</option>
+                                       <option value="MARILMP020.HRL">MARILMP020.HRL</option>
+                                       <option value="MARINIPF015.HRL001">MARINIPF015.HRL001</option>
+                                       <option value="MERIHLM090.HRLMS">MERIHLM090.HRLMS</option>
+                                       <option value="MERIHLM091.HRLMS">MERIHLM091.HRLMS</option>
+                                       <option value="MERIHLM092.HRLMS">MERIHLM092.HRLMS</option>
+                                       <option value="MERIHLM093.HRLMS">MERIHLM093.HRLMS</option>
+                                       <option value="MERIHLM094.HRLMS">MERIHLM094.HRLMS</option>
+                                       <option value="MERIHLM095.HRLMS">MERIHLM095.HRLMS</option>
+                                       <option value="MERIHLM500.MUHunt">MERIHLM500.MUHunt</option>
+                                       <option value="MERIHLM501.MUHunt">MERIHLM501.MUHunt</option>
+                                       <option value="MERIHLM502.MUHunt">MERIHLM502.MUHunt</option>
+                                       <option value="MERILMP001.LCOMM">MERILMP001.LCOMM</option>
+                                       <option value="MICHLMP001.002">MICHLMP001.002</option>
+                                       <option value="MICHLMP002.002">MICHLMP002.002</option>
+                                       <option value="MICHLMP003.002">MICHLMP003.002</option>
+                                       <option value="MICHLMP004.002">MICHLMP004.002</option>
+                                       <option value="OAKRHLM020.003">OAKRHLM020.003</option>
+                                       <option value="OAKRHLM022.HLR">OAKRHLM022.HLR</option>
+                                       <option value="OAKRHLM023.HLR">OAKRHLM023.HLR</option>
+                                       <option value="OAKRHLM025.HLR- BY TRACT">OAKRHLM025.HLR- BY TRACT</option>
+                                       <option value="OAKRHLM090.HRLGA">OAKRHLM090.HRLGA</option>
+                                       <option value="OAKRHLM091.HRLAL">OAKRHLM091.HRLAL</option>
+                                       <option value="OAKRHLM091.HRLGA">OAKRHLM091.HRLGA</option>
+                                       <option value="OAKRHLM091.HRLTN">OAKRHLM091.HRLTN</option>
+                                       <option value="OAKRHLM092.HRLGA">OAKRHLM092.HRLGA</option>
+                                       <option value="OAKRHLM093.HRLAL">OAKRHLM093.HRLAL</option>
+                                       <option value="OAKRHLM270.002">OAKRHLM270.002</option>
+                                       <option value="OAKRHLM271.002">OAKRHLM271.002</option>
+                                       <option value="OAKRHLM272.002">OAKRHLM272.002</option>
+                                       <option value="OAKRHLM273.002">OAKRHLM273.002</option>
+                                       <option value="OAKRHLM274.002">OAKRHLM274.002</option>
+                                       <option value="OAKRHLM275.002">OAKRHLM275.002</option>
+                                       <option value="OAKRHLM276.002">OAKRHLM276.002</option>
+                                       <option value="OAKRHLM277.002">OAKRHLM277.002</option>
+                                       <option value="OAKRHLM278.002">OAKRHLM278.002</option>
+                                       <option value="OAKRHLM279.002">OAKRHLM279.002</option>
+                                       <option value="OAKRHLM280.002">OAKRHLM280.002</option>
+                                       <option value="OAKRHLM281.002">OAKRHLM281.002</option>
+                                       <option value="OAKRHLM282.002">OAKRHLM282.002</option>
+                                       <option value="OAKRHLM283.002">OAKRHLM283.002</option>
+                                       <option value="OAKRHLM284.002">OAKRHLM284.002</option>
+                                       <option value="OAKRHLM285.002">OAKRHLM285.002</option>
+                                       <option value="OAKRHLM286.002">OAKRHLM286.002</option>
+                                       <option value="OAKRHLM287.002">OAKRHLM287.002</option>
+                                       <option value="OAKRHLM288.002">OAKRHLM288.002</option>
+                                       <option value="OAKRHLM289.002">OAKRHLM289.002</option>
+                                       <option value="OAKRHLM290.002">OAKRHLM290.002</option>
+                                       <option value="OAKRLMP001.002">OAKRLMP001.002</option>
+                                       <option value="OAKRNIPF004.HRL001">OAKRNIPF004.HRL001</option>
+                                       <option value="PRATHLM001.HLR">PRATHLM001.HLR</option>
+                                       <option value="PRATHLM030.HLR">PRATHLM030.HLR</option>
+                                       <option value="PRATHLM091.HRLGA">PRATHLM091.HRLGA</option>
+                                       <option value="PRATHLM092.HRLGA">PRATHLM092.HRLGA</option>
+                                       <option value="PRATHLM095.HRLAL">PRATHLM095.HRLAL</option>
+                                       <option value="PRATNIPF004.HRL001">PRATNIPF004.HRL001</option>
+                                       <option value="RICHHLM060.HRL001">RICHHLM060.HRL001</option>
+                                       <option value="RICHHLM061.HRL001">RICHHLM061.HRL001</option>
+                                       <option value="RICHHLM062.HRL001">RICHHLM062.HRL001</option>
+                                       <option value="RICHHLM081.HLR">RICHHLM081.HLR</option>
+                                       <option value="RICHHLM090.HRLVA">RICHHLM090.HRLVA</option>
+                                       <option value="RICHLMP005.003">RICHLMP005.003</option>
+                                       <option value="RICHLMP005.004">RICHLMP005.004</option>
+                                       <option value="RICHLMP006.002">RICHLMP006.002</option>
+                                       <option value="RICHNIPF054.HRL001">RICHNIPF054.HRL001</option>
+                                       <option value="RUSSNIPF040.HLR001">RUSSNIPF040.HLR001</option>
+                                       <option value="SANDHLM040.004">SANDHLM040.004</option>
+                                       <option value="SANDHLM042.008">SANDHLM042.008</option>
+                                       <option value="SANDHLM061.002">SANDHLM061.002</option>
+                                       <option value="SANDHLM062.002">SANDHLM062.002</option>
+                                       <option value="SANDHLM063.002">SANDHLM063.002</option>
+                                       <option value="SANDHLM064.002">SANDHLM064.002</option>
+                                       <option value="SANDHLM065.002">SANDHLM065.002</option>
+                                       <option value="SANDHLM066.002">SANDHLM066.002</option>
+                                       <option value="SANDHLM067.002">SANDHLM067.002</option>
+                                       <option value="SANDHLM080.HLR">SANDHLM080.HLR</option>
+                                       <option value="SANDHLM090.HRLGA">SANDHLM090.HRLGA</option>
+                                       <option value="SANDHLM092.HRLGA">SANDHLM092.HRLGA</option>
+                                       <option value="SANDHLM093.HRLAUBGA">SANDHLM093.HRLAUBGA</option>
+                                       <option value="SANDHLM093.HRLPENNGA">SANDHLM093.HRLPENNGA</option>
+                                       <option value="SANDHLM094.HRLGA">SANDHLM094.HRLGA</option>
+                                       <option value="SANDHLM095.HRLGA">SANDHLM095.HRLGA</option>
+                                       <option value="SANDHLM096.HRLGA">SANDHLM096.HRLGA</option>
+                                       <option value="SANDHLM097.HRLGA">SANDHLM097.HRLGA</option>
+                                       <option value="SANDHLM098.HRLGA">SANDHLM098.HRLGA</option>
+                                       <option value="SANDHLM099.HRLGA">SANDHLM099.HRLGA</option>
+                                       <option value="SANDHLM100.HRLGA">SANDHLM100.HRLGA</option>
+                                       <option value="SANDHLM101.HRLGA">SANDHLM101.HRLGA</option>
+                                       <option value="SANDHLM102.HRLGA">SANDHLM102.HRLGA</option>
+                                       <option value="SANDHLM103.HRLGA">SANDHLM103.HRLGA</option>
+                                       <option value="SANDHLM104.HRLGA">SANDHLM104.HRLGA</option>
+                                       <option value="SANDHLM105.HRLGA">SANDHLM105.HRLGA</option>
+                                       <option value="SANDHLM106.HRLGA">SANDHLM106.HRLGA</option>
+                                       <option value="SANDHLM107.HRLGA">SANDHLM107.HRLGA</option>
+                                       <option value="SANDHLM108.HRLGA">SANDHLM108.HRLGA</option>
+                                       <option value="SANDHLM110.HRLGA">SANDHLM110.HRLGA</option>
+                                       <option value="SANDHLM111.HRLGA">SANDHLM111.HRLGA</option>
+                                       <option value="SANDHLM500.MUHunt">SANDHLM500.MUHunt</option>
+                                       <option value="SANDHLM501.MUHunt">SANDHLM501.MUHunt</option>
+                                       <option value="SANDHLM502.MUHunt">SANDHLM502.MUHunt</option>
+                                       <option value="SANDHLM503.MUHunt">SANDHLM503.MUHunt</option>
+                                       <option value="SANDHLM504.MUHunt">SANDHLM504.MUHunt</option>
+                                       <option value="SANDHLM509.MUHunt">SANDHLM509.MUHunt</option>
+                                       <option value="SANDHLM510.MUHunt">SANDHLM510.MUHunt</option>
+                                       <option value="SANDHLM511.MUHunt">SANDHLM511.MUHunt</option>
+                                       <option value="SANDLMP006.002">SANDLMP006.002</option>
+                                       <option value="SANDLMP015.002">SANDLMP015.002</option>
+                                       <option value="SANDLMP017.HRLGA">SANDLMP017.HRLGA</option>
+                                       <option value="SANDLMP030.HRL">SANDLMP030.HRL</option>
+                                       <option value="SANDNIPF026.HRL001">SANDNIPF026.HRL001</option>
+                                       <option value="SANDNIPF064.HRL001">SANDNIPF064.HRL001</option>
+                                       <option value="SANDNIPF159.HRL001">SANDNIPF159.HRL001</option>
+                                       <option value="SANDNIPF162.HRL001">SANDNIPF162.HRL001</option>
+                                       <option value="SANDNIPF171.HRL001">SANDNIPF171.HRL001</option>
+                                       <option value="SANDNIPF172.HRL001">SANDNIPF172.HRL001</option>
+                                       <option value="SANDNIPF173.HRL001">SANDNIPF173.HRL001</option>
+                                       <option value="SANDNIPF174.HRL001">SANDNIPF174.HRL001</option>
+                                       <option value="SANDNIPF176.HRL001">SANDNIPF176.HRL001</option>
+                                       <option value="SANDNIPF195.HRL001">SANDNIPF195.HRL001</option>
+                                       <option value="STBRHLM090.HRLGA">STBRHLM090.HRLGA</option>
+                                       <option value="STBRHLM500.MUHunt">STBRHLM500.MUHunt</option>
+                                       <option value="STBRHLM505.MUHunt">STBRHLM505.MUHunt</option>
+                                       <option value="STBRHLM506.MUHunt">STBRHLM506.MUHunt</option>
+                                       <option value="STBRLMP001.HRLAL">STBRLMP001.HRLAL</option>
+                                       <option value="STBRLMP001.HRLGAS">STBRLMP001.HRLGAS</option>
+                                       <option value="STBRLMP001.HRLGAST">STBRLMP001.HRLGAST</option>
+                                       <option value="STBRLMP001.HRLMS">STBRLMP001.HRLMS</option>
+                                       <option value="STBRLMP001.HRLSC">STBRLMP001.HRLSC</option>
+                                       <option value="STBRNIPF037.HRL001">STBRNIPF037.HRL001</option>
+                                       <option value="STBRNIPF058.HRL001">STBRNIPF058.HRL001</option>
+                                       <option value="SUMTLMP030.HRL">SUMTLMP030.HRL</option>
+                                       <option value="SUMTNIPF011.HRL001">SUMTNIPF011.HRL001</option>
+                                       <option value="SUMTNIPF016.HRL001">SUMTNIPF016.HRL001</option>
+                                       <option value="SUMTNIPF018.HRL001">SUMTNIPF018.HRL001</option>
+                                       <option value="SUMTNIPF030.HRL001">SUMTNIPF030.HRL001</option>
+                                       <option value="SUMTNIPF030.HRL002">SUMTNIPF030.HRL002</option>
+                                       <option value="SUMTNIPF032.HRL001">SUMTNIPF032.HRL001</option>
+                                       <option value="SUMTNIPF032.HRL002">SUMTNIPF032.HRL002</option>
+                                       <option value="SUMTNIPF088.HRL001">SUMTNIPF088.HRL001</option>
+                                       <option value="SUMTNIPF159.HRL001">SUMTNIPF159.HRL001</option>
+                                       <option value="SUMTNIPF360.HRL001">SUMTNIPF360.HRL001</option>
+                                       <option value="SUMTNIPF409.HRL001">SUMTNIPF409.HRL001</option>
+                                       <option value="SUMTNIPF409.HRL002">SUMTNIPF409.HRL002</option>
+                                       <option value="TEMPLATES.HRL001">TEMPLATES.HRL001</option>
+                                       <option value="TEMPLATES.HRL002">TEMPLATES.HRL002</option>
+                                       <option value="TEXAHLM004.004">TEXAHLM004.004</option>
+                                       <option value="TEXAHLM006.HLA">TEXAHLM006.HLA</option>
+                                       <option value="TEXAHLM055.003">TEXAHLM055.003</option>
+                                       <option value="TEXAHLM071.HLA">TEXAHLM071.HLA</option>
+                                       <option value="TEXAHLM072.HLA">TEXAHLM072.HLA</option>
+                                       <option value="TEXAHLM073.HLA">TEXAHLM073.HLA</option>
+                                       <option value="TEXAHLM074.HLA">TEXAHLM074.HLA</option>
+                                       <option value="TEXAHLM075.HLA">TEXAHLM075.HLA</option>
+                                       <option value="TEXAHLM076.HLA">TEXAHLM076.HLA</option>
+                                       <option value="TEXAHLM077.HLA">TEXAHLM077.HLA</option>
+                                       <option value="TEXAHLM078.HLA">TEXAHLM078.HLA</option>
+                                       <option value="TEXAHLM079.HLA AR">TEXAHLM079.HLA AR</option>
+                                       <option value="TEXAHLM079.HLA LA">TEXAHLM079.HLA LA</option>
+                                       <option value="TEXAHLM080.HLA AR">TEXAHLM080.HLA AR</option>
+                                       <option value="TEXAHLM081.HLA AR">TEXAHLM081.HLA AR</option>
+                                       <option value="TEXAHLM081.HLA LA">TEXAHLM081.HLA LA</option>
+                                       <option value="TEXAHLM082.HLA AR">TEXAHLM082.HLA AR</option>
+                                       <option value="TEXAHLM500.MUHunt">TEXAHLM500.MUHunt</option>
+                                       <option value="TEXAHLM501.MUHunt">TEXAHLM501.MUHunt</option>
+                                       <option value="TEXAHLM502.MUHunt">TEXAHLM502.MUHunt</option>
+                                       <option value="TEXAHLM503.MUHunt">TEXAHLM503.MUHunt</option>
+                                       <option value="TEXAHLM504.MUHunt">TEXAHLM504.MUHunt</option>
+                                       <option value="TEXAHLM505.MUHunt">TEXAHLM505.MUHunt</option>
+                                       <option value="TEXAHLM506.MUHunt">TEXAHLM506.MUHunt</option>
+                                       <option value="TEXAHLM507.MUHunt">TEXAHLM507.MUHunt</option>
+                                       <option value="TEXAHLM508.MUHunt">TEXAHLM508.MUHunt</option>
+                                       <option value="TEXAHLM509.MUHunt">TEXAHLM509.MUHunt</option>
+                                       <option value="TEXAHLM510.MUHunt">TEXAHLM510.MUHunt</option>
+                                       <option value="TEXAHLM511.MUHunt">TEXAHLM511.MUHunt</option>
+                                       <option value="TEXALMP005.HRL001">TEXALMP005.HRL001</option>
+                                       <option value="TEXALMP006.HRL">TEXALMP006.HRL</option>
+                                       <option value="TEXANIPF034.HRL0001">TEXANIPF034.HRL0001</option>
+                                       <option value="WALTHLM012.HRL001">WALTHLM012.HRL001</option>
+                                       <option value="WALTHLM200.002">WALTHLM200.002</option>
+                                       <option value="WALTHLM500.MUHunt">WALTHLM500.MUHunt</option>
+                                       <option value="WALTHLM501.MUHunt">WALTHLM501.MUHunt</option>
+                                       <option value="WALTHLM502.MUHunt">WALTHLM502.MUHunt</option>
+                                       <option value="WALTLMP001.HRLSC">WALTLMP001.HRLSC</option>
+                                       <option value="WALTNIPF009.HRL001">WALTNIPF009.HRL001</option>
+                                       <option value="WALTNIPF014.HRL001">WALTNIPF014.HRL001</option>
+                                       <option value="WALTNIPF016.HRL001">WALTNIPF016.HRL001</option>
+                                       <option value="WALTNIPF077.HRL001">WALTNIPF077.HRL001</option>
+                                       <option value="WALTNIPF088.HRL001">WALTNIPF088.HRL001</option>
+                                       <option value="WALTNIPF387.HRL001">WALTNIPF387.HRL001</option>
+                                       <option value="WALTNIPF407.HRL001">WALTNIPF407.HRL001</option>
+                                       <option value="WAYNLMP001.002">WAYNLMP001.002</option>
+                                       <option value="WAYNLMP002.002">WAYNLMP002.002</option>
+                                       <option value="WAYNLMP002.011">WAYNLMP002.011</option>
+                                       <option value="WAYNLMP003.005">WAYNLMP003.005</option>
+                                       <option value="WAYNLMP004.004">WAYNLMP004.004</option>
+                                       <option value="WAYNLMP004.005">WAYNLMP004.005</option>
+                                       <option value="WAYNLMP004.006">WAYNLMP004.006</option>
+                                    </select>
+                                    <span class="field-validation-valid text-danger" data-valmsg-for="ProjectNumber" data-valmsg-replace="true" style="display:block"></span>
+                                 </div>
+                              </div>
+                              <script type="text/javascript">
+                                 setTimeout(function () {
+                                      if ($('#ProjectNumber option').filter(function () { return $(this).val() == "EDGEHLM502.MUHunt"; }).length==0) {
+                                          $('#ProjectNumber').append(new Option("EDGEHLM502.MUHunt", "EDGEHLM502.MUHunt", true, true));
+                                       }
+                                  }, 1500);
+                              </script>
+                              <div class="form-group">
+                                 <label class="control-label col-md-2" for="Comments">COMMENTS</label>
+                                 <div class="col-md-10">
+                                    <textarea class="form-control" cols="1" data-val="true" data-val-length="COMMENTS can&#39;t be more than 1024 characters" data-val-length-max="1024" id="Comments" name="Comments" rows="4">
+                                    **THE USE OF DOGS ARE PROHIBITED FOR HUNTING DEER**; LeaseType: FIA; EASY</textarea>
+                                    <span class="field-validation-valid text-danger" data-valmsg-for="Comments" data-valmsg-replace="true" style="display:block"></span>
+                                 </div>
+                              </div>
+                              <div class="form-group">
+                                 <div class="col-md-offset-10 col-md-2">
+                                    <input type="submit" value="SAVE CHANGES" class="btn btn-primary" />
+                                 </div>
+                              </div>
+                              <hr />
+                              <br />
+                              <h5>GEOMETRY INFORMATION</h5>
+                              <div class="alert alert-warning alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                 <strong> THE ONLY SUPPORTED FORMATS ARE .map AND .shp</strong><br />Geometry coordinate system must be "Albers Conical Equal Area"
+                              </div>
+                              <div class="form-group">
+                                 <label class="control-label col-md-2" for="UPLOAD_GEOMETRY">UPLOAD GEOMETRY</label>
+                                 <div class="col-md-3">
+                                    <input type="file" class="form-control inputfile" style="border:none; padding:0px; box-shadow:none; max-width:none" id="Avatar" name="upload" multiple />
+                                 </div>
+                                 <div class="col-md-7">
+                                    <button class="btn btn-primary uploadgeom" type="button" style="padding:8px 8px;" data-toggle="tooltip" data-placement="top" title="" disabled="disabled">Start upload <span class="fa fa-upload" style="font-size:18px"></span></button>
+                                 </div>
+                              </div>
+                              <div class="form-group" id="layerselection" style="display:none">
+                                 <label class="control-label col-md-2" for="SELECT_LAYER">SELECT LAYER</label>
+                                 <div class="col-md-10">
+                                    <select class="form-control" id="layerstoselect" name="TRACTGEOMs">
+                                       <option value=""></option>
+                                    </select>
+                                 </div>
+                              </div>
+                              <div class="form-group" id="geomselection" style="display:none">
+                                 <label class="control-label col-md-2" for="SELECT_TRACT_GEOMETRY">SELECT TRACT GEOMETRY</label>
+                                 <div class="col-md-3">
+                                    <select class="form-control" id="geomstoselect" name="TRACTGEOMs">
+                                       <option value=""></option>
+                                    </select>
+                                 </div>
+                                 <div class="col-md-7">
+                                    <button class="btn btn-primary" id="addgeom" type="button" style="padding:8px 8px; width:125px" data-toggle="tooltip" data-placement="top"  disabled="disabled">Add to tract</button>
+                                 </div>
+                              </div>
+                              <br />
+                              <hr />
+                              <h5>LEASES</h5>
+                              <div class="form-group">
+                                 <div class="col-md-12">
+                                    <table class="table dataTableTracts">
+                                       <thead style="background-color:#f5f5f5">
+                                          <tr>
+                                             <th class="keinumbruch" style="width:3%"></th>
+                                             <th class="keinumbruch" style="width:3%"></th>
+                                             <th class="keinumbruch" style="width:3%"></th>
+                                             <th class="keinumbruch" style="width:10%">LESSEE</th>
+                                             <th class="keinumbruch" style="width:10%">TYPE</th>
+                                             <th class="keinumbruch" style="width:10%">ACRES</th>
+                                             <th class="keinumbruch" style="width:10%">BEGIN DATE</th>
+                                             <th class="keinumbruch" style="width:10%">END DATE</th>
+                                             <th></th>
+                                          </tr>
+                                       </thead>
+                                       <tbody>
+                                          <tr id="tr_1001" >
+                                             <td class="keinumbruch"><a data-toggle="tooltip" data-placement="top" title="Details" class="modal-link" href="/LeaseApp/leases/detailsmodal/1001?tractid=2487"><span class="glyphicon glyphicon-info-sign" style="font-size:15px; color:#6aa74b"></span></a></td>
+                                             <td><a href = "/LeaseApp/leases/edit/1001"  data-toggle="tooltip" data-placement = "top" title = "Edit" ><span class="glyphicon glyphicon-edit" style="font-size:15px; color:#6aa74b"></span></a></td>
+                                             <td></td>
+                                             <td>TILLMAN HUNTING CLUB</td>
+                                             <td>Hunt Lease</td>
+                                             <td>318.67</td>
+                                             <td>7/1/2016</td>
+                                             <td>6/30/2017</td>
+                                             <td></td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                                 </div>
+                              </div>
+                              <hr />
+                              <h5>QDMA OBSERVATIONS</h5>
+                              <div class="form-group">
+                                 <div class="col-md-12">
+                                    <div>
+                                       <table class="table dataTableTracts">
+                                          <thead style="background-color:#f5f5f5">
+                                             <tr>
+                                                <th style="width:3%"><a href="/LeaseApp/QDMA_OBSERVATION/create?trid=2487" class="modal-link" data-toggle="tooltip" data-placement="top" title="New"><span class="fa fa-magic" style="font-size:15px; color:#6aa74b"></span></a></th>
+                                                <th style="width:3%"></th>
+                                                <th style="width:3%"></th>
+                                                <th class="keinumbruch" style="width:10%">HUNT CLUB</th>
+                                                <th class="keinumbruch" style="width:10%">OBS.DATE</th>
+                                                <th class="keinumbruch" style="width:10%">HUNTING YEAR</th>
+                                                <th class="keinumbruch" style="width:10%">ANTLERED BUCKS</th>
+                                                <th class="keinumbruch" style="width:10%">DOES</th>
+                                                <th class="keinumbruch" style="width:10%">FAWNS</th>
+                                                <th class="keinumbruch" style="padding-right:0px">ENTRY DATE</th>
+                                             </tr>
+                                          </thead>
+                                          <tbody>
+                                             </tr>
+                                          </tbody>
+                                       </table>
+                                    </div>
+                                 </div>
+                              </div>
+                              <hr />
+                              <h5>QDMA HARVESTINGS</h5>
+                              <div class="form-group">
+                                 <div class="col-md-12">
+                                    <div>
+                                       <table class="table dataTableTracts" >
+                                          <thead style="background-color:#f5f5f5">
+                                             <tr>
+                                                <th style="width:3%"><a href="/LeaseApp/QDMA_HARVESTING/create?trid=2487" class="modal-link" data-toggle="tooltip" data-placement="top" title="New"><span class="fa fa-magic" style="font-size:15px; color:#6aa74b"></span></a></th>
+                                                <th style="width:3%"></th>
+                                                <th style="width:3%"></th>
+                                                <th class="keinumbruch" style="width:10%">HUNT CLUB</th>
+                                                <th class="keinumbruch" style="width:10%">OBS.DATE</th>
+                                                <th class="keinumbruch" style="width:10%">HUNTING YEAR</th>
+                                                <th class="keinumbruch" style="width:10%">SEX</th>
+                                                <th class="keinumbruch" style="width:10%">AGE</th>
+                                                <th class="keinumbruch" style="width:10%">LIVE WEIGHT (lbs)</th>
+                                                <th class="keinumbruch" style="width:10%">ENTRY DATE</th>
+                                                <th></th>
+                                             </tr>
+                                          </thead>
+                                          <tbody>
+                                             </tr>
+                                          </tbody>
+                                       </table>
+                                    </div>
+                                 </div>
+                              </div>
                            </div>
-                            <div class="col-md-7">
-                                <button class="btn btn-primary" id="addgeom" type="button" style="padding:8px 8px; width:125px" data-toggle="tooltip" data-placement="top"  disabled="disabled">Add to tract</button>
-                               </div>
-                        </div>
-                        <br />
-                         <hr />
-        <h5>LEASES</h5>
-        <div class="form-group">
-            <div class="col-md-12">
-                    <table class="table dataTableTracts">
-                        <thead style="background-color:#f5f5f5">
-                            <tr><th class="keinumbruch" style="width:3%"></th>
-                                <th class="keinumbruch" style="width:3%"></th>
-                                <th class="keinumbruch" style="width:3%"></th>
-                                <th class="keinumbruch" style="width:10%">LESSEE</th>
-                                <th class="keinumbruch" style="width:10%">TYPE</th>
-                                <th class="keinumbruch" style="width:10%">ACRES</th>
-                                <th class="keinumbruch" style="width:10%">BEGIN DATE</th>
-                                <th class="keinumbruch" style="width:10%">END DATE</th>
-                               <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <tr id="tr_1001" >
-                            <td class="keinumbruch"><a data-toggle="tooltip" data-placement="top" title="Details" class="modal-link" href="/LeaseApp/leases/detailsmodal/1001?tractid=2487"><span class="glyphicon glyphicon-info-sign" style="font-size:15px; color:#6aa74b"></span></a></td> <td><a href = "/LeaseApp/leases/edit/1001"  data-toggle="tooltip" data-placement = "top" title = "Edit" ><span class="glyphicon glyphicon-edit" style="font-size:15px; color:#6aa74b"></span></a></td>  <td></td><td>TILLMAN HUNTING CLUB</td><td>Hunt Lease</td><td>318.67</td><td>7/1/2016</td><td>6/30/2017</td><td></td>
-                                                </tr>
-
-                        </tbody>
-                    </table>
-
+                        </form>
+                     </div>
+                  </div>
+               </div>
             </div>
-        </div>
-<hr />
-    <h5>QDMA OBSERVATIONS</h5>
-    <div class="form-group">
-        <div class="col-md-12">
-                    <div>
-                        <table class="table dataTableTracts"><thead style="background-color:#f5f5f5">
-                            <tr>
-                                        <th style="width:3%"><a href="/LeaseApp/QDMA_OBSERVATION/create?trid=2487" class="modal-link" data-toggle="tooltip" data-placement="top" title="New"><span class="fa fa-magic" style="font-size:15px; color:#6aa74b"></span></a></th>
-
-
-                                <th style="width:3%"></th>
-                                <th style="width:3%"></th>
-                                <th class="keinumbruch" style="width:10%">HUNT CLUB</th>
-                                <th class="keinumbruch" style="width:10%">OBS.DATE</th>
-                                <th class="keinumbruch" style="width:10%">HUNTING YEAR</th>
-                                <th class="keinumbruch" style="width:10%">ANTLERED BUCKS</th>
-                                <th class="keinumbruch" style="width:10%">DOES</th>
-                                <th class="keinumbruch" style="width:10%">FAWNS</th>
-                                <th class="keinumbruch" style="padding-right:0px">ENTRY DATE</th>
-
-                            </tr>
-                            </thead><tbody>
-                                                 </tr>
-
-                        </tbody></table>
-
-                     </div>
-                </div>
+            <script type="text/javascript" src="https://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0&mkt=en-EN&s=1"></script>
          </div>
-<hr />
-    <h5>QDMA HARVESTINGS</h5>
-    <div class="form-group">
-        <div class="col-md-12">
-                    <div>
-                        <table class="table dataTableTracts" ><thead style="background-color:#f5f5f5">
-                            <tr>
-                                    <th style="width:3%"><a href="/LeaseApp/QDMA_HARVESTING/create?trid=2487" class="modal-link" data-toggle="tooltip" data-placement="top" title="New"><span class="fa fa-magic" style="font-size:15px; color:#6aa74b"></span></a></th>
-
-                                <th style="width:3%"></th>
-                                <th style="width:3%"></th>
-                                <th class="keinumbruch" style="width:10%">HUNT CLUB</th>
-                                <th class="keinumbruch" style="width:10%">OBS.DATE</th>
-                                <th class="keinumbruch" style="width:10%">HUNTING YEAR</th>
-                                <th class="keinumbruch" style="width:10%">SEX</th>
-                                <th class="keinumbruch" style="width:10%">AGE</th>
-                                <th class="keinumbruch" style="width:10%">LIVE WEIGHT (lbs)</th>
-                                <th class="keinumbruch" style="width:10%">ENTRY DATE</th>
-                                <th></th>
-
-                            </tr>
-                            </thead><tbody>
-                                                 </tr>
-
-                        </tbody></table>
-                     </div>
-                </div>
-         </div>
-                    </div>
-</form>            </div>
-        </div>
-    </div>
-</div>
-<script type="text/javascript" src="https://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0&mkt=en-EN&s=1"></script>
-            
-
-
- 
-
-        </div>
-       
-        <hr />
-        <footer style="background-color:#6aa74b; padding:10px;" >
-           
+         <hr />
+         <footer style="background-color:#6aa74b; padding:10px;" >
             <div class="row" style="font-size:12px">
-                <div class="col-md-5" style="color:#fff">
-                    &copy; 2016 - AFM Hunt Lease
-                </div>
-                <div class="col-md-7" style="color:#fff">
-                    Developed by DRAHOLA Technologies, Inc.
-                </div>
+               <div class="col-md-5" style="color:#fff">
+                  &copy; 2016 - AFM Hunt Lease
+               </div>
+               <div class="col-md-7" style="color:#fff">
+                  Developed by DRAHOLA Technologies, Inc.
+               </div>
             </div>
          </footer>
-     </div>
-
-    <div id="modal-container" style="background: rgba(128, 128, 128, 0.5);" class="modal fade" tabindex="-1" role="dialog">
-        <div class="modal-content">
-        </div>
-    </div>
-
-<script src="./Scripts/jquery-1.10.2.js"></script>
-<script src="./Scripts/jquery.dataTables.js"></script>
-<script src="./Scripts/dataTables.bootstrap.js"></script>
-<script src="./Scripts/bootstrap.js"></script>
-<script src="./scripts/bootstrap-datepicker.js"></script>
-<script src="./Scripts/respond.js"></script>
-<script src="./Scripts/bootbox.min.js"></script>
-<script src="./Scripts/gconescript.js"></script>
-<script src="./Scripts/jquery.validate.js"></script>
-<script src="./Scripts/jquery.validate.unobtrusive.js"></script>
-
-
-
-
-
-    <script type="text/javascript">
-        
-       
-
-        $(function () {
-            var strurlicon = './LeaseApp/Images/ajax-loader.gif';
-            $('body').on('click', '.modal-link', function (e) {
-                $('.modal-content').html("<div style='position:fixed; top:40%; left:45%; z-index :10000000; width: 1px;'><img src='" + strurlicon + "'/></div>");
-                e.preventDefault();
-                $(this).attr('data-target', '#modal-container');
-                $(this).attr('data-toggle', 'modal');
-            });
-
-            // Attach listener to .modal-close-btn's so that when the button is pressed the modal dialog disappears
-            $('body').on('click', '.modal-close-btn', function () {
-                $('#modal-container').modal('hide');
-            });
-
-            //clear modal cache, so that new content can be loaded
-            $('#modal-container').on('hidden.bs.modal', function () {
-                 $(this).removeData('bs.modal');
-            });
-
-            $('#CancelModal').on('click', function () {
-                return false;
-            });
-        });
-
-     
-                               $('.showdetails').click(function () {
-                                    if ($(".detailcontent").is(":hidden")) {
-                                        $(".detailcontent").slideDown("slow");
-                                    } else {
-                                        $(".detailcontent").hide();
-                                    }
-                                });
-
-
-    </script>
-
-
-
-</body>
+      </div>
+      <div id="modal-container" style="background: rgba(128, 128, 128, 0.5);" class="modal fade" tabindex="-1" role="dialog">
+         <div class="modal-content">
+         </div>
+      </div>
+      <script src="./Scripts/jquery-1.10.2.js"></script>
+      <script src="./Scripts/jquery.dataTables.js"></script>
+      <script src="./Scripts/dataTables.bootstrap.js"></script>
+      <script src="./Scripts/bootstrap.js"></script>
+      <script src="./scripts/bootstrap-datepicker.js"></script>
+      <script src="./Scripts/respond.js"></script>
+      <script src="./Scripts/bootbox.min.js"></script>
+      <script src="./Scripts/gconescript.js"></script>
+      <script src="./Scripts/jquery.validate.js"></script>
+      <script src="./Scripts/jquery.validate.unobtrusive.js"></script>
+      <script type="text/javascript">
+         //For new scrollable table
+         $(document).ready(function() {
+         	$('#example').DataTable( {
+         		"scrollY": 255,
+         		"scrollX": true
+         	} );
+         } );
+         
+                $(function () {
+                    var strurlicon = './LeaseApp/Images/ajax-loader.gif';
+                    $('body').on('click', '.modal-link', function (e) {
+                        $('.modal-content').html("<div style='position:fixed; top:40%; left:45%; z-index :10000000; width: 1px;'><img src='" + strurlicon + "'/></div>");
+                        e.preventDefault();
+                        $(this).attr('data-target', '#modal-container');
+                        $(this).attr('data-toggle', 'modal');
+                    });
+         
+                    // Attach listener to .modal-close-btn's so that when the button is pressed the modal dialog disappears
+                    $('body').on('click', '.modal-close-btn', function () {
+                        $('#modal-container').modal('hide');
+                    });
+         
+                    //clear modal cache, so that new content can be loaded
+                    $('#modal-container').on('hidden.bs.modal', function () {
+                         $(this).removeData('bs.modal');
+                    });
+         
+                    $('#CancelModal').on('click', function () {
+                        return false;
+                    });
+                });
+         
+             
+                                       $('.showdetails').click(function () {
+                                            if ($(".detailcontent").is(":hidden")) {
+                                                $(".detailcontent").slideDown("slow");
+                                            } else {
+                                                $(".detailcontent").hide();
+                                            }
+                                        });
+         
+         
+            
+      </script>
+   </body>
 </html>
+
