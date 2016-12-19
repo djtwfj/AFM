@@ -1,1 +1,240 @@
+﻿body {
+    padding-top: 55px;
+    padding-bottom: 20px;
+}
 
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+   
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+    /*width: 280px;*/
+}
+
+/*input[type=radio],
+input[type=checkbox],input[type="button"], input[type="reset"], input[type="submit"], input[type="select"] {
+    max-width: 280px;
+    width:auto;
+}*/
+
+
+
+
+
+/*Custom CSS*/
+
+
+@media screen and (min-width: 700px) {
+    /*Custom css*/
+}
+
+.body-content {
+          padding-left: 70px;
+}
+
+
+.side-nav {
+        position: fixed;
+        top:38px;
+        left: 225px;
+        width: 62px;
+        margin-left: -225px;
+        border: none;
+        border-radius: 0;
+        overflow-y: auto;
+        background-color:#6aa74b; /*#6aa74b;*/
+        height: 100%;
+       
+}
+
+
+.side-nav li a:hover,
+.side-nav li a:focus,
+.side-nav li:active {
+            outline: none;
+            color:black !important;
+}
+
+.nav{
+    padding-left: initial;
+}
+
+.navbar-right {
+    float: right !important;
+    margin-right: 0px;
+}
+
+.container {
+    width: 98%;
+}
+
+.navbar-brand {
+    width:300px;
+    background-image: url(../images/logo.png) ;
+    background-repeat:no-repeat;
+}
+
+.panel-primary {
+    border-color:transparent;
+}
+
+.navbar-inverse 
+.navbar-nav > li > a {
+    color: black;
+}
+
+.testa:hover.active :focus{
+    background-color: #fff;
+    color: black;
+}
+
+/*th, td{
+    white-space:nowrap;
+}*/
+
+.keinumbruch{
+     white-space:nowrap;
+}
+
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus  {
+    background-color: #ffffff;
+    color: black;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+    /*background-color: #ffffff;
+    color: black;*/
+}
+
+.navbar-inverse {
+    background-color: #6aa74b;/*#6aa74b;*/
+}
+
+.navbar-inverse .dropdown-menu {
+    background-color:#6aa74b; /*#6aa74b;*/
+}
+
+.panel-default {
+    /*border-color: #6aa74b;*/
+}
+
+.nav >  li > a:hover{
+    background-color:#91DC6C;
+}
+
+
+.navbar-brand {
+    width: 100px;
+}
+
+#mapdiv{
+    width:100%; height:100%;
+}
+
+.datepicker {
+    padding: 8px 12px;
+    border-radius: 0px;
+}
+
+.navbar-collapse {
+    border-top-color:transparent;
+    
+}
+
+.pagination > li > a, .pagination > li:first-child > a, .pagination > li:last-child > a, .pagination > li > span, .pagination > li:first-child > span, .pagination > li:last-child > span {
+    border-radius: 0px;
+}
+
+.btn-primary {
+    background-color: #6aa74b; /*#6aa74b;*/
+    border-color:#6aa74b; /*#6aa74b;*/
+   
+}
+
+.dataTable > thead > tr > th[class*="sort"]:after{
+    content: "" !important;
+}
+
+.modal-dialog {
+    margin: 150px auto;
+    width: 600px;
+}
+
+
+.active{
+    background-color:white;
+}
+
+.glyphicon {
+   color:#6aa74b;
+}
+
+.navbar-inverse
+.navbar-nav > li > a:hover, 
+.navbar-inverse
+.navbar-nav > li > a:focus{background-color:#91DC6C}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    background-color: #91DC6C;
+}
+
+a {
+    color: #808080;
+}
+   
+/*.dataTables_filter{
+    display:none;
+}*/
+
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+    background-color: #e7e7e7;
+    border-color: #808080;
+    color:#808080;
+ 
+}
+
+
+.modal{
+    background:rgba(128, 128, 128, 0.5);
+}
+
+div.tooltip-inner {
+    max-width: 350px;
+}
+
+.content {
+    min-height: calc(100vh - 170px);
+   
+}
+
+.form-group, .panel-body, .dl-horizontal{
+    font-size:12px;
+}
+
+
+.btn {
+   font-size: 12px;
+   padding: 10px 15px;
+}
+
+.searchField4Lessee{
+    width:210px;
+}
+
+/*.table{
+    border:1px solid rgba(128, 128, 128, 0.5);
+}*/
