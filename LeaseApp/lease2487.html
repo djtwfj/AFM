@@ -15,6 +15,9 @@
       <link href="./Content/jquery.fancybox.css" rel="stylesheet"/>
       <link href="./Content/jquery.fancybox-buttons.css" rel="stylesheet"/>
       <link href="./Content/jquery.fancybox-thumbs.css" rel="stylesheet"/>
+	  
+	  <!--For new scrollable table -->
+      <link href="./Content/jquery.dataTables.min.css" rel="stylesheet"/>
       <script src="./Scripts/modernizr-2.6.2.js"></script>
    
 	<style>
@@ -1032,7 +1035,7 @@
                               </div>
                               <hr />
                               <h5>QDMA HARVESTINGS</h5>
-<!--For new scrollable table -->
+									<!--For new scrollable table. The width from the TH tags needs to be removed-->
 										<table id="example" class="display nowrap" cellspacing="0" width="100%">
 											<thead style="background-color:#f5f5f5">
 												<tr role="row">
@@ -1041,33 +1044,33 @@
 															<span class="fa fa-magic" style="font-size:15px; color:#6aa74b"></span>
 														</a>
 													</th>
-													<th class="keinumbruch sorting_disabled" style="width: 60px;" >HUNT CLUB</th>
-													<th class="keinumbruch sorting_disabled" style="width: 60px;" >HARVEST DATE</th>
-													<th class="keinumbruch sorting_disabled" style="width: 91px;" >HUNT YEAR</th>
-													<th class="keinumbruch sorting_disabled" style="width: 73px;" >ENTRY DATE</th>
-													<th class="keinumbruch sorting_disabled" style="width: 60px;" >SPECIES</th>
-													<th class="keinumbruch sorting_disabled" style="width: 60px;" >SEX</th>
-													<th class="keinumbruch sorting_disabled" style="width: 60px;" >AGE</th>
-													<th class="keinumbruch sorting_disabled" style="width: 104px;">LIVE WEIGHT (lbs)</th>
-													<th class="keinumbruch sorting_disabled" style="width: 60px;" >POINTS LEFT</th>
-													<th class="keinumbruch sorting_disabled" style="width: 60px;" >POINTS RIGHT</th>
-													<th class="keinumbruch sorting_disabled" style="width: 60px;" >POINTS TOTAL</th>
-													<th class="keinumbruch sorting_disabled" style="width: 60px;" >INSIDE SPREAD (in)</th>
-													<th class="keinumbruch sorting_disabled" style="width: 60px;" >BEAN LENGTH LEFT (in)</th>
-													<th class="keinumbruch sorting_disabled" style="width: 60px;" >BEAN LENGTH RIGHT (in)</th>
-													<th class="keinumbruch sorting_disabled" style="width: 60px;" >CIRCUNFERENCE LEFT (in)</th>
-													<th class="keinumbruch sorting_disabled" style="width: 60px;" >CIRCUNFERENCE RIGHT (in)</th>
-													<th class="keinumbruch sorting_disabled" style="width: 60px;" >MILK</th>
-													<th class="keinumbruch sorting_disabled" style="width: 60px;" >WEAPON USED</th>
-													<th class="keinumbruch sorting_disabled" style="width: 60px;" >LOCATION INFORMATION</th>
-													<th class="keinumbruch sorting_disabled" style="width: 60px;" >HUNTER NAME</th>
-													<th class="keinumbruch sorting_disabled" style="width: 60px;" >HUNTER ADDRESS</th>
-													<th class="keinumbruch sorting_disabled" style="width: 60px;" >HUNTER CITY</th>
-													<th class="keinumbruch sorting_disabled" style="width: 60px;" >HUNTER STATE</th>
-													<th class="keinumbruch sorting_disabled" style="width: 60px;" >HUNTER ZIP CODE</th>
-													<th class="keinumbruch sorting_disabled" style="width: 60px;" >HUNTER PERMIT #</th>
-													<th class="keinumbruch sorting_disabled" style="width: 60px;" >HUNTER TRANSPORT TAG #</th>
-													<th class="keinumbruch sorting_disabled" style="width: 70px;" >COMMENT</th>
+													<th class="keinumbruch sorting_disabled" >HUNT CLUB</th>
+													<th class="keinumbruch sorting_disabled" >HARVEST DATE</th>
+													<th class="keinumbruch sorting_disabled" >HUNT YEAR</th>
+													<th class="keinumbruch sorting_disabled" >ENTRY DATE</th>
+													<th class="keinumbruch sorting_disabled" >SPECIES</th>
+													<th class="keinumbruch sorting_disabled" >SEX</th>
+													<th class="keinumbruch sorting_disabled" >AGE</th>
+													<th class="keinumbruch sorting_disabled" >LIVE WEIGHT (lbs)</th>
+													<th class="keinumbruch sorting_disabled" >POINTS LEFT</th>
+													<th class="keinumbruch sorting_disabled" >POINTS RIGHT</th>
+													<th class="keinumbruch sorting_disabled" >POINTS TOTAL</th>
+													<th class="keinumbruch sorting_disabled" >INSIDE SPREAD (in)</th>
+													<th class="keinumbruch sorting_disabled" >BEAN LENGTH LEFT (in)</th>
+													<th class="keinumbruch sorting_disabled" >BEAN LENGTH RIGHT (in)</th>
+													<th class="keinumbruch sorting_disabled" >CIRCUNFERENCE LEFT (in)</th>
+													<th class="keinumbruch sorting_disabled" >CIRCUNFERENCE RIGHT (in)</th>
+													<th class="keinumbruch sorting_disabled" >MILK</th>
+													<th class="keinumbruch sorting_disabled" >WEAPON USED</th>
+													<th class="keinumbruch sorting_disabled" >LOCATION INFORMATION</th>
+													<th class="keinumbruch sorting_disabled" >HUNTER NAME</th>
+													<th class="keinumbruch sorting_disabled" >HUNTER ADDRESS</th>
+													<th class="keinumbruch sorting_disabled" >HUNTER CITY</th>
+													<th class="keinumbruch sorting_disabled" >HUNTER STATE</th>
+													<th class="keinumbruch sorting_disabled" >HUNTER ZIP CODE</th>
+													<th class="keinumbruch sorting_disabled" >HUNTER PERMIT #</th>
+													<th class="keinumbruch sorting_disabled" >HUNTER TRANSPORT TAG #</th>
+													<th class="keinumbruch sorting_disabled" >COMMENT</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -1576,6 +1579,10 @@
       <script src="./Scripts/gconescript.js"></script>
       <script src="./Scripts/jquery.validate.js"></script>
       <script src="./Scripts/jquery.validate.unobtrusive.js"></script>
+
+      <!--For new scrollable table. These tables are not needed. With what we have is enough-->
+	  <!--script src="./Scripts/jquery-1.12.4.js"></script>
+	  <script src="./Scripts/jquery.dataTables.min.js"></script-->
       <script type="text/javascript">
          //For new scrollable table
          $(document).ready(function() {
