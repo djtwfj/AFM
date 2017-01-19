@@ -227,12 +227,13 @@
                            <span class="field-validation-valid text-danger" data-valmsg-for="species" data-valmsg-replace="true" style="display:block"></span>
                         </div>
                      </div>
-                     <div xid="div-wrapper" class="form-group div-wrapper" style="float:left;width:350px;">
-						<!--div class="col-md-9" style="width: 50%;"-->
-						<div class="single-div" style="width: auto;">
+                     <div class="form-group div-wrapper" style="float:left;width:350px;">
+						<!--div class="single-div" style="width: auto;"-->
+						<div id="div-sex" class="single-div" style="width:100%;">
 							<label class="control-label col-md-3" for="sex" style="padding-left:0px;padding-right:15px;width: auto;">SEX</label>
 							<div>
-							   <select class="form-control" data-val="true" data-val-length="SEX cannot be longer than 20 characters." data-val-length-max="20" data-val-required="SEX is required" id="sex" name="sex" style="display:inline;width:auto;">
+							   <!--select class="form-control" data-val="true" data-val-length="SEX cannot be longer than 20 characters." data-val-length-max="20" data-val-required="SEX is required" id="sex" name="sex" style="display:inline;width:auto;"-->
+							   <select class="form-control" data-val="true" data-val-length="SEX cannot be longer than 20 characters." data-val-length-max="20" data-val-required="SEX is required" id="sex" name="sex" style="display:inline;">
 								  <option value=""></option>
 								  <option>FEMALE</option>
 								  <option>MALE</option>
@@ -241,8 +242,8 @@
 							   <span class="field-validation-valid text-danger" data-valmsg-for="sex" data-valmsg-replace="true" style="display:block"></span>
 							</div>
                         </div>
-						<!--div class="col-md-9" style="width: 50%;"-->
-						<div class="single-div" style="width: auto;">
+						<!--div id="div-milk" class="single-div" style="width: auto;"-->
+						<div id="div-milk" class="single-div" style="width: auto; display:none;">
 							<label class="control-label col-md-3" for="milk" style="width: auto;">MILK</label>
 							<div class="col-md-9">
 							   <select class="form-control" id="milk" name="milk" style="display:inline;width:auto;">
@@ -268,7 +269,7 @@
                            <span class="field-validation-valid text-danger" data-valmsg-for="live_weight" data-valmsg-replace="true" style="display:block"></span>
                         </div>
                      </div>
-                     <div id="buck_info" style="display:none;">
+                     <div id="antler_inputs" style="display:none;">
 						 <div class="form-group" style="float:left;width:350px;">
 							<label class="control-label col-md-3" for="bleft" style="width: auto;">BEAM LENGTH LEFT (in)</label>
 							<div class="col-md-9" style="width: 100%;">
@@ -399,30 +400,48 @@
              $('#sex').change(function () {
 				 //bootbox.alert($('#species option:selected').val());
                  if (($('#species option:selected').val() == "DEER" || $('#species option:selected').val() == "ELK") && $('#sex option:selected').val() == "MALE") {
-                     $('#milk').attr({ "readonly": "readonly", "disabled": "disabled" });
-					 $("#milk").val($("#milk option:first-child").val());
-					 $('#buck_info').css("display", "block");
+                     //$('#milk').attr({ "readonly": "readonly", "disabled": "disabled" });
+					 //$("#milk").val($("#milk option:first-child").val());
+                     $('#div-milk').css("display", "none");
+                     $('#div-sex').css("width", "100%");
+					 $('#antler_inputs').css("display", "inline-block");
+                     $('#sex').css("width", "100%");
                  }
                  else if (($('#species option:selected').val() == "DEER" || $('#species option:selected').val() == "ELK") && $('#sex option:selected').val() == "FEMALE"){
-                     $('#milk').attr({ "readonly": false, "disabled": false });
-					 $('#buck_info').css("display", "none");
+                     $('#div-sex').css("width", "auto");
+                     $('#sex').css("width", "auto");
+                     $('#div-milk').css("display", "inline-block");
+					 $('#milk').attr({ "readonly": false, "disabled": false });
+					 $('#antler_inputs').css("display", "none");
                  }
              });
 			 
 			 $('#species').change(function () {
-			     if ($('#species option:selected').val() == "DEER" || $('#species option:selected').val() == "ELK"){
-					$('#buck_info').css("display", "block");
+			     //If SPECIES is dear or elk show antlers input controls, else hide them
+				 if (($('#species option:selected').val() == "DEER" || $('#species option:selected').val() == "ELK") && $('#sex option:selected').val() == "MALE") {
+					$('#antler_inputs').css("display", "block");
 				 }else{
-					$('#buck_info').css("display", "none");
+					$('#antler_inputs').css("display", "none");
 				 }
+				 
+				 //If SPECIES is NOT dear nor elk hide milk input controls, else hide it
+				 if (($('#species option:selected').val() != "DEER" || $('#species option:selected').val() != "ELK")){ 
+				     $('#div-milk').css("display", "none");
+					 $('#div-sex').css("width", "100%");
+                     $('#sex').css("width", "100%");
+				 }
+				 
                  if ($('#species option:selected').val() == "DEER" && $('#sex option:selected').val() == "MALE") {
                      $('#milk').attr({ "readonly": "readonly", "disabled": "disabled" });
 					 $("#milk").val($("#milk option:first-child").val());
-					 $('#buck_info').css("display", "block");
+					 $('#antler_inputs').css("display", "block");
                  }
                  else if ($('#species option:selected').val() == "DEER" && $('#sex option:selected').val() == "FEMALE"){
                      $('#milk').attr({ "readonly": false, "disabled": false });
-					 $('#buck_info').css("display", "none");
+					 $('#antler_inputs').css("display", "none");
+                     $('#div-sex').css("width", "auto");
+                     $('#sex').css("width", "auto");
+                     $('#div-milk').css("display", "inline-block");
                  }
 			 });
 			 
