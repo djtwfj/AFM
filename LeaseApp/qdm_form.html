@@ -1,0 +1,470 @@
+
+
+<!DOCTYPE html>
+<html class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" style="">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>AFM Hunt Lease</title>
+      <link rel="shortcut icon" href="./Images/logo.ico">
+      <link href="./Content/bootstrap.css" rel="stylesheet">
+      <link href="./Content/bootstrap-datepicker.css" rel="stylesheet">
+      <link href="./Content/dataTables.bootstrap.css" rel="stylesheet">
+      <link href="./Content/font-awesome.css" rel="stylesheet">
+      <link href="./Content/Site.css" rel="stylesheet">
+      <link href="./Content/jquery.fancybox.css" rel="stylesheet">
+      <link href="./Content/jquery.fancybox-buttons.css" rel="stylesheet">
+      <link href="./Content/jquery.fancybox-thumbs.css" rel="stylesheet">
+      <script src="./Scripts/modernizr-2.6.2.js"></script>
+      <script src="./Scripts/jquery-1.10.2.js"></script>
+      <script src="./Scripts/jquery.dataTables.js"></script>
+      <script src="./Scripts/dataTables.bootstrap.js"></script>
+      <script src="./Scripts/bootstrap.js"></script>
+      <script src="./Scripts/bootstrap-datepicker.js"></script>
+      <script src="./Scripts/respond.js"></script>
+      <script src="./Scripts/bootbox.min.js"></script>
+      <script src="./Scripts/gconescript.js"></script>
+      <script src="./Scripts/jquery.validate.js"></script>
+      <script src="./Scripts/jquery.validate.unobtrusive.js"></script>
+	  <style>
+		.div-wrapper {
+			white-space: nowrap;
+			max-width: 99%;
+		}
+
+		.single-div {
+			display: inline-block;
+			/*margin: 0 3%;*/
+			padding-left: 15px;
+			padding-right: 36px;
+			/*text-align: center;*/
+			vertical-align: middle;
+			/*width: 27%; */
+			white-space: normal;
+		}
+		/* Mobile */
+		@media screen and (max-width: 480px) {
+			.single-div {
+				display: block;
+				width: 65%;
+				margin: 0 auto;
+			}
+
+		}
+	  </style>
+   </head>
+   <body class="">
+      <div class="modal-content" style="width:80%; max-width: 800px !important; margin: 100px auto !important; overflow:auto">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" stytle="color:#222222"><span aria-hidden="true">×</span></button>
+            <h4>CREATE HARVESTING</h4>
+         </div>
+         <div class="modal-body">
+            <div style="margin-left:70px;">
+               <form novalidate="novalidate" action="./QDMA_HARVESTING/create?trid=6399" method="post">
+                  <input name="__RequestVerificationToken" value="NBKSt4z1CNdF28uh_Pz661sUo2Lm9KvCjJuFtNNK_hlHqh5X6zW0XdmssjzeRXQnuX_l0tfJOqiF5_ADvgOV2SzX85MRuGr0-VvfFGa6tjrBJiPIxp5zKIXBDvgsI8ds89sMiS7GMkOF41tPoLf6OA2" type="hidden">                
+                  <div class="form-horizontal">
+                     <div class="form-group" style="float:left;width:350px;">
+                        <label class="control-label col-md-3" for="idtb_club" style="width: auto;">HUNT CLUB</label>
+                        <div class="col-md-9" style="width: 100%;">
+                           <select class="form-control" data-val="true" data-val-number="The field idtb_club must be a number." data-val-required="HUNT CLUB is required" id="idtb_club" name="idtb_club" style="display:inline;">
+                              <option value=""></option>
+                              <option value="2815">GRUNT AND GOBBLE SPORTSMAN CLUB</option>
+                              <option value="2815">TILLMAN HUNTING CLUB</option>
+                           </select>
+                           <label for="" style="color:red;">*</label>
+                           <span class="field-validation-valid text-danger" data-valmsg-for="idtb_club" data-valmsg-replace="true" style="display:block"></span>
+                        </div>
+                     </div>
+                     <div class="form-group" style="float:left;width:350px;">
+                        <label class="control-label col-md-3" for="obs_date" style="width: auto;">HARVEST DATE</label>
+                        <div class="col-md-9" style="width: 100%;">
+                           <input class="form-control datepicker" data-val="true" data-val-date="The field obs_date must be a date." data-val-required="OBSERVATION DATE is required" id="obs_date" name="obs_date" placeholder="mm/dd/yyyy" style="display:inline;" value="" type="text"> <label for="" style="color:red;">*</label>
+                           <span class="field-validation-valid text-danger" data-valmsg-for="obs_date" data-valmsg-replace="true" style="display:block"></span>
+                        </div>
+                     </div>
+                     <div class="form-group" style="clear:both; float:left;width:350px;">
+                        <label class="control-label col-md-3" for="hunting_year" style="width: auto;">HUNTING YEAR</label>
+                        <div class="col-md-9" style="width: 100%;">
+                           <input class="form-control datepickeryear" data-val="true" data-val-number="The field hunting_year must be a number." data-val-required="HUNTING YEAR is required" id="hunting_year" name="hunting_year" placeholder="yyyy" style="display:inline;" value="" type="text"> <label for="" style="color:red;">*</label>
+                           <span class="field-validation-valid text-danger" data-valmsg-for="hunting_year" data-valmsg-replace="true" style="display:block"></span>
+						   <span><label style="color: red;">HUNTING YEAR field needs to be set using the HARVEST DATE's year input field. Field cand be set on the server side.</label></span>
+                        </div>
+                     </div>
+                     <div class="form-group" style="float:left;width:350px;">
+                        <label class="control-label col-md-3" for="hname" style="width: auto;">HUNTER NAME</label>
+                        <div class="col-md-9" style="width: 100%;">
+                           <input class="form-control" data-val="true" data-val-number="The field hname must be a number." id="hname" name="hname" style="display:inline;" value="" type="text"> 
+                           <span class="field-validation-valid text-danger" data-valmsg-for="hname" data-valmsg-replace="true" style="display:block"></span>
+                        </div>
+                     </div>
+                     <div class="form-group" style="clear:both; float:left;width:350px;">
+                        <label class="control-label col-md-3" for="haddress" style="width: auto;">HUNTER ADDRESS</label>
+                        <div class="col-md-9" style="width: 100%;">
+                           <input class="form-control" data-val="true" data-val-number="The field haddress must be a number." id="haddress" name="haddress" style="display:inline;" value="" type="text"> 
+                           <span class="field-validation-valid text-danger" data-valmsg-for="haddress" data-valmsg-replace="true" style="display:block"></span>
+                        </div>
+                     </div>
+                     <div class="form-group" style="float:left;width:350px;">
+                        <label class="control-label col-md-3" for="hcity" style="width: auto;">HUNTER CITY</label>
+                        <div class="col-md-9" style="width: 100%;">
+                           <input class="form-control" data-val="true" data-val-number="The field hcity must be a number." id="hcity" name="hcity" style="display:inline;" value="" type="text"> 
+                           <span class="field-validation-valid text-danger" data-valmsg-for="hcity" data-valmsg-replace="true" style="display:block"></span>
+                        </div>
+                     </div>
+                     <div class="form-group" style="clear:both; float:left;width:350px;">
+                        <label class="control-label col-md-3" for="State" style="width: auto;">HUNTER STATE</label>
+                        <div class="col-md-9" style="width: 100%;">
+                           <select class="form-control tractstate valid" id="State" name="State" style="display:inline;">
+                              <option value="AL">Alabama</option>
+                              <option value="AK">Alaska</option>
+                              <option value="AZ">Arizona</option>
+                              <option value="AR">Arkansas</option>
+                              <option value="CA">California</option>
+                              <option value="CO">Colorado</option>
+                              <option value="CT">Connecticut</option>
+                              <option value="DE">Delaware</option>
+                              <option value="FL">Florida</option>
+                              <option selected="selected" value="GA">Georgia</option>
+                              <option value="HI">Hawaii</option>
+                              <option value="ID">Idaho</option>
+                              <option value="IL">Illinois</option>
+                              <option value="IN">Indiana</option>
+                              <option value="IA">Iowa</option>
+                              <option value="KS">Kansas</option>
+                              <option value="KY">Kentucky</option>
+                              <option value="LA">Louisiana</option>
+                              <option value="ME">Maine</option>
+                              <option value="MD">Maryland</option>
+                              <option value="MA">Massachusetts</option>
+                              <option value="MI">Michigan</option>
+                              <option value="MN">Minnesota</option>
+                              <option value="MS">Mississippi</option>
+                              <option value="MO">Missouri</option>
+                              <option value="MT">Montana</option>
+                              <option value="NE">Nebraska</option>
+                              <option value="NV">Nevada</option>
+                              <option value="NH">New Hampshire</option>
+                              <option value="NJ">New Jersey</option>
+                              <option value="NM">New Mexico</option>
+                              <option value="NY">New York</option>
+                              <option value="NC">North Carolina</option>
+                              <option value="ND">North Dakota</option>
+                              <option value="NA">NOT AVAILABLE</option>
+                              <option value="OH">Ohio</option>
+                              <option value="OK">Oklahoma</option>
+                              <option value="OR">Oregon</option>
+                              <option value="PA">Pennsylvania</option>
+                              <option value="RI">Rhode Island</option>
+                              <option value="SC">South Carolina</option>
+                              <option value="SD">South Dakota</option>
+                              <option value="TN">Tennessee</option>
+                              <option value="TX">Texas</option>
+                              <option value="UT">Utah</option>
+                              <option value="VT">Vermont</option>
+                              <option value="VA">Virginia</option>
+                              <option value="WA">Washington</option>
+                              <option value="WV">West Virginia</option>
+                              <option value="WI">Wisconsin</option>
+                              <option value="WY">Wyoming</option>
+                           </select>
+                           <label for="" style="color:red;">*</label>
+                           <span class="field-validation-valid text-danger" data-valmsg-for="State" data-valmsg-replace="true" style="display:block"></span>
+                        </div>
+                     </div>
+                     <div class="form-group" style="float:left;width:350px;">
+                        <label class="control-label col-md-3" for="hzipcode" style="width: auto;">HUNTER ZIP CODE</label>
+                        <div class="col-md-9" style="width: 100%;">
+                           <input class="form-control" data-val="true" data-val-number="The field hzipcode must be a number." id="hzipcode" name="hzipcode" style="display:inline;" value="" type="text"> 
+                           <span class="field-validation-valid text-danger" data-valmsg-for="hzipcode" data-valmsg-replace="true" style="display:block"></span>
+                        </div>
+                     </div>
+                     <div class="form-group" style="clear:both; float:left;width:350px;">
+                        <label class="control-label col-md-3" for="hpermit" style="width: auto;">HUNTER PERMIT #</label>
+                        <div class="col-md-9" style="width: 100%;">
+                           <input class="form-control" data-val="true" data-val-number="The field hpermit must be a number." id="hpermit" name="hpermit" style="display:inline;" value="" type="text"> 
+                           <span class="field-validation-valid text-danger" data-valmsg-for="hpermit" data-valmsg-replace="true" style="display:block"></span>
+                        </div>
+                     </div>
+                     <div class="form-group" style="float:left;width:350px;">
+                        <label class="control-label col-md-3" for="htag" style="width: auto;">HUNTER TRANSPORT TAG #</label>
+                        <div class="col-md-9" style="width: 100%;">
+                           <input class="form-control" data-val="true" data-val-number="The field htag must be a number." id="htag" name="htag" style="display:inline;" value="" type="text"> 
+                           <span class="field-validation-valid text-danger" data-valmsg-for="htag" data-valmsg-replace="true" style="display:block"></span>
+                        </div>
+                     </div>
+                     <div class="form-group" style="clear:both; float:left;width:350px;">
+                        <label class="control-label col-md-3" for="weapon" style="width: auto;">WEAPON USED</label>
+                        <div class="col-md-9" style="width: 100%;">
+                           <select class="form-control" id="weapon" name="weapon" style="display:inline;">
+                              <option value=""></option>
+                              <option>BOW</option>
+                              <option>MODERN FIREARM</option>
+                              <option>MUZZLE LOADER</option>
+                           </select>
+                           <span class="field-validation-valid text-danger" data-valmsg-for="weapon" data-valmsg-replace="true" style="display:block"></span>
+                        </div>
+                     </div>
+                     <div class="form-group" style="float:left;width:350px;">
+                        <label class="control-label col-md-3" for="location" style="width: auto;">LOCATION INFORMATION</label>
+                        <div class="col-md-9" style="width: 100%;">
+                           <input class="form-control" data-val="true" data-val-number="The field location must be a number." id="location" name="location" style="display:inline;" value="" type="text"> 
+                           <span class="field-validation-valid text-danger" data-valmsg-for="location" data-valmsg-replace="true" style="display:block"></span>
+                        </div>
+                     </div>
+                     <div class="form-group" style="clear:both; float:left;width:350px;">
+                        <label class="control-label col-md-3" for="species" style="width: auto;">SPECIES</label>
+                        <div class="col-md-9" style="width: 100%;">
+                           <select class="form-control" id="species" name="species" style="display:inline;">
+                              <option value=""></option>
+                              <option>BEAR</option>
+                              <option>BOBCAT</option>
+                              <option>COUGAR</option>
+                              <option>DEER</option>
+                              <option>ELK</option>
+                              <option>OTHER</option>
+                           </select>
+                           <span class="field-validation-valid text-danger" data-valmsg-for="species" data-valmsg-replace="true" style="display:block"></span>
+                        </div>
+                     </div>
+                     <div xid="div-wrapper" class="form-group div-wrapper" style="float:left;width:350px;">
+						<!--div class="col-md-9" style="width: 50%;"-->
+						<div class="single-div" style="width: auto;">
+							<label class="control-label col-md-3" for="sex" style="padding-left:0px;padding-right:15px;width: auto;">SEX</label>
+							<div>
+							   <select class="form-control" data-val="true" data-val-length="SEX cannot be longer than 20 characters." data-val-length-max="20" data-val-required="SEX is required" id="sex" name="sex" style="display:inline;width:auto;">
+								  <option value=""></option>
+								  <option>FEMALE</option>
+								  <option>MALE</option>
+							   </select>
+							   <label for="" style="color:red;">*</label>
+							   <span class="field-validation-valid text-danger" data-valmsg-for="sex" data-valmsg-replace="true" style="display:block"></span>
+							</div>
+                        </div>
+						<!--div class="col-md-9" style="width: 50%;"-->
+						<div class="single-div" style="width: auto;">
+							<label class="control-label col-md-3" for="milk" style="width: auto;">MILK</label>
+							<div class="col-md-9">
+							   <select class="form-control" id="milk" name="milk" style="display:inline;width:auto;">
+								  <option value="">NONE</option>
+								  <option>YES</option>
+								  <option>NO</option>
+							   </select>
+							   <span class="field-validation-valid text-danger" data-valmsg-for="milk" data-valmsg-replace="true" style="display:block"></span>
+							</div>
+                        </div>
+                     </div>
+                     <div class="form-group" style="clear:both; float:left;width:350px;">
+                        <label class="control-label col-md-3" for="age" style="width: auto;">AGE</label>
+                        <div class="col-md-9" style="width: 100%;">
+                           <input class="form-control" data-val="true" data-val-length="AGE cannot be longer than 20 characters." data-val-length-max="20" data-val-required="AGE is required" id="age" name="age" style="display:inline;" value="" type="text"> <label for="" style="color:red;">*</label>
+                           <span class="field-validation-valid text-danger" data-valmsg-for="age" data-valmsg-replace="true" style="display:block"></span>
+                        </div>
+                     </div>
+                     <div class="form-group" style="float:left;width:350px;">
+                        <label class="control-label col-md-3" for="live_weight" style="width: auto;">LIVE WEIGHT (lbs)</label>
+                        <div class="col-md-9" style="width: 100%;">
+                           <input class="form-control" data-val="true" data-val-number="The field live_weight must be a number." data-val-required="LIVE WEIGHT (lbs) is required" id="live_weight" name="live_weight" style="display:inline;" value="" type="text"> <label for="" style="color:red;">*</label>
+                           <span class="field-validation-valid text-danger" data-valmsg-for="live_weight" data-valmsg-replace="true" style="display:block"></span>
+                        </div>
+                     </div>
+                     <div id="buck_info" style="display:none;">
+						 <div class="form-group" style="float:left;width:350px;">
+							<label class="control-label col-md-3" for="bleft" style="width: auto;">BEAM LENGTH LEFT (in)</label>
+							<div class="col-md-9" style="width: 100%;">
+							   <input class="form-control" data-val="true" data-val-number="The field bleft must be a number." id="bleft" name="bleft" style="display:inline;" value="" type="text"> 
+							   <span class="field-validation-valid text-danger" data-valmsg-for="bleft" data-valmsg-replace="true" style="display:block"></span>
+							</div>
+						 </div>
+						 <div class="form-group" style="float:left;width:350px;">
+							<label class="control-label col-md-3" for="bright" style="width: auto;">BEAM LENGTH RIGHT (in)</label>
+							<div class="col-md-9" style="width: 100%;">
+							   <input class="form-control" data-val="true" data-val-number="The field bright must be a number." id="bright" name="bright" style="display:inline;" value="" type="text">
+							   <span class="field-validation-valid text-danger" data-valmsg-for="bright" data-valmsg-replace="true" style="display:block"></span>
+							</div>
+						 </div>
+						 <div class="form-group" style="clear:both; float:left;width:350px;">
+							<label class="control-label col-md-3" for="cleft" style="width: auto;">CIRCUMFERENCE LEFT (in)</label>
+							<div class="col-md-9" style="width: 100%;">
+							   <input class="form-control" data-val="true" data-val-number="The field cleft must be a number." id="cleft" name="cleft" style="display:inline;" value="" type="text"> 
+							   <span class="field-validation-valid text-danger" data-valmsg-for="cleft" data-valmsg-replace="true" style="display:block"></span>
+							</div>
+						 </div>
+						 <div class="form-group" style="float:left;width:350px;">
+							<label class="control-label col-md-3" for="cright" style="width: auto;">CIRCUMFERENCE RIGHT (in)</label>
+							<div class="col-md-9" style="width: 100%;">
+							   <input class="form-control" data-val="true" data-val-number="The field cright must be a number." id="cright" name="cright" style="display:inline;" value="" type="text"> 
+							   <span class="field-validation-valid text-danger" data-valmsg-for="cright" data-valmsg-replace="true" style="display:block"></span>
+							</div>
+						 </div>
+						 <!--div class="form-group" style="clear:both; float:left;width:350px;">
+							<label class="control-label col-md-3" for="cright" style="width: auto;">CIRCUMFERENCE RIGHT (in)</label>
+							<div class="col-md-9" style="width: 100%;">
+							   <input class="form-control" data-val="true" data-val-number="The field cright must be a number." id="cright" name="cright" style="display:inline;" value="" type="text"> 
+							   <span class="field-validation-valid text-danger" data-valmsg-for="cright" data-valmsg-replace="true" style="display:block"></span>
+							</div>
+						 </div>
+						 <div class="form-group" style="float:left;width:350px;">
+							<label class="control-label col-md-3" for="milk" style="width: auto;">MILK2</label>
+							<div class="col-md-9" style="width: 100%;">
+							   <select class="form-control" id="milk" name="milk" style="display:inline;">
+								  <option value="">NONE</option>
+								  <option>YES</option>
+								  <option>NO</option>
+							   </select>
+							   <span class="field-validation-valid text-danger" data-valmsg-for="milk" data-valmsg-replace="true" style="display:block"></span>
+							</div>
+						 </div-->
+
+
+						 <div class="form-group" style="clear:both; float:left;width:350px;">
+							<label class="control-label col-md-3" for="pleft" style="width: auto;">POINTS LEFT</label>
+							<div class="col-md-9" style="width: 100%;">
+							   <input class="form-control" data-val="true" data-val-number="The field pleft must be a number." id="pleft" name="pleft" style="display:inline;" value="" type="text"> 
+							   <span class="field-validation-valid text-danger" data-valmsg-for="pleft" data-valmsg-replace="true" style="display:block"></span>
+							</div>
+						 </div>
+						 <div class="form-group" style="float:left;width:350px;">
+							<label class="control-label col-md-3" for="pright" style="width: auto;">POINTS RIGHT</label>
+							<div class="col-md-9" style="width: 100%;">
+							   <input class="form-control" data-val="true" data-val-number="The field pright must be a number." id="pright" name="pright" style="display:inline;" value="" type="text">
+							   <span class="field-validation-valid text-danger" data-valmsg-for="pright" data-valmsg-replace="true" style="display:block"></span>
+							</div>
+						 </div>
+						 <div class="form-group" style="float:left;width:350px;">
+							<label class="control-label col-md-3" for="inside_spread" style="width: auto;">INSIDE SPREAD (in)</label>
+							<div class="col-md-9" style="width: 100%;">
+							   <input class="form-control" data-val="true" data-val-number="The field inside_spread must be a number." id="inside_spread" name="inside_spread" style="display:inline;" value="" type="text">
+							   <span class="field-validation-valid text-danger" data-valmsg-for="inside_spread" data-valmsg-replace="true" style="display:block"></span>
+							</div>
+						 </div>
+						 <!--div class="form-group" style="clear:both; float:left;width:350px;">
+							<label class="control-label col-md-3" for="ptotal" style="width: auto;">POINTS LEFT + POINTS RIGHT</label>
+							<div class="col-md-9" style="width: 100%;">
+							   <input value="13" class="form-control" data-val="true" data-val-number="The field ptotal must be a number." id="ptotal" name="ptotal" readonly="readonly" style="display:inline;" type="text">
+							   <span class="field-validation-valid text-danger" data-valmsg-for="ptotal" data-valmsg-replace="true" style="display:block"></span>
+							</div>
+						 </div-->
+					 </div>
+                     <div class="form-group" style="float:left;width:100%;">
+                        <label class="control-label col-md-3" for="comment" style="width: auto;">COMMENTS</label>
+                        <div class="col-md-9" style="width: 100%;">
+                           <textarea style="max-width: 600px;" class="form-control" cols="1" data-val="true" data-val-length="COMMENT cannot be longer than 254 characters." data-val-length-max="254" id="comment" name="comment" rows="4"></textarea>
+                           <span class="field-validation-valid text-danger" data-valmsg-for="comment" data-valmsg-replace="true"></span>
+                        </div>
+                     </div>
+					 <!--div class="form-group" style="float:left;width:350px;">
+                        <div style="float:left; width:100%;">
+						   <label class="control-label col-md-3" for="comment" style="width: auto;">COMMENTSSSS</label>
+                           <textarea style="max-width: 607px;" class="form-control" cols="100" data-val="true" data-val-length="COMMENT cannot be longer than 254 characters." data-val-length-max="254" id="comment" name="comment" rows="4"></textarea>
+                           <span class="field-validation-valid text-danger" data-valmsg-for="comment" data-valmsg-replace="true"></span>
+                        </div>
+                     </div-->
+                     <!--div class="form-group"-->
+                     <div class="div-wrapper" style="clear:both; text-align:center;">
+                        <!--div class="col-md-offset-3 col-md-7"-->
+                        <div class="single-div">
+                           <input value="CREATE" class="btn btn-primary" type="submit">
+                        </div>
+                        <!--div style="margin-left: -208px;" class="col-md-2"-->
+                        <div class="single-div">
+							<button type="button" class="btn btn-default" data-dismiss="modal">CLOSE</button> 
+						</div>
+                     </div>
+                     <div>
+                        <label style="color: red;">CREATE button saves the record and clears the form without closing the form?</label>
+                        <label style="color: red;">ENTRY DATE needs to be set with TODAY() funtion in the server side.</label>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+         <script>
+            $.validator.unobtrusive.parse($("form"));
+             var date = new Date();
+             date.setDate(date.getDate() - 7300);
+             $('.datepicker').datepicker({ format: 'mm/dd/yyyy', startDate: date, endDate: '+d' });
+            
+             $('#obs_date').focusout(function () {
+                 var enddate = new Date($(this).val());
+                 var today = new Date();
+                 if (enddate > today) {
+                     bootbox.alert("Your HARVESTING DATE can't be in the future!");
+                     $(this).val("");
+                 }
+				$('#hunting_year').val(enddate.getFullYear());
+             });
+             $('.datepickeryear').datepicker({ format: 'yyyy', viewMode: "years", minViewMode: "years" });
+
+             $('#sex').change(function () {
+				 //bootbox.alert($('#species option:selected').val());
+                 if (($('#species option:selected').val() == "DEER" || $('#species option:selected').val() == "ELK") && $('#sex option:selected').val() == "MALE") {
+                     $('#milk').attr({ "readonly": "readonly", "disabled": "disabled" });
+					 $("#milk").val($("#milk option:first-child").val());
+					 $('#buck_info').css("display", "block");
+                 }
+                 else if (($('#species option:selected').val() == "DEER" || $('#species option:selected').val() == "ELK") && $('#sex option:selected').val() == "FEMALE"){
+                     $('#milk').attr({ "readonly": false, "disabled": false });
+					 $('#buck_info').css("display", "none");
+                 }
+             });
+			 
+			 $('#species').change(function () {
+			     if ($('#species option:selected').val() == "DEER" || $('#species option:selected').val() == "ELK"){
+					$('#buck_info').css("display", "block");
+				 }else{
+					$('#buck_info').css("display", "none");
+				 }
+                 if ($('#species option:selected').val() == "DEER" && $('#sex option:selected').val() == "MALE") {
+                     $('#milk').attr({ "readonly": "readonly", "disabled": "disabled" });
+					 $("#milk").val($("#milk option:first-child").val());
+					 $('#buck_info').css("display", "block");
+                 }
+                 else if ($('#species option:selected').val() == "DEER" && $('#sex option:selected').val() == "FEMALE"){
+                     $('#milk').attr({ "readonly": false, "disabled": false });
+					 $('#buck_info').css("display", "none");
+                 }
+			 });
+			 
+             $('#pleft, #pright').keyup(function () {
+                 $('#ptotal').val($('#pleft').val() * 1 + $('#pright').val() * 1);
+             });
+
+         $(function () {
+             var strurlicon = './Images/ajax-loader.gif';
+             $('body').on('click', '.modal-link', function (e) {
+                 $('.modal-content').html("<div style='position:fixed; top:40%; left:45%; z-index :10000000; width: 1px;'><img src='" + strurlicon + "'/></div>");
+                 e.preventDefault();
+                 $(this).attr('data-target', '#modal-container');
+                 $(this).attr('data-toggle', 'modal');
+             });
+         
+             // Attach listener to .modal-close-btn's so that when the button is pressed the modal dialog disappears
+             $('body').on('click', '.modal-close-btn', function () {
+                 $('#modal-container').modal('hide');
+             });
+         
+             //clear modal cache, so that new content can be loaded
+             $('#modal-container').on('hidden.bs.modal', function () {
+                  $(this).removeData('bs.modal');
+             });
+         
+             $('#CancelModal').on('click', function () {
+                 return false;
+             });
+         });
+         
+         
+                                $('.showdetails').click(function () {
+                                     if ($(".detailcontent").is(":hidden")) {
+                                         $(".detailcontent").slideDown("slow");
+                                     } else {
+                                         $(".detailcontent").hide();
+                                     }
+                                 });
+         
+         
+      </script>
+   </body>
+</html>
+
